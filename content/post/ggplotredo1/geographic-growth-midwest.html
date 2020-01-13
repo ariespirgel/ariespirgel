@@ -83,32 +83,31 @@ library(cowplot)</code></pre>
         panel.grid.major.y = element_blank()))</code></pre>
 <p><img src="/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png" width="480" /></p>
 </div>
-<div id="step-4-position-titles-change-font-and-convert-axis-to" class="section level2">
-<h2>Step 4: Position Titles, Change Font, and Convert Axis to %</h2>
-<p>Taken together, moving the titles further to the left, using a lighter color for the axis text, and bolding the labels, make the chart look more professional. It’s so easy to rely on ggplot2’s default font choices that it’s also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).</p>
+<div id="step-4-change-font-and-convert-axis-to" class="section level2">
+<h2>Step 4: Change Font and Convert Axis to %</h2>
+<p>Taken together, using a lighter color for the axis text and bolding the labels, make the chart look more professional. It’s so easy to rely on ggplot2’s default font choices that it’s also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).</p>
 <pre class="r"><code>(p &lt;- p +
-  theme(plot.title = element_text(hjust = 4, face = &quot;bold&quot;),
-        plot.subtitle = element_text(hjust = -.41, vjust = 3,
-                                     face = &quot;bold&quot;),
-        plot.caption = element_text(color = &quot;gray53&quot;, hjust = -.61,
+  theme(plot.title = element_text(face = &quot;bold&quot;),
+        plot.subtitle = element_text(face = &quot;bold&quot;),
+        plot.caption = element_text(color = &quot;gray53&quot;, hjust = -.15,
                                     face = &quot;bold&quot;),
         axis.text.y = element_text(color = &quot;gray30&quot;, face = &quot;bold&quot;),
         axis.text.x = element_text(color = &quot;gray30&quot;, face = &quot;bold&quot;)) +
-    scale_y_continuous(label = percent_format(), limits = c(0, .25))) </code></pre>
-<p><img src="/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png" width="480" /></p>
+  scale_y_continuous(label = percent_format(), limits = c(0, .25))) </code></pre>
+<p><img src="/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png" width="576" /></p>
 </div>
 <div id="step-5-add-an-icon" class="section level2">
 <h2>Step 5: Add an Icon</h2>
 <p>The logo - which I added using the cowplot package - is functionally unnecessary but aesthetically powerful. It is the cilantro garnish on top of your beans and rice: Doesn’t add much flavor, but makes you all the more eager to dig in!</p>
 <pre class="r"><code>ggdraw() +
-  draw_image(&quot;us-map.png&quot;,
-             y = 0.90,
-             width = .09, 
-             height = .09
+  draw_image(&quot;C:/Users/aspirgel/Desktop/ariespirgel/static/img/us-map.png&quot;,
+             y = .85,
+             x = 0.1,
+             width = .15,
+             height = .15
            ) +
   draw_plot(p)</code></pre>
-<pre><code>## Warning: Package `magick` is required to draw images. Image not drawn.</code></pre>
-<p><img src="/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png" width="480" /></p>
+<p><img src="/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png" width="576" /></p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>

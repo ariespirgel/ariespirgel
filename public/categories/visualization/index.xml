@@ -81,32 +81,31 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
         panel.grid.major.y = element_blank()))&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;step-4-position-titles-change-font-and-convert-axis-to&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Step 4: Position Titles, Change Font, and Convert Axis to %&lt;/h2&gt;
-&lt;p&gt;Taken together, moving the titles further to the left, using a lighter color for the axis text, and bolding the labels, make the chart look more professional. It’s so easy to rely on ggplot2’s default font choices that it’s also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).&lt;/p&gt;
+&lt;div id=&#34;step-4-change-font-and-convert-axis-to&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 4: Change Font and Convert Axis to %&lt;/h2&gt;
+&lt;p&gt;Taken together, using a lighter color for the axis text and bolding the labels, make the chart look more professional. It’s so easy to rely on ggplot2’s default font choices that it’s also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
-  theme(plot.title = element_text(hjust = 4, face = &amp;quot;bold&amp;quot;),
-        plot.subtitle = element_text(hjust = -.41, vjust = 3,
-                                     face = &amp;quot;bold&amp;quot;),
-        plot.caption = element_text(color = &amp;quot;gray53&amp;quot;, hjust = -.61,
+  theme(plot.title = element_text(face = &amp;quot;bold&amp;quot;),
+        plot.subtitle = element_text(face = &amp;quot;bold&amp;quot;),
+        plot.caption = element_text(color = &amp;quot;gray53&amp;quot;, hjust = -.15,
                                     face = &amp;quot;bold&amp;quot;),
         axis.text.y = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;),
         axis.text.x = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;)) +
-    scale_y_continuous(label = percent_format(), limits = c(0, .25))) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+  scale_y_continuous(label = percent_format(), limits = c(0, .25))) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-5-add-an-icon&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 5: Add an Icon&lt;/h2&gt;
 &lt;p&gt;The logo - which I added using the cowplot package - is functionally unnecessary but aesthetically powerful. It is the cilantro garnish on top of your beans and rice: Doesn’t add much flavor, but makes you all the more eager to dig in!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggdraw() +
-  draw_image(&amp;quot;us-map.png&amp;quot;,
-             y = 0.90,
-             width = .09, 
-             height = .09
+  draw_image(&amp;quot;C:/Users/aspirgel/Desktop/ariespirgel/static/img/us-map.png&amp;quot;,
+             y = .85,
+             x = 0.1,
+             width = .15,
+             height = .15
            ) +
   draw_plot(p)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Package `magick` is required to draw images. Image not drawn.&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;

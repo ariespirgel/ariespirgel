@@ -124,20 +124,19 @@ The white background can be achieved using `theme_minimal()`, and removing all o
 
 ```
 
-## Step 4: Position Titles, Change Font, and Convert Axis to %
+## Step 4: Change Font and Convert Axis to %
 
-Taken together, moving the titles further to the left, using a lighter color for the axis text, and bolding the labels, make the chart look more professional. It's so easy to rely on ggplot2's default font choices that it's also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).  
+Taken together, using a lighter color for the axis text and bolding the labels, make the chart look more professional. It's so easy to rely on ggplot2's default font choices that it's also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).  
 
-```{r, fig.width=5, fig.height=3}
+```{r, fig.width=6, fig.height=3, warning = FALSE}
 (p <- p +
-  theme(plot.title = element_text(hjust = 4, face = "bold"),
-        plot.subtitle = element_text(hjust = -.41, vjust = 3,
-                                     face = "bold"),
-        plot.caption = element_text(color = "gray53", hjust = -.61,
+  theme(plot.title = element_text(face = "bold"),
+        plot.subtitle = element_text(face = "bold"),
+        plot.caption = element_text(color = "gray53", hjust = -.15,
                                     face = "bold"),
         axis.text.y = element_text(color = "gray30", face = "bold"),
         axis.text.x = element_text(color = "gray30", face = "bold")) +
-    scale_y_continuous(label = percent_format(), limits = c(0, .25))) 
+  scale_y_continuous(label = percent_format(), limits = c(0, .25))) 
 
 
 ```
@@ -146,15 +145,18 @@ Taken together, moving the titles further to the left, using a lighter color for
 
 The logo - which I added using the cowplot package - is functionally unnecessary but aesthetically powerful. It is the cilantro garnish on top of your beans and rice: Doesn't add much flavor, but makes you all the more eager to dig in!
 
-```{r, fig.width=5, fig.height=3}
+```{r, fig.width=6, fig.height=3, warning = FALSE}
+
 
 ggdraw() +
-  draw_image("us-map.png",
-             y = 0.90,
-             width = .09, 
-             height = .09
+  draw_image("C:/Users/aspirgel/Desktop/ariespirgel/static/img/us-map.png",
+             y = .85,
+             x = 0.1,
+             width = .15,
+             height = .15
            ) +
   draw_plot(p)
+
 
 ```
 
