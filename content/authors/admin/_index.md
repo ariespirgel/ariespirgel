@@ -13,9 +13,9 @@ education:
   #  year: 2004
 email: spirgel@gmail.com
 interests:
-- R Training
-- Data Science
-- Education
+- Providing R Training
+- Data Analytics Consulting
+- Learning Sciences
 name: Arie Spirgel
 organizations:
 - name: Nova Southeastern University
