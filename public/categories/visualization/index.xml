@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>visualization | Arie Spirgel</title>
+    <link>/categories/visualization/</link>
+      <atom:link href="/categories/visualization/index.xml" rel="self" type="application/rss+xml" />
+    <description>visualization</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>visualization</title>
+      <link>/categories/visualization/</link>
+    </image>
+    
+    <item>
+      <title>ggplot2: Going Beyond the Defaults</title>
+      <link>/post/ggplotredo1/geographic-growth-midwest/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/post/ggplotredo1/geographic-growth-midwest/</guid>
+      <description>
+
+
+&lt;p&gt;With ggplot2 - the ubiquitous tool for making plots in R - you can create beautiful data visualizations without doing much to the defaults. By applying the template below (see &lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;R for Data Science&lt;/a&gt;), adding a theme (e.g., &lt;code&gt;theme_light()&lt;/code&gt;), and giving your chart custom labels, you can have a publication-ready visualization.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data = &amp;lt;DATA&amp;gt;) + 
+  &amp;lt;GEOM_FUNCTION&amp;gt;(
+     mapping = aes(&amp;lt;MAPPINGS&amp;gt;),
+     stat = &amp;lt;STAT&amp;gt;, 
+     position = &amp;lt;POSITION&amp;gt;
+  ) +
+  &amp;lt;COORDINATE_FUNCTION&amp;gt; +
+  &amp;lt;FACET_FUNCTION&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference. Like cooking, where adding a little bit of salt or giving a dish a few extra minutes in the oven can transform a meal from acceptable to outstanding, relatively small changes to a chart can do the same.&lt;/p&gt;
+&lt;p&gt;Take the example below, in which one of &lt;a href=&#34;http://stephanieevergreen.com/before-and-after-business-slides/&#34;&gt;Stephanie Evergreen’s&lt;/a&gt; clients started with the slide on the top, and she helped them create the one below it:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/evergreen-before.png&#34; width=&#34;400&#34; /&gt;&lt;img src=&#34;/img/evergreen-after.png&#34; width=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Both charts contain the same information, and even if you can’t express why, you just &lt;em&gt;know&lt;/em&gt; the one on the bottom is better. Continuing with the cooking analogy, the charts are like two Mexican restaurants that use the same ingredients, but at one, the guacamole is fresher, the rice is more flavorful, and the tortillas are made in house.&lt;/p&gt;
+&lt;p&gt;ggplot2 was designed so users can &lt;a href=&#34;https://r4ds.had.co.nz/data-visualisation.html&#34;&gt;build any plot that they can imagine&lt;/a&gt;, so as attractive as its defaults are, my goal with this series of posts is to venture beyond the minor design adjustments I typically make and learn to tweak charts from ordinary to outstanding. My first goal was to use ggplot2 to reproduce the chart that Dr. Evergreen created for her client, which based on her post, I think she did in Excel.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(scales)
+library(cowplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;step-0-create-the-dataset&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 0: Create the Dataset&lt;/h2&gt;
+&lt;p&gt;In addition to creating the data set, I used &lt;code&gt;fct_reorder()&lt;/code&gt; so the bars will appear in order from highest to lowest growth in the chart.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;growth &amp;lt;- tribble(
+  ~region,               ~growth, ~group,
+  &amp;quot;Large city, Midwest&amp;quot;,     .2,   &amp;quot;Midwest&amp;quot;,
+  &amp;quot;Large city, East Coast&amp;quot;, .175,   &amp;quot;Other&amp;quot;,
+  &amp;quot;Medium city, South&amp;quot;,      .165,  &amp;quot;Other&amp;quot;,
+  &amp;quot;Medium city, Midwest&amp;quot;,    .165,  &amp;quot;Midwest&amp;quot;,
+  &amp;quot;Small city, Midwest&amp;quot;,     .14,   &amp;quot;Midwest&amp;quot;, 
+  &amp;quot;Large city, West coast&amp;quot;,  .10,   &amp;quot;Other&amp;quot;
+) %&amp;gt;% 
+  mutate(region = fct_reorder(region, growth)) &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-1-make-the-foundational-chart&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 1: Make the Foundational Chart&lt;/h2&gt;
+&lt;p&gt;This chart contains all of the information that the final chart contains, but it’s like the decent restaurant you’ll never return to: fine, but unmemorable. In this step, I also narrowed the width of the bars, a subtle alteration that improves the feel of the chart as it gets closer to the finished product.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- growth %&amp;gt;% 
+  ggplot(aes(x = region, y = growth, fill = group)) + 
+  geom_col(width = .7) + 
+  coord_flip() + 
+  labs(x = NULL, y = NULL, 
+       title = &amp;quot;Geographic growth dominated by Midwest.&amp;quot;,
+       subtitle = &amp;quot;5 year growth&amp;quot;,
+       caption = &amp;quot;Source: Our Smart Source 2015&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-2-update-the-colors-and-remove-the-legend&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 2: Update the Colors and Remove the Legend&lt;/h2&gt;
+&lt;p&gt;Even if you like the default ggplot2 colors - which I very much do - putting a dark color next to a muted color does a better job of highlighting a conclusion you might want to draw attention to. And by juxtaposing the green and gray, in combination with the chart’s title, the legend becomes extraneous and can be removed.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
+  scale_fill_manual(values = c(&amp;quot;#4D643D&amp;quot;, &amp;quot;#D7DBDD&amp;quot;)) +
+  guides(fill = FALSE))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-3-white-background-and-minimal-gridlines&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 3: White Background and Minimal Gridlines&lt;/h2&gt;
+&lt;p&gt;The white background can be achieved using &lt;code&gt;theme_minimal()&lt;/code&gt;, and removing all of the grid lines other than the major-x ones cleans up the look of the chart.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
+  theme_minimal()  +
+  theme(panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_blank()))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-4-position-titles-change-font-and-convert-axis-to&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 4: Position Titles, Change Font, and Convert Axis to %&lt;/h2&gt;
+&lt;p&gt;Taken together, moving the titles further to the left, using a lighter color for the axis text, and bolding the labels, make the chart look more professional. It’s so easy to rely on ggplot2’s default font choices that it’s also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
+  theme(plot.title = element_text(hjust = 4, face = &amp;quot;bold&amp;quot;),
+        plot.subtitle = element_text(hjust = -.41, vjust = 3,
+                                     face = &amp;quot;bold&amp;quot;),
+        plot.caption = element_text(color = &amp;quot;gray53&amp;quot;, hjust = -.61,
+                                    face = &amp;quot;bold&amp;quot;),
+        axis.text.y = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;),
+        axis.text.x = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;)) +
+    scale_y_continuous(label = percent_format(), limits = c(0, .25))) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5-add-an-icon&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 5: Add an Icon&lt;/h2&gt;
+&lt;p&gt;The logo - which I added using the cowplot package - is functionally unnecessary but aesthetically powerful. It is the cilantro garnish on top of your beans and rice: Doesn’t add much flavor, but makes you all the more eager to dig in!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggdraw() +
+  draw_image(&amp;quot;us-map.png&amp;quot;,
+             y = 0.90,
+             width = .09, 
+             height = .09
+           ) +
+  draw_plot(p)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Package `magick` is required to draw images. Image not drawn.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;ggplot2 has become so popular that I rarely, if ever, search online for a question about it that hasn’t already been asked and answered. This task was no different, with each question I had (e.g., how do I add an icon?) quickly resolved with a &lt;a href=&#34;https://stackoverflow.com/questions/9917049/inserting-an-image-to-ggplot2&#34;&gt;StackOverflow solution&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Small adjustments make a big difference, and the beauty of ggplot2 is that those adjustments are not only possible, but the knowledge to accomplish them is accessible (&lt;a href=&#34;https://community.rstudio.com/&#34;&gt;RStudio Community&lt;/a&gt;, &lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;R for Data Science&lt;/a&gt;, etc.). Stay tuned for more tricks on how you can make your ggplots more interpretable, compelling, and visually satisfying!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

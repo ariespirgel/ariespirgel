@@ -1,0 +1,512 @@
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(gender_recode, level_recode) %>%
+summarise(total_headcount = sum(headcount))
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(gender_recode, level_recode) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE))
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(gender_recode) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE))
+5462913/(5462913 + 13683995)
+admin_2016_long <- admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male"))
+View(female_prop_sex)
+female_prop_sex
+female_prop_sex_2016_inline <- female_prop_sex %>%
+filter(year == 2016) %>%
+select(prop_sex) %>%
+as.integer()
+percent(female_prop_sex_2016_inline)
+female_prop_sex %>%
+filter(year == 2016) %>%
+select(prop_sex) %>%
+as.integer()
+female_prop_sex %>%
+filter(year == 2016) %>%
+select(prop_sex)
+female_prop_sex_2016_inline <- female_prop_sex %>%
+filter(year == 2016) %>%
+select(prop_sex) %>%
+as.numeric()
+percent(female_prop_sex_2016_inline)
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016)
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup()
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(percent = headcount/sum(headcount))
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(percent = headcount/sum(headcount, na.rm = TRUE))
+admin_2016_long <- admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = headcount/total_headcount)
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup()
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = headcount/total_headcount)
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = headcount/sum(headcount))
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup()
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = total_headcount/sum(total_headcount))
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = total_headcount/sum(total_headcount)) %>%
+filter(sex == "F") %>%
+select(prop) %>%
+as.integer()
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = total_headcount/sum(total_headcount)) %>%
+filter(sex == "F") %>%
+select(prop) %>%
+as.numeric()
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = total_headcount/sum(total_headcount)) %>%
+filter(sex == "F") %>%
+select(prop) %>%
+as.numeric()
+admin_2016_long <- admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(level_recode, gender_recode) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = NULL, x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+admin_2016_long <- admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(level_recode, gender_recode) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup()
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = NULL, x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = total_headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = NULL, x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(level_recode, gender_recode) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup()
+f <- 604969/(604969 + 4857944)
+m <- 2179474/(2179474 + 11504521)
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = total_headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = NULL, x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+admin_2016_long <- admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(level_recode, gender_recode) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(level_recode = fct_relevel(level_recode, "Undergraduate"))
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = total_headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = NULL, x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = total_headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = "Level of Enrolled Students", x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = total_headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = "Level of\nEnrolled Students", x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = total_headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = "Level of\nEnrolled\nStudents", x = "Gender of Chief Administrator", y = "Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+female_prop_sex %>%
+ggplot(aes(x = factor(year), y = prop_sex, group = 1)) +
+geom_line() +
+geom_point() +
+theme_minimal() +
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+scale_y_continuous(label = percent_format()) +
+labs(x = "Year", y = "Percent Female",
+title = "Percentage of Chief Administrators Who Are Female",
+subtitle = "All IPEDS Institutions, Years 1990-2016")
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(tidyverse)
+library(babynames)
+library(scales)
+library(maps)
+admin <- read_csv("data/chief-admin-names.csv")
+# tidy "year" data
+admin <- admin %>%
+gather("year", "name", `Name of chief administrator (HD2016)`,
+`Name of chief administrator (HD2015)`:`Name of Chief Administrator (IC90HD)`)
+# extract year from names and put in consistent format
+admin <- admin %>%
+mutate(year =  parse_number(year),
+year = ifelse(year >= 9596 & year <= 9798,
+str_sub(start = 1, end = 2, year), year),
+year = ifelse(nchar(year) == 2,
+paste0("19", year),
+year),
+year = as.integer(year))
+# select and rename variables
+admin <- admin %>%
+select(unit_id = UnitID,
+sector_code = `Sector of institution (HD2016)`,
+institution_name = `Institution Name`,
+year, name,
+undergrad_enroll_2016 = `Grand total (EF2016  All students  Undergraduate total)`,
+grad_enroll_2016 = `Grand total (EF2016  All students  Graduate and First professional)`)
+# titles are in the first position for many names, so need to remove
+# those so can extract first "word" from names and have it reflect
+# first name
+admin <- admin %>%
+mutate(name = tolower(name),
+name = gsub("\\.", "", name),
+name = gsub("\\<dr\\>", "", name),
+name = gsub("\\<mr\\>", "", name),
+name = gsub("\\<ms\\>", "", name),
+name = gsub("\\<mrs\\>", "", name),
+name = gsub("\\<rev\\>", "", name),
+name = gsub("\\<reverend\\>", "", name),
+name = gsub("\\<very reverend\\>", "", name),
+name = gsub("\\<very\\>", "", name),
+name = gsub("\\<rabbi\\>", "", name),
+name = gsub("\\<msgr\\>", "", name),
+name = gsub("\\<dra\\>", "", name),
+name = gsub("\\<sr\\>", "", name),
+name = str_trim(name, side = "both"),
+full_name = tolower(name)) %>%
+separate(name, into = "first_name", sep = " ")
+# add sector label
+labels <- read_csv("data/sector-value-labels.csv") %>%
+select(sector_code = Value,
+sector_label = ValueLabel)
+admin <- left_join(admin, labels, by = "sector_code")
+# read in babynames data and assign a proportion to female and
+# male for each name
+baby_names <- babynames %>%
+select(sex, name, n) %>%
+mutate(name = tolower(name))
+baby_names <- baby_names %>%
+group_by(sex, name) %>%
+summarise(total = sum(n)) %>%
+ungroup() %>%
+group_by(name) %>%
+mutate(prop = total/sum(total)) %>%
+filter(prop == max(prop)) %>%
+ungroup() %>%
+select(sex, first_name = name, prop)
+# one chief admin officer has name gold and it happens to be one that is .5 prop,
+# so remove from dataset. (gold was given as full name, so i'm *guessing* this
+# is actually last name).
+baby_names <- baby_names %>%
+filter(first_name != "gold" | prop != .5)
+admin <- left_join(admin, baby_names, by = "first_name") %>%
+mutate(institution_name = gsub("-", " ", institution_name)) %>%
+filter(!is.na(sex))
+admin <- admin %>%
+select(unit_id, institution_name, sector_label, year, undergrad_enroll_2016,
+grad_enroll_2016, full_name, first_name, sex)
+# several variables are for 2016 only, so put those in their own data frame
+admin_2016 <- admin %>%
+filter(year == 2016) %>%
+select(-year)
+admin <- admin %>%
+select(-undergrad_enroll_2016, -grad_enroll_2016)
+female_prop_sex <- admin %>%
+count(year, sex) %>%
+group_by(year) %>%
+mutate(year_total = sum(n)) %>%
+ungroup() %>%
+mutate(prop_sex = n/year_total) %>%
+filter(sex == "F")
+female_prop_sex %>%
+ggplot(aes(x = factor(year), y = prop_sex, group = 1)) +
+geom_line() +
+geom_point() +
+theme_minimal() +
+theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+scale_y_continuous(label = percent_format()) +
+labs(x = "Year", y = "Percent Female",
+title = "Percentage of Chief Administrators Who Are Female",
+subtitle = "All IPEDS Institutions, Years 1990-2016")
+female_by_sector <- admin_2016 %>%
+count(sector_label, sex) %>%
+group_by(sector_label) %>%
+mutate(prop_sex = n/sum(n)) %>%
+ungroup() %>%
+filter(sex == "F")
+female_by_sector %>%
+ggplot(aes(x = reorder(sector_label, prop_sex), y = prop_sex)) +
+geom_col() +
+coord_flip() +
+scale_y_continuous(label = percent_format()) +
+theme_minimal() +
+labs(x = NULL, y = "Percent Female",
+title = "Percent of Chief Aministrators Who Are Female, by Sector",
+subtitle = "All IPEDS Institutions, Year 2016")
+female_prop_sex_2016_inline <- female_prop_sex %>%
+filter(year == 2016) %>%
+select(prop_sex) %>%
+as.numeric()
+students_2016_inline <- admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = total_headcount/sum(total_headcount)) %>%
+filter(sex == "F") %>%
+select(prop) %>%
+as.numeric()
+admin_2016_long <- admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+mutate(level_recode = ifelse(level == "undergrad_enroll_2016", "Undergraduate", "Graduate"),
+gender_recode = ifelse(sex == "F", "Female", "Male")) %>%
+group_by(level_recode, gender_recode) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(level_recode = fct_relevel(level_recode, "Undergraduate"))
+admin_2016_long %>%
+ggplot(aes(x = gender_recode, y = total_headcount, fill = level_recode)) +
+geom_col() +
+theme_minimal() +
+scale_y_continuous(labels = comma) +
+theme(legend.position = "top") +
+labs(fill = "Level of\nEnrolled\nStudents", x = "Gender of Chief Administrator", y = "Total Number of Students",
+title = "Number of Total Students at Female and Male Led Institutions",
+subtitle = "All IPEDS Institutions, Year 2016")
+mean_change <- female_prop_sex %>%
+mutate(change =  prop_sex - lag(prop_sex)) %>%
+summarise(mean_change = percent(mean(change, na.rm = TRUE)))
+female_prop_sex %>%
+mutate(change =  prop_sex - lag(prop_sex)) %>%
+summarise(mean_change = percent(mean(change, na.rm = TRUE)))
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = total_headcount/sum(total_headcount)) %>%
+filter(sex == "F") %>%
+select(prop) %>%
+as.numier()
+admin_2016 %>%
+gather("level", "headcount", undergrad_enroll_2016:grad_enroll_2016) %>%
+group_by(sex) %>%
+summarise(total_headcount = sum(headcount, na.rm = TRUE)) %>%
+ungroup() %>%
+mutate(prop = total_headcount/sum(total_headcount)) %>%
+filter(sex == "F") %>%
+select(prop) %>%
+as.numeric()
+female_prop_sex %>%
+filter(year == 2016) %>%
+select(prop_sex) %>%
+as.numeric()
+female_prop_sex %>%
+mutate(change =  prop_sex - lag(prop_sex)) %>%
+summarise(mean_change = percent(mean(change, na.rm = TRUE))) %>%
+as.numeric()
+female_prop_sex
+female_prop_sex %>%
+mutate(change =  prop_sex - lag(prop_sex)) %>%
+summarise(mean_change = percent(mean(change, na.rm = TRUE))) %>%
+as.numeric()
+female_prop_sex %>%
+mutate(change =  prop_sex - lag(prop_sex)) %>%
+summarise(mean_change = percent(mean(change, na.rm = TRUE)))
+female_prop_sex %>%
+mutate(change =  prop_sex - lag(prop_sex)) %>%
+summarise(mean_change = mean(change, na.rm = TRUE)) %>%
+as.numeric()
+female_prop_sex
+female_prop_sex_2016_inline
+.5 - female_prop_sex_2016_inline
+(.5 - female_prop_sex_2016_inline)/mean_change
+mean_change <- female_prop_sex %>%
+mutate(change =  prop_sex - lag(prop_sex)) %>%
+summarise(mean_change = mean(change, na.rm = TRUE)) %>%
+as.numeric()
+(.5 - female_prop_sex_2016_inline)/(mean_change)
+floor((.5 - female_prop_sex_2016_inline)/(mean_change))
+years_parity <- floor((.5 - female_prop_sex_2016_inline)/(mean_change))
+mean_change
+0.006529831*23
+(0.006529831*100)*23
+floor((.5 - female_prop_sex_2016_inline)/(mean_change))
+2016+23
+12985+7808+805+797+2942+90
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(tidyverse)
+library(babynames)
+library(scales)
+library(maps)
+admin <- read_csv("data/chief-admin-names.csv")
+# tidy "year" data
+admin <- admin %>%
+gather("year", "name", `Name of chief administrator (HD2016)`,
+`Name of chief administrator (HD2015)`:`Name of Chief Administrator (IC90HD)`)
+# extract year from names and put in consistent format
+admin <- admin %>%
+mutate(year =  parse_number(year),
+year = ifelse(year >= 9596 & year <= 9798,
+str_sub(start = 1, end = 2, year), year),
+year = ifelse(nchar(year) == 2,
+paste0("19", year),
+year),
+year = as.integer(year))
+# select and rename variables
+admin <- admin %>%
+select(unit_id = UnitID,
+sector_code = `Sector of institution (HD2016)`,
+institution_name = `Institution Name`,
+year, name,
+undergrad_enroll_2016 = `Grand total (EF2016  All students  Undergraduate total)`,
+grad_enroll_2016 = `Grand total (EF2016  All students  Graduate and First professional)`)
+# titles are in the first position for many names, so need to remove
+# those so can extract first "word" from names and have it reflect
+# first name
+admin <- admin %>%
+mutate(name = tolower(name),
+name = gsub("\\.", "", name),
+name = gsub("\\<dr\\>", "", name),
+name = gsub("\\<mr\\>", "", name),
+name = gsub("\\<ms\\>", "", name),
+name = gsub("\\<mrs\\>", "", name),
+name = gsub("\\<rev\\>", "", name),
+name = gsub("\\<reverend\\>", "", name),
+name = gsub("\\<very reverend\\>", "", name),
+name = gsub("\\<very\\>", "", name),
+name = gsub("\\<rabbi\\>", "", name),
+name = gsub("\\<msgr\\>", "", name),
+name = gsub("\\<dra\\>", "", name),
+name = gsub("\\<sr\\>", "", name),
+name = str_trim(name, side = "both"),
+full_name = tolower(name)) %>%
+separate(name, into = "first_name", sep = " ")
+# add sector label
+labels <- read_csv("data/sector-value-labels.csv") %>%
+select(sector_code = Value,
+sector_label = ValueLabel)
+admin <- left_join(admin, labels, by = "sector_code")
+# read in babynames data and assign a proportion to female and male for each name
+baby_names <- babynames %>%
+select(sex, name, n) %>%
+mutate(name = tolower(name))
+View(baby_names)
+percent_jaydin <- baby_names %>%
+filter(name == "jaydin")
+View(percent_jaydin)
+baby_names <- baby_names %>%
+group_by(sex, name) %>%
+summarise(total = sum(n))
+View(baby_names)
+percent_jaydin <- baby_names %>%
+filter(name == "jaydin")
+View(percent_jaydin)
+2775/(2775+1084)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(maps)
+install.packages("babynames")
+?scale
+fall_18
+library(irtools)
+library(tidyverse)
+fall_18 %>%
+select(contains("county"))

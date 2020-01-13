@@ -1,0 +1,512 @@
+scale_y_continuous(labels = percent_format(), limits = c(0, .5)) +
+labs(title = "Percentage of Three Point Attempts That Were Successful",
+subtitle = "Relatively Steady Over This Time Period",
+x = "Season", y = "Total 3s Attempted")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_made = sum(total_threes_made),
+total_attempted = sum(total_threes_attempted)) %>%
+ungroup() %>%
+mutate(prop = total_made/total_attempted) %>%
+ggplot(aes(x = yearSeason, y = prop, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .5)) +
+labs(title = "Percentage of Three Point Attempts That Were Successful",
+subtitle = "Relatively Steady Over This Time Period",
+x = "Season", y = "Three Point Percentage")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_made = sum(total_threes_made),
+total_attempted = sum(total_threes_attempted)) %>%
+ungroup() %>%
+mutate(prop = total_made/total_attempted) %>%
+ggplot(aes(x = yearSeason, y = prop, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .5)) +
+labs(title = "Percentage of Three Point Attempts That Were Successful",
+subtitle = "Relatively Steady Over This Time Period",
+x = "Season", y = "Three Point Percentage",
+caption = "Aggregated from player averages")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_threes = sum(total_threes_attempted),
+total_fga = sum(total_fg_attempted)) %>%
+ungroup() %>%
+mutate(prop_threes = total_threes/total_fga) %>%
+ggplot(aes(x = yearSeason, y = prop_threes, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format()) +
+labs(title = "Percentage of All Attempts That Were Threes",
+subtitle = "An 18% Increase Over This Time Period!",
+x = "Season", y = "% of NBA Shot Attempts That Were Threes")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_made = sum(total_threes_made),
+total_attempted = sum(total_threes_attempted)) %>%
+ungroup() %>%
+mutate(prop = total_made/total_attempted) %>%
+ggplot(aes(x = yearSeason, y = prop, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .5)) +
+labs(title = "Percentage of Three Point Attempts That Were Successful",
+subtitle = "Relatively Steady Over This Time Period",
+x = "Season", y = "Three Point Percentage")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_threes = sum(total_threes_attempted),
+total_fga = sum(total_fg_attempted)) %>%
+ungroup() %>%
+mutate(prop_threes = total_threes/total_fga) %>%
+ggplot(aes(x = yearSeason, y = prop_threes, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .4)) +
+labs(title = "Percentage of All Attempts That Were Threes",
+subtitle = "An 18% Increase Over This Time Period!",
+x = "Season", y = "% of NBA Shot Attempts That Were Threes")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_threes = sum(total_threes_attempted),
+total_fga = sum(total_fg_attempted)) %>%
+ungroup() %>%
+mutate(prop_threes = total_threes/total_fga) %>%
+View()
+0.3370374 - 0.2592956
+0.2256584 - 0.1591891
+curry_1 <-  rasterGrob(as.raster(readPNG("stephen-curry-2009-10-shot-chart-heat-map.png")), interpolate = FALSE)
+curry_2 <-  rasterGrob(as.raster(readPNG("stephen-curry-2018-19-shot-chart-heat-map.png")), interpolate = FALSE)
+grid.arrange(curry_1, curry_2, ncol = 2)
+curry_1 <-  rasterGrob(as.raster(readPNG("stephen-curry-2009-10-shot-chart-heat-map.png")))
+curry_2 <-  rasterGrob(as.raster(readPNG("stephen-curry-2018-19-shot-chart-heat-map.png")))
+grid.arrange(curry_1, curry_2, ncol = 2)
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+transition_time(yearSeason) %>%
+anim_save("test.gif")
+?anim_save
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+transition_time(yearSeason) %>%
+anim_save("test.gif", animation = last_animation())
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+transition_time(yearSeason) %>%
+anim_save("test.gif", animation = last_animation)
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+transition_time(yearSeason)
+anim_save("test.gif")
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(rank <= 4) %>%
+ggplot(aes(x = yearSeason, y = fg3a , color = yearSeason)) +
+geom_point() +
+geom_text_repel(aes(label = player, color = yearSeason)) +
+scale_color_continuous(low = "orange", high = "blue")  +
+labs(title = "Which Three Players Ava",
+x = "Season", y = "3-Point Attempts Per Game",
+caption = "Limited to players who played at least 25 games") +
+guides(color = FALSE)
+View(history)
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+View()
+history %>%
+filter(yearSeason == "2019")
+history %>%
+filter(yearSeason == "2018" & fga3 == 5.9)
+history %>%
+filter(yearSeason == "2018" & fg3a == 5.9)
+history %>%
+filter(yearSeason == "2018" & fg3a == 5.9) %>%
+View()
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(yearSeason == "2018" & fg3a == 5.9) %>%
+View()
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(rank <= 4) %>%
+ggplot(aes(x = yearSeason, y = fg3a , color = yearSeason)) +
+geom_point() +
+geom_text_repel(aes(label = player, color = yearSeason)) +
+scale_color_continuous(low = "orange", high = "blue")  +
+labs(title = "Which Four Players Averaged the Most Three-Point Attempts in Each Season?",
+x = "Season", y = "3-Point Attempts Per Game",
+subtitle = "Dumars was first in 1998 with 5.9 Per Game. In 2018 he would be tied for 29th.",
+caption = "Limited to players who played at least 25 games") +
+guides(color = FALSE)
+history %>%
+#filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(yearSeason == "2018" & fg3a == 5.9) %>%
+View()
+dumars_rank <- history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(yearSeason == "2018" & fg3a == 5.9)
+dumars_rank <- history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(yearSeason == "2018" & fg3a == 5.9)
+dumars_rank <- history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(yearSeason == "2018" & fg3a == 5.9) %>%
+select(rank) %>%
+as.integer()
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(yearSeason == "2018" & fg3a == 5.9) %>%
+select(rank)
+dumars_rank <- history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(yearSeason == "2018" & fg3a == 5.9) %>%
+select(rank) %>%
+unique() %>%
+as.integer()
+dumars_rank
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(tidyverse)
+library(gganimate)
+library(scales)
+library(ggrepel)
+library(png)
+library(grid)
+library(gridExtra)
+history <- read_rds("data/history-of-basketball.rds") %>%
+filter(yearSeason >= 1998) %>%
+mutate(yearSeason = as.integer(yearSeason),
+total_threes_attempted = gp*fg3a,
+total_threes_misses = (1 - pctFG3)*total_threes_attempted,
+total_threes_made = total_threes_attempted*pctFG3,
+total_fg_attempted = gp*fga)
+theme_set(theme_light())
+history %>%
+group_by(yearSeason) %>%
+summarise(total_threes = sum(total_threes_attempted),
+total_fga = sum(total_fg_attempted)) %>%
+ungroup() %>%
+mutate(prop_threes = total_threes/total_fga) %>%
+ggplot(aes(x = yearSeason, y = prop_threes, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .4)) +
+labs(title = "Percentage of All Attempts That Were Threes",
+subtitle = "An 18% Increase Over This Time Period!",
+x = "Season", y = "% of NBA Shot Attempts That Were Threes")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_made = sum(total_threes_made),
+total_attempted = sum(total_threes_attempted)) %>%
+ungroup() %>%
+mutate(prop = total_made/total_attempted) %>%
+ggplot(aes(x = yearSeason, y = prop, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .5)) +
+labs(title = "Percentage of Three Point Attempts That Were Successful",
+subtitle = "Relatively Steady Over This Time Period",
+x = "Season", y = "Three Point Percentage")
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE)
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+scale_x_continuous(breaks = c(1))
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+scale_x_continuous(breaks = c(0, 12))
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+scale_x_continuous(breaks = c(0, 12, 1))
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+scale_x_discrete(breaks = c(0, 12, 1))
+View(history)
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE)
+x <- history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE)
+ggplot_build(x)
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE)
+transition_time(yearSeason)
+x <- history %>%
+filter(gp >= 25) %>%
+filter(yearSeason >= 2017) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players", caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE)
+x
+ggplot_build(x)
+View(history)
+library(tidyverse)
+library(lubridate)
+df <- bind_rows(
+read_csv("L:/Arie/Data_Projects/graduates/graduates-2008-07-01-to-2018-02-08.csv") %>%
+select(SPRIDEN_ID:SPRIDEN_MI, SHRDGMR_GRAD_DATE, SHRDGMR_CAMP_CODE, SHRDGMR_DEGC_CODE, SHRDGMR_MAJR_CODE_1),
+read_csv("L:/Arie/Data_Projects/graduates/graduates-2017-10-23-to-2018-05-03.csv") %>%
+select(SPRIDEN_ID:SPRIDEN_MI, SHRDGMR_GRAD_DATE, SHRDGMR_CAMP_CODE, SHRDGMR_DEGC_CODE, SHRDGMR_MAJR_CODE_1),
+read_csv("L:/Arie/Data_Projects/graduates/graduates-2018-05-03-to-2018-06-04.csv") %>%
+select(SPRIDEN_ID:SPRIDEN_MI, SHRDGMR_GRAD_DATE, SHRDGMR_CAMP_CODE, SHRDGMR_DEGC_CODE, SHRDGMR_MAJR_CODE_1),
+read_csv("L:/Arie/Data_Projects/graduates/graduates-2018-06-01-to-2018-07-13.csv") %>%
+select(SPRIDEN_ID:SPRIDEN_MI, SHRDGMR_GRAD_DATE, SHRDGMR_CAMP_CODE, SHRDGMR_DEGC_CODE, SHRDGMR_MAJR_CODE_1)
+)
+df <-  df %>%
+filter( (SHRDGMR_DEGC_CODE == "DR_RXD" |
+SHRDGMR_DEGC_CODE == "DR_RXE" |
+SHRDGMR_DEGC_CODE == "DR_RXI") &
+(SHRDGMR_MAJR_CODE_1 == "R850" |
+SHRDGMR_MAJR_CODE_1 == "R851")) %>%
+unique() %>%
+filter(mdy(SHRDGMR_GRAD_DATE) >= mdy("7/1/2015"))
+View(df)
+names(df)
+install.packages("nbastatR")
+devtools::install_github("abresler/nbastatR")
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(tidyverse)
+library(gganimate)
+library(scales)
+library(ggrepel)
+library(png)
+library(grid)
+library(gridExtra)
+library(broom)
+library(nbastatR)
+history <- read_rds("data/history-of-basketball.rds") %>%
+filter(yearSeason >= 1998) %>%
+mutate(yearSeason = as.integer(yearSeason),
+total_threes_attempted = gp*fg3a,
+total_threes_misses = (1 - pctFG3)*total_threes_attempted,
+total_threes_made = total_threes_attempted*pctFG3,
+total_fg_attempted = gp*fga)
+theme_set(theme_light())
+history %>%
+group_by(yearSeason) %>%
+summarise(total_threes = sum(total_threes_attempted),
+total_fga = sum(total_fg_attempted)) %>%
+ungroup() %>%
+mutate(prop_threes = total_threes/total_fga) %>%
+ggplot(aes(x = yearSeason, y = prop_threes, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .4)) +
+labs(title = "Percentage of All Attempts That Were Threes",
+subtitle = "An 18% Increase Over This Time Period!",
+x = "Season", y = "% of NBA Shot Attempts That Were Threes")
+history %>%
+group_by(yearSeason) %>%
+summarise(total_made = sum(total_threes_made),
+total_attempted = sum(total_threes_attempted)) %>%
+ungroup() %>%
+mutate(prop = total_made/total_attempted) %>%
+ggplot(aes(x = yearSeason, y = prop, group = 1)) +
+geom_line(color = "blue") +
+geom_point(color = "orange", size = 3) +
+scale_y_continuous(labels = percent_format(), limits = c(0, .5)) +
+labs(title = "Percentage of Three Point Attempts That Were Successful",
+subtitle = "Relatively Steady Over This Time Period",
+x = "Season", y = "Three Point %")
+history %>%
+filter(gp >= 25) %>%
+ggplot(aes(x = fg3a, fill = yearSeason)) +
+geom_histogram(binwidth = 1) +
+labs(title = "Distribution of Three Points Shots Per Game For Each NBA Player",
+subtitle = "Season: {frame_time}",
+x = "Average # of Three-Point Attemtps Per Game", y = "# of Players",
+caption = "Limited to players who played at least 25 games") +
+scale_fill_continuous(low = "orange", high = "blue")  +
+guides(fill = FALSE) +
+transition_time(yearSeason)
+anim_save("three-point-distribution.gif")
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(rank <= 3) %>%
+ggplot(aes(x = yearSeason, y = fg3a , color = yearSeason)) +
+geom_point() +
+geom_text_repel(aes(label = player, color = yearSeason)) +
+scale_color_continuous(low = "orange", high = "blue")  +
+labs(title = "Which Three Players Averaged the Most Three-Point Attempts in Each Season?",
+x = "Season", y = "3-Point Attempts Per Game",
+subtitle = "Dumars was 1st in 1998 with 5.9 three-point attempts per game. In 2018 that number would tie for 29th.",
+caption = "Limited to players who played at least 25 games") +
+guides(color = FALSE)
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(rank <= 3) %>%
+ggplot(aes(x = yearSeason, y = fg3a , color = yearSeason)) +
+geom_point() +
+geom_text_repel(aes(label = player, color = yearSeason), size = 2) +
+scale_color_continuous(low = "orange", high = "blue")  +
+labs(title = "Which Three Players Averaged the Most Three-Point Attempts in Each Season?",
+x = "Season", y = "3-Point Attempts Per Game",
+subtitle = "Dumars was 1st in 1998 with 5.9 three-point attempts per game. In 2018 that number would tie for 29th.",
+caption = "Limited to players who played at least 25 games") +
+guides(color = FALSE)
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(rank <= 3) %>%
+ggplot(aes(x = yearSeason, y = fg3a , color = yearSeason)) +
+geom_point() +
+geom_text_repel(aes(label = player, color = yearSeason), size = 4) +
+scale_color_continuous(low = "orange", high = "blue")  +
+labs(title = "Which Three Players Averaged the Most Three-Point Attempts in Each Season?",
+x = "Season", y = "3-Point Attempts Per Game",
+subtitle = "Dumars was 1st in 1998 with 5.9 three-point attempts per game. In 2018 that number would tie for 29th.",
+caption = "Limited to players who played at least 25 games") +
+guides(color = FALSE)
+history %>%
+filter(gp >= 25) %>%
+group_by(yearSeason) %>%
+mutate(rank = rank(-fg3a, ties.method = "min")) %>%
+ungroup() %>%
+filter(rank <= 3) %>%
+ggplot(aes(x = yearSeason, y = fg3a , color = yearSeason)) +
+geom_point() +
+geom_text_repel(aes(label = player, color = yearSeason), size = 3) +
+scale_color_continuous(low = "orange", high = "blue")  +
+labs(title = "Which Three Players Averaged the Most Three-Point Attempts in Each Season?",
+x = "Season", y = "3-Point Attempts Per Game",
+subtitle = "Dumars was 1st in 1998 with 5.9 three-point attempts per game. In 2018 that number would tie for 29th.",
+caption = "Limited to players who played at least 25 games") +
+guides(color = FALSE)
+readPNG("stephen-curry-2018-19-shot-chart-heat-map.png")
+library(tidyverse)
+library(gganimate)
+library(scales)
+library(ggrepel)
+library(png)
+library(grid)
+library(gridExtra)
+library(broom)
+library(nbastatR)
+readPNG("stephen-curry-2018-19-shot-chart-heat-map.png")
+readPNG("stephen-curry-2018-19-shot-chart-heat-map.png")

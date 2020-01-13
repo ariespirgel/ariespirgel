@@ -1,0 +1,39 @@
+---
+title: "Welcome to the Tidyverse: Part 2"
+draft: false
+authors: [arie]
+event: 'Training for education non-profits'
+event_url: 
+location: Remote 
+summary: "Modeling with modelr and broom, and reporting with rmarkdown."
+
+# Talk start and end times.
+#   End time can optionally be hidden by prefixing the line with `#`.
+date: "2020-01-17T11:00:00Z"
+#date_end: "2019-09-30T16:30:00Z"
+all_day: false
+# publishdate: "2019-06-15"
+
+#links:
+#- icon: github
+#  icon_pack: fab
+#  name: materials
+#  url: https://github.com/rstudio-education/communicate-rmd-workshop
+
+categories:
+  - workshop
+tags:
+  - tidyverse
+# lastmod: '2019-06-16T02:20:01-07:00'
+featured: no
+image:
+  caption: ""
+  focal_point: 'center'
+  preview_only: no
+projects: []
+---
+
+Part 2 of "[Welcome to the Tidyverse](https://github.com/rstudio-education/welcome-to-the-tidyverse)", which covers the following topics:
+
+ - Modeling with `modelr` and `broom`.
+ - Reporting with `rmarkdown`.

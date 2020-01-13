@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>r | Arie Spirgel</title>
+    <link>/tags/r/</link>
+      <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <description>r</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 24 Aug 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>r</title>
+      <link>/tags/r/</link>
+    </image>
+    
+    <item>
+      <title>Popularity of Various Data Analytic Tools at AIR Forums</title>
+      <link>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</link>
+      <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
+      <guid>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</guid>
+      <description>
+
+
+&lt;p&gt;Data: It’s become a cliche to say that it’s everywhere and in quantities that are unimaginable. But data in its raw form, whether in a structured database or on the internet, is of limited use until a human does something to it: Gather it, clean it, visualize it, model it, write about it, and so-on.&lt;/p&gt;
+&lt;p&gt;The amount of data that those in institutional research encounter requires powerful tools to work with. And those tools exist. Lots of them. Everything from free, open-source software, to software costing hundreds of thousands dollars offered by companies that won’t stop emailing you despite unsubscribing from their list on a weekly basis.&lt;/p&gt;
+&lt;p&gt;On the rare occasion someone asks me which software I’d recommend, I always say R. In my experience, its ability to do everything you’d want and need to do as an institutional researcher is unmatched (cut to five minutes later when that someone regrets having asked me and is looking for ways to exit the conversation). But rather than use this space to drone on about why I think R is amazing, my goal here is to reveal the software preferences of others in the field. (And obviously, I used R to do this!)&lt;/p&gt;
+&lt;p&gt;It’s not a perfect approach, but my thinking was I could see how often different tools were mentioned in AIR Forum program books and how that’s changed over time. My first step was to download the program books from the forum website going back six years. Next, I created a function to read each of the programs books into R and &lt;a href=&#34;https://www.tidyverse.org/&#34;&gt;tidy&lt;/a&gt; them so every individual word within each book is contained on its own line in a single data frame.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# load packages
+library(pdftools)
+library(tidyverse)
+library(tidytext)
+library(scales)
+
+# function to read in PDFs and get one word per line.
+text_prepr &amp;lt;- function(doc, forum_year){
+  
+  reg &amp;lt;- &amp;quot;([^A-Za-z\\d#@&amp;#39;]|&amp;#39;(?![A-Za-z\\d#@]))&amp;quot;
+  
+  df &amp;lt;- pdf_text(doc)
+  
+  df &amp;lt;- data.frame(df)
+
+  df &amp;lt;- df %&amp;gt;%
+    rename(text = df) %&amp;gt;%
+    unnest_tokens(word, text,  token = &amp;quot;regex&amp;quot;, pattern = reg) %&amp;gt;%
+    mutate(year = forum_year)
+  
+  return(df)
+}
+
+# apply function to programs books
+all_years &amp;lt;- bind_rows(
+  text_prepr(&amp;quot;data/AIR-2018-Forum-Program-Book.pdf&amp;quot;, 2018),
+  text_prepr(&amp;quot;data/2017-AIR-Forum-Program-Book.pdf&amp;quot;, 2017),
+  text_prepr(&amp;quot;data/2016_AIR-Forum_Program-Book.pdf&amp;quot;, 2016),
+  text_prepr(&amp;quot;data/2015-Forum-Program-Book-Web.pdf&amp;quot;, 2015),
+  text_prepr(&amp;quot;data/2014ForumProgramBookFinal.pdf&amp;quot;, 2014),
+  text_prepr(&amp;quot;data/2013finalprogram.pdf&amp;quot;, 2013)
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This resulted in a data frame with a total 447583 rows (one row for each word), a glimpse of which is printed below:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(all_years)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##            word year
+## 1   association 2018
+## 2           for 2018
+## 3 institutional 2018
+## 4      research 2018
+## 5          2018 2018
+## 6           may 2018&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, I decided on which words I would ask R to look for. Somewhat arbitrarily and somewhat based on my experience at AIR Forums, I chose the following: &lt;em&gt;Excel&lt;/em&gt;, &lt;em&gt;R&lt;/em&gt;, &lt;em&gt;SAS&lt;/em&gt;, &lt;em&gt;SPSS&lt;/em&gt;, and &lt;em&gt;Tableau&lt;/em&gt;. The code below (1) searches for mentions of those tools in the list of words created above (2) counts the results by year (3) builds a chart of the results. To clarify, the resulting chart displays the number of times each software is mentioned in each of the AIR Forum program books for each of the respective years.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# filter for keywords and count by word and year
+software &amp;lt;- all_years %&amp;gt;% 
+  mutate(word = tolower(word)) %&amp;gt;% 
+  filter(word %in% c(&amp;quot;excel&amp;quot;, &amp;quot;r&amp;quot;, &amp;quot;sas&amp;quot;, &amp;quot;spss&amp;quot;, &amp;quot;tableau&amp;quot;)) %&amp;gt;% 
+  count(word, year) %&amp;gt;% 
+  complete(word, year, fill = list(n = 0))
+
+# make data frame of only 2018, so can include as labels at end of lines
+software_2018 &amp;lt;- software %&amp;gt;% 
+  filter(year == 2018)
+
+# create chart
+ggplot() +
+  geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+  geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+  geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+  theme_minimal() +
+  labs(x = &amp;quot;Forum Year&amp;quot;, y = &amp;quot;# of Mentions&amp;quot;,
+       title = &amp;quot;Number of Times Software is Mentioned in AIR Forum Program Book&amp;quot;,
+       subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
+  guides(color = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;What stands out - and confirms what I’ve noticed at AIR Forums - is the rapid rise of Tableau. In 2014 I had never heard of it. In 2018, not knowing at least something about it seems unavoidable. Tableau is known for visual analytics, so it’s not surprising that its rise in populairty has coincided with an increasing interest in data visualization at AIR Forums.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# filter for keyword and count by word and year
+visualize &amp;lt;- all_years %&amp;gt;% 
+  group_by(year) %&amp;gt;% 
+  mutate(total = n()) %&amp;gt;% 
+  ungroup() %&amp;gt;% 
+  mutate(visualiz = str_detect(word, &amp;quot;visualiz&amp;quot;)) %&amp;gt;%
+  group_by(year) %&amp;gt;% 
+  summarise(prop = mean(visualiz)) %&amp;gt;% 
+  ungroup()
+
+
+# create chart
+ggplot(visualize, aes(x = year, y = prop)) +
+  geom_line(size = 2) +
+  geom_point(size = 3) +
+  theme_minimal() +
+  labs(x = &amp;quot;Forum Year&amp;quot;, y = &amp;quot;% of Mentions&amp;quot;,
+       title = &amp;#39;Percent of All Words That Were &amp;quot;Visualiz*&amp;quot; in AIR Forum Program Book&amp;#39;,
+       subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
+  guides(color = FALSE) +
+  scale_y_continuous(label = percent_format())&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Returning to the first chart, perhaps it’s my background in psychology - a field which has historically been dominated by SPSS - but I was surprised how little SPSS is mentioned (although, I wouldn’t be surprised to see it decrease in the future). As for R, it seems to have a presence, but I’m curious to see what happens to its popularity in institutional research over the next few years. Judging by my experience at recent Forums and the development of R tools that decrease the barrier to entry, my prediction is that interest will only grow.&lt;/p&gt;
+&lt;p&gt;I’m not sure if this need be said, but I will: This approach to evaluating software popularity is fraught with limitations. My goal, however, was not to get a precise estimate. Rather, I was interested in one, getting a general sense of broad trends, and two, sharing how just a little of bit R code can do so much!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ggplot2 | Arie Spirgel</title>
+    <link>/tags/ggplot2/</link>
+      <atom:link href="/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    <description>ggplot2</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>ggplot2</title>
+      <link>/tags/ggplot2/</link>
+    </image>
+    
+    <item>
+      <title>ggplot2: Going Beyond the Defaults</title>
+      <link>/post/ggplotredo1/geographic-growth-midwest/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/post/ggplotredo1/geographic-growth-midwest/</guid>
+      <description>
+
+
+&lt;p&gt;With ggplot2 - the ubiquitous tool for making plots in R - you can create beautiful data visualizations without doing much to the defaults. By applying the template below (see &lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;R for Data Science&lt;/a&gt;), adding a theme (e.g., &lt;code&gt;theme_light()&lt;/code&gt;), and giving your chart custom labels, you can have a publication-ready visualization.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(data = &amp;lt;DATA&amp;gt;) + 
+  &amp;lt;GEOM_FUNCTION&amp;gt;(
+     mapping = aes(&amp;lt;MAPPINGS&amp;gt;),
+     stat = &amp;lt;STAT&amp;gt;, 
+     position = &amp;lt;POSITION&amp;gt;
+  ) +
+  &amp;lt;COORDINATE_FUNCTION&amp;gt; +
+  &amp;lt;FACET_FUNCTION&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference. Like cooking, where adding a little bit of salt or giving a dish a few extra minutes in the oven can transform a meal from acceptable to outstanding, relatively small changes to a chart can do the same.&lt;/p&gt;
+&lt;p&gt;Take the example below, in which one of &lt;a href=&#34;http://stephanieevergreen.com/before-and-after-business-slides/&#34;&gt;Stephanie Evergreen’s&lt;/a&gt; clients started with the slide on the top, and she helped them create the one below it:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/evergreen-before.png&#34; width=&#34;400&#34; /&gt;&lt;img src=&#34;/img/evergreen-after.png&#34; width=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Both charts contain the same information, and even if you can’t express why, you just &lt;em&gt;know&lt;/em&gt; the one on the bottom is better. Continuing with the cooking analogy, the charts are like two Mexican restaurants that use the same ingredients, but at one, the guacamole is fresher, the rice is more flavorful, and the tortillas are made in house.&lt;/p&gt;
+&lt;p&gt;ggplot2 was designed so users can &lt;a href=&#34;https://r4ds.had.co.nz/data-visualisation.html&#34;&gt;build any plot that they can imagine&lt;/a&gt;, so as attractive as its defaults are, my goal with this series of posts is to venture beyond the minor design adjustments I typically make and learn to tweak charts from ordinary to outstanding. My first goal was to use ggplot2 to reproduce the chart that Dr. Evergreen created for her client, which based on her post, I think she did in Excel.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(scales)
+library(cowplot)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;step-0-create-the-dataset&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 0: Create the Dataset&lt;/h2&gt;
+&lt;p&gt;In addition to creating the data set, I used &lt;code&gt;fct_reorder()&lt;/code&gt; so the bars will appear in order from highest to lowest growth in the chart.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;growth &amp;lt;- tribble(
+  ~region,               ~growth, ~group,
+  &amp;quot;Large city, Midwest&amp;quot;,     .2,   &amp;quot;Midwest&amp;quot;,
+  &amp;quot;Large city, East Coast&amp;quot;, .175,   &amp;quot;Other&amp;quot;,
+  &amp;quot;Medium city, South&amp;quot;,      .165,  &amp;quot;Other&amp;quot;,
+  &amp;quot;Medium city, Midwest&amp;quot;,    .165,  &amp;quot;Midwest&amp;quot;,
+  &amp;quot;Small city, Midwest&amp;quot;,     .14,   &amp;quot;Midwest&amp;quot;, 
+  &amp;quot;Large city, West coast&amp;quot;,  .10,   &amp;quot;Other&amp;quot;
+) %&amp;gt;% 
+  mutate(region = fct_reorder(region, growth)) &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-1-make-the-foundational-chart&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 1: Make the Foundational Chart&lt;/h2&gt;
+&lt;p&gt;This chart contains all of the information that the final chart contains, but it’s like the decent restaurant you’ll never return to: fine, but unmemorable. In this step, I also narrowed the width of the bars, a subtle alteration that improves the feel of the chart as it gets closer to the finished product.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- growth %&amp;gt;% 
+  ggplot(aes(x = region, y = growth, fill = group)) + 
+  geom_col(width = .7) + 
+  coord_flip() + 
+  labs(x = NULL, y = NULL, 
+       title = &amp;quot;Geographic growth dominated by Midwest.&amp;quot;,
+       subtitle = &amp;quot;5 year growth&amp;quot;,
+       caption = &amp;quot;Source: Our Smart Source 2015&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-2-update-the-colors-and-remove-the-legend&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 2: Update the Colors and Remove the Legend&lt;/h2&gt;
+&lt;p&gt;Even if you like the default ggplot2 colors - which I very much do - putting a dark color next to a muted color does a better job of highlighting a conclusion you might want to draw attention to. And by juxtaposing the green and gray, in combination with the chart’s title, the legend becomes extraneous and can be removed.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
+  scale_fill_manual(values = c(&amp;quot;#4D643D&amp;quot;, &amp;quot;#D7DBDD&amp;quot;)) +
+  guides(fill = FALSE))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-3-white-background-and-minimal-gridlines&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 3: White Background and Minimal Gridlines&lt;/h2&gt;
+&lt;p&gt;The white background can be achieved using &lt;code&gt;theme_minimal()&lt;/code&gt;, and removing all of the grid lines other than the major-x ones cleans up the look of the chart.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
+  theme_minimal()  +
+  theme(panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_blank()))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-4-position-titles-change-font-and-convert-axis-to&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 4: Position Titles, Change Font, and Convert Axis to %&lt;/h2&gt;
+&lt;p&gt;Taken together, moving the titles further to the left, using a lighter color for the axis text, and bolding the labels, make the chart look more professional. It’s so easy to rely on ggplot2’s default font choices that it’s also easy to forget that changing them can give your chart a completely different look. In this step, I also expressed the axis as percents, which is more consistent with how people think about growth (and happens to look better).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
+  theme(plot.title = element_text(hjust = 4, face = &amp;quot;bold&amp;quot;),
+        plot.subtitle = element_text(hjust = -.41, vjust = 3,
+                                     face = &amp;quot;bold&amp;quot;),
+        plot.caption = element_text(color = &amp;quot;gray53&amp;quot;, hjust = -.61,
+                                    face = &amp;quot;bold&amp;quot;),
+        axis.text.y = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;),
+        axis.text.x = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;)) +
+    scale_y_continuous(label = percent_format(), limits = c(0, .25))) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;step-5-add-an-icon&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Step 5: Add an Icon&lt;/h2&gt;
+&lt;p&gt;The logo - which I added using the cowplot package - is functionally unnecessary but aesthetically powerful. It is the cilantro garnish on top of your beans and rice: Doesn’t add much flavor, but makes you all the more eager to dig in!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggdraw() +
+  draw_image(&amp;quot;us-map.png&amp;quot;,
+             y = 0.90,
+             width = .09, 
+             height = .09
+           ) +
+  draw_plot(p)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: Package `magick` is required to draw images. Image not drawn.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;ggplot2 has become so popular that I rarely, if ever, search online for a question about it that hasn’t already been asked and answered. This task was no different, with each question I had (e.g., how do I add an icon?) quickly resolved with a &lt;a href=&#34;https://stackoverflow.com/questions/9917049/inserting-an-image-to-ggplot2&#34;&gt;StackOverflow solution&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Small adjustments make a big difference, and the beauty of ggplot2 is that those adjustments are not only possible, but the knowledge to accomplish them is accessible (&lt;a href=&#34;https://community.rstudio.com/&#34;&gt;RStudio Community&lt;/a&gt;, &lt;a href=&#34;https://r4ds.had.co.nz/&#34;&gt;R for Data Science&lt;/a&gt;, etc.). Stay tuned for more tricks on how you can make your ggplots more interpretable, compelling, and visually satisfying!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Brief History of NBA Three-Point Attempts: 1998 to 2018 Seasons</title>
+      <link>/post/history-3s/history-of-basketball/</link>
+      <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/post/history-3s/history-of-basketball/</guid>
+      <description>
+
+
+&lt;p&gt;On October 29, 2018, in a game against the Chicago Bulls, Klay Thompson attempted 24 three-pointers, making 14 of them; both marks set NBA records. A couple months after that his teammate Stephen Curry attempted 14 three pointers in a single &lt;em&gt;half&lt;/em&gt; of a single NBA game, which tied an NBA record. That same game, the Golden State Warriors and Sacramento Kings made a combined 41 threes, a total that had never been reached before. Just this morning when I checked ESPN.com I learned that the previous night James Harden scored 61 points in Madison Square Garden, but maybe more shocking, he did it while attempting 20 three-point shots (he only made five of them).&lt;/p&gt;
+&lt;p&gt;For anyone who has been paying attention to the NBA for more than a few years, these numbers look like typos. The NBA began using the three-point line in 1979, and on October 12 of that year - almost 40 years ago - &lt;a href=&#34;https://en.wikipedia.org/wiki/Three-point_field_goal#/media/File:Houston_Rockets_at_Boston_Celtics_1979-10-12_(Official_Scorer%27s_Report-Original)_(Chris_Ford_crop).jpg&#34;&gt;Chris Ford made the first one&lt;/a&gt;. For most of its history the three-point shot has been like that kitchen gadget you’ve always had but rarely used until someone showed you what a powerful tool it could be (immersion blender maybe?).&lt;/p&gt;
+&lt;p&gt;In the case of the NBA, that &lt;em&gt;someone&lt;/em&gt; would be Houston Rockets General Manager Daryl Morey, who wisely drew attention to math and the reality that three is worth more than two. More specifically, his insight was that the shots most worth taking are higher percentage attempts near the basket (layups and dunks, ideally), or lower percentage ones that are further from the basket but are worth three points (free throws are also an important part of the equation in so-called Morey-Ball). This means that if a team’s goal is to get the most points out of every position (and that is every team’s goal), mid-range shots should be discouraged: They are harder to make than layups and dunks and still worth only two points.&lt;/p&gt;
+&lt;p&gt;This has had a profound effect on how games are played and which players are valued. It wasn’t long ago that big men were expected to be able to post up near the basket and wouldn’t have to think about life outside the three-point arc. In 2019, a few games past the midpoint of the current season, Brook Lopez has already attempted 304 threes, Karl-Anthony Towns attempted 217, Marc Gasol attempted 193, Joel Embid attempted 178. Each of these players is listed as a center and is at least 7’0 feet tall. And the list goes on.&lt;/p&gt;
+&lt;p&gt;And it’s not just who is shooting threes, it’s how they’re being shot. James Harden is setting new records for the number of &lt;a href=&#34;https://www.theringer.com/nba/2019/1/23/18193249/james-harden-scoring-history-houston-rockets&#34;&gt;unassisted threes made&lt;/a&gt;, meaning he doesn’t just shoot from deep as a compromise when better shots are not available, but it’s as if any shot that is &lt;em&gt;not&lt;/em&gt; a three is a compromise. Or consider Curry, for whom the three-point line itself is merely a suggestion; he has made &lt;a href=&#34;http://www.espn.com/nba/story/_/id/25771897/steph-curry-unleashing-impossible-range&#34;&gt;45 of 94 threes (47.9%!) launched from between 30 and 35 feet since 2014-2015&lt;/a&gt; (the line is 23 ft 9 inches from the basket, and 22 feet if you are standing in the corner).&lt;/p&gt;
+&lt;p&gt;In 2019, you don’t have to watch games closely to notice the abundance of three pointers that are being shot. But still, I wanted to attach some numbers to the obvious, so below, I present a brief quantitative history of NBA three-point attempts.&lt;/p&gt;
+&lt;div id=&#34;percentage-of-all-shot-attempts-that-were-threes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Percentage of All Shot Attempts That Were Threes&lt;/h1&gt;
+&lt;p&gt;It’s easy to forget how recent the explosion in three-point attempts has been. The chart below, which displays the percentage of all shot attempts that were threes, shows a gradual increase from 1998 to 2007. But from 2008 until 2012, the numbers leveled off, and it seemed peak-three had been reached. Then 2014 to 2018 happened, and the increase during that time period alone (7.77%) was greater than it was from all of 1998 to 2012 (6.65%)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Although it’s a bit of an aside, despite the increase in the number of attempts, the percentage of three-pointers that have been made has remained relatively steady, as displayed below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;distribution-of-threes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Distribution of Threes&lt;/h1&gt;
+&lt;p&gt;As I mentioned above, three-point shots are no longer limited to certain positions, a point that is reflected in the histogram below. It shows players’ average number of three-point attempts per game along the x-axis, and the number of players falling within that range for the season is represented along the y-axis. Over time, notice how the distribution gets flatter. In 1998, the group who shot between zero and 0.5 threes per game appeared with the most frequency. But by 2018 that bar dropped significantly and the other bars lifted up. And pay attention to right side of the chart beginning in 2016.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-4-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;top-attempters-by-year&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Top Attempters by Year&lt;/h1&gt;
+&lt;p&gt;Who are these gunners that are changing how basketball is played? The chart below displays the three players who averaged the most threes per game for each season from 1998 to 2018. Even the casual fan will not be surprised by the more recent appearances on the chart: Splash-Brothers Curry and Thompson; and Gordon and Harden, whose GM is the aforementioned Daryl Morey.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;curry-explains-it-all&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Curry Explains it All&lt;/h1&gt;
+&lt;p&gt;Daryl Morey’s influence on the game and the state of the evolution of the three-point shot is encapsulated by the shot charts below, which I downloaded using &lt;a href=&#34;https://github.com/toddwschneider/ballr&#34;&gt;Todd Schneider’s ballr package&lt;/a&gt;. The chart on the left is Stephen Curry’s shot chart from his 2009-2010 rookie season, and the shot chart on the right is from his 2017-2018 season. It’s almost as if during that time the in-between game disappeared, leaving only three point shots and shots at the basket. That, folks, is modern basketball.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/stephen-curry-2018-19-shot-chart-heat-map.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;The new style of play is not for everyone. Like any trend, this one can’t go on forever, but I do wonder how far it can go until it reaches a breaking point. Maybe the breaking point comes from the league if they decide to move the line &lt;a href=&#34;http://www.espn.com/blog/statsinfo/post/_/id/115055/what-moving-the-3-point-line-back-would-mean-for-warriors-nba&#34;&gt;further back&lt;/a&gt; or establish a &lt;a href=&#34;https://slate.com/culture/2016/06/the-4-point-line-could-be-coming-to-the-nba-heres-where-to-put-it.html&#34;&gt;four-point line&lt;/a&gt;. Or maybe it comes from the next Daryl Morey who discovers an inefficiency in the way the game is currently played. Either way, enjoy the show, because there is nothing quite like watching Stephen Curry casually make game winning shots from close to &lt;a href=&#34;https://www.youtube.com/watch?v=9dheZHuPSAo&#34;&gt;half court&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Data Visualization Showcase</title>
+      <link>/talk/2017-air/</link>
+      <pubDate>Tue, 30 May 2017 15:30:00 +0000</pubDate>
+      <guid>/talk/2017-air/</guid>
+      <description>
+
+
+&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating Data Visualizations Using R: An Introduction for Non-Programmers</title>
+      <link>/talk/2016-air/</link>
+      <pubDate>Fri, 01 Jul 2016 15:00:00 +0000</pubDate>
+      <guid>/talk/2016-air/</guid>
+      <description>
+
+
+&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

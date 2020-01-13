@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent &amp; Upcoming Talks | Arie Spirgel</title>
+    <link>/talk/</link>
+      <atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent &amp; Upcoming Talks</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 17 Jan 2020 11:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Recent &amp; Upcoming Talks</title>
+      <link>/talk/</link>
+    </image>
+    
+    <item>
+      <title>Welcome to the Tidyverse: Part 2</title>
+      <link>/talk/colorado-ed-part-2/</link>
+      <pubDate>Fri, 17 Jan 2020 11:00:00 +0000</pubDate>
+      <guid>/talk/colorado-ed-part-2/</guid>
+      <description>
+
+
+&lt;p&gt;Part 2 of “&lt;a href=&#34;https://github.com/rstudio-education/welcome-to-the-tidyverse&#34;&gt;Welcome to the Tidyverse&lt;/a&gt;”, which covers the following topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modeling with &lt;code&gt;modelr&lt;/code&gt; and &lt;code&gt;broom&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Reporting with &lt;code&gt;rmarkdown&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Welcome to the Tidyverse: Part 1</title>
+      <link>/talk/colorado-ed-part-1/</link>
+      <pubDate>Tue, 14 Jan 2020 11:00:00 +0000</pubDate>
+      <guid>/talk/colorado-ed-part-1/</guid>
+      <description>
+
+
+&lt;p&gt;Part 1 of “&lt;a href=&#34;https://github.com/rstudio-education/welcome-to-the-tidyverse&#34;&gt;Welcome to the Tidyverse&lt;/a&gt;”, which covers the following topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Introduction to R.&lt;/li&gt;
+&lt;li&gt;Visualization with &lt;code&gt;ggplot2&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Tranformation with &lt;code&gt;dplyr&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Talks &amp; Workshops</title>
+      <link>/talks/</link>
+      <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>/talks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Achieving Reproducibility in IR With R</title>
+      <link>/talk/2018-air/</link>
+      <pubDate>Thu, 31 May 2018 10:45:00 +0000</pubDate>
+      <guid>/talk/2018-air/</guid>
+      <description>
+
+
+&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Data Visualization Showcase</title>
+      <link>/talk/2017-air/</link>
+      <pubDate>Tue, 30 May 2017 15:30:00 +0000</pubDate>
+      <guid>/talk/2017-air/</guid>
+      <description>
+
+
+&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating Data Visualizations Using R: An Introduction for Non-Programmers</title>
+      <link>/talk/2016-air/</link>
+      <pubDate>Fri, 01 Jul 2016 15:00:00 +0000</pubDate>
+      <guid>/talk/2016-air/</guid>
+      <description>
+
+
+&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

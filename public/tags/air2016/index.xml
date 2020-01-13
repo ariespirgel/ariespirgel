@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>air2016 | Arie Spirgel</title>
+    <link>/tags/air2016/</link>
+      <atom:link href="/tags/air2016/index.xml" rel="self" type="application/rss+xml" />
+    <description>air2016</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 01 Jul 2016 15:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>air2016</title>
+      <link>/tags/air2016/</link>
+    </image>
+    
+    <item>
+      <title>Creating Data Visualizations Using R: An Introduction for Non-Programmers</title>
+      <link>/talk/2016-air/</link>
+      <pubDate>Fri, 01 Jul 2016 15:00:00 +0000</pubDate>
+      <guid>/talk/2016-air/</guid>
+      <description>
+
+
+&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

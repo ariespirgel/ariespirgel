@@ -1,0 +1,512 @@
+complete(word, year, fill = list(n = 0))
+View(software)
+software_2018 <- software %>%
+filter(year == 2018)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 1.5) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "forum year", y = "# of mentions", color = "software",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book") +
+guides(color = FALSE)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "forum year", y = "# of mentions", color = "software",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book") +
+guides(color = FALSE)
+software <- all_years %>%
+mutate(word = tolower(word))
+View(software)
+software %>%
+count(year)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "forum year", y = "# of mentions", color = "software",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 FOrums") +
+guides(color = FALSE)
+software <- all_years %>%
+mutate(word = tolower(word)) %>%
+filter(word %in% c("sas", "r", "excel", "tableau", "spss")) %>%
+count(word, year) %>%
+ungroup() %>%
+complete(word, year, fill = list(n = 0))
+software_2018 <- software %>%
+filter(year == 2018)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "forum year", y = "# of mentions", color = "software",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 FOrums") +
+guides(color = FALSE)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "forum year", y = "# of mentions", color = "software",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE)
+library(pdftools)
+library(tidyverse)
+library(tidytext)
+text_prepr <- function(doc, forum_year){
+reg <- "([^A-Za-z\\d#@']|'(?![A-Za-z\\d#@]))"
+df <- pdf_text(doc)
+df <- data.frame(df)
+# words
+df <- df %>%
+rename(text = df) %>%
+unnest_tokens(word, text,  token = "regex", pattern = reg) %>%
+mutate(year = forum_year)
+return(df)
+}
+all_years <- bind_rows(
+text_prepr("data/AIR-2018-Forum-Program-Book.pdf", 2018),
+text_prepr("data/2017-AIR-Forum-Program-Book.pdf", 2017),
+text_prepr("data/2016_AIR-Forum_Program-Book.pdf", 2016),
+text_prepr("data/2015-Forum-Program-Book-Web.pdf", 2015),
+text_prepr("data/2014ForumProgramBookFinal.pdf", 2014),
+text_prepr("data/2013finalprogram.pdf", 2013)
+)
+software <- all_years %>%
+mutate(word = tolower(word)) %>%
+filter(word %in% c("sas", "r", "excel", "tableau", "spss")) %>%
+count(word, year) %>%
+ungroup() %>%
+complete(word, year, fill = list(n = 0))
+software_2018 <- software %>%
+filter(year == 2018)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "forum year", y = "# of mentions", color = "software",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE)
+x <- pdf_text("data/AIR-2018-Forum-Program-Book.pdf", 2018)
+x <- pdf_text("data/AIR-2018-Forum-Program-Book.pdf")
+glimpse(x)
+x <- data.frame(x)
+View(x)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions"
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE)
+View(all_years)
+x <- words %>%
+filter(str_detect(word, "visualization"))
+x <- words %>%
+filter(str_detect(word) == "visualization")
+x <- all_years %>%
+filter(str_detect(word, "visualization"))
+table(x$year)
+View(x)
+all_years
+# load packages
+library(pdftools)
+library(tidyverse)
+library(tidytext)
+# function to read in PDFs can get one word per line.
+text_prepr <- function(doc, forum_year){
+reg <- "([^A-Za-z\\d#@']|'(?![A-Za-z\\d#@]))"
+df <- pdf_text(doc)
+df <- data.frame(df)
+# words
+df <- df %>%
+rename(text = df) %>%
+unnest_tokens(word, text,  token = "regex", pattern = reg) %>%
+mutate(year = forum_year)
+return(df)
+}
+# read, format, combine words from each of the forum books
+all_years <- bind_rows(
+text_prepr("data/AIR-2018-Forum-Program-Book.pdf", 2018),
+text_prepr("data/2017-AIR-Forum-Program-Book.pdf", 2017),
+text_prepr("data/2016_AIR-Forum_Program-Book.pdf", 2016),
+text_prepr("data/2015-Forum-Program-Book-Web.pdf", 2015),
+text_prepr("data/2014ForumProgramBookFinal.pdf", 2014),
+text_prepr("data/2013finalprogram.pdf", 2013)
+)
+View(all_years)
+visualize <- all_years %>%
+filter(str_detect(word, "visualiz"))
+View(visualize)
+visualize %>%
+count(year) %>%
+ggplot(aes(x = year, y = n)) +
+geom_line()
+visualize %>%
+count(year) %>%
+ggplot(aes(x = year, y = n)) +
+geom_line() +
+geom_line(data = software, aes(x = year, y = n), size = 2) +
+geom_point(data = software, aes(x = year, y = n,), size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums") +
+visualize %>%
+count(year) %>%
+ggplot(aes(x = year, y = n)) +
+geom_line() +
+geom_line(data = software, aes(x = year, y = n), size = 2) +
+geom_point(data = software, aes(x = year, y = n,), size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums")
+visualize <- all_years %>%
+filter(str_detect(word, "visualiz"))
+visualize %>%
+count(year) %>%
+ggplot(aes(x = year, y = n)) +
+geom_line() +
+geom_line(size = 2) +
+geom_point( size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums")
+visualize %>%
+count(year) %>%
+ggplot(aes(x = year, y = n)) +
+geom_line() +
+geom_line(size = 2) +
+geom_point( size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = "Number of Times Visualiz* is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums")
+software <- all_years %>%
+mutate(word = tolower(word)) %>%
+filter(word %in% c("sas", "r", "excel", "tableau", "spss")) %>%
+count(word, year) %>%
+complete(word, year, fill = list(n = 0))
+software_2018 <- software %>%
+filter(year == 2018)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE)
+install.packages("RWordPress")
+library(RWordPress)
+devtools::install_github(c("duncantl/XMLRPC", "duncantl/RWordPress"))
+devtools::install_github(c("duncantl/XMLRPC", "duncantl/RWordPress"))
+devtools::install_g
+options(WordPressLogin = c(user = 'Oorah247WO!'),
+WordPressURL = 'https://rineranalytics.wordpress.com/')
+knit2wp('air-forum-text-software-frequency.Rmd', title = 'Test',publish = FALSE)
+library(RWordPress)
+options(WordPressLogin = c(user = 'Oorah247WO!'),
+WordPressURL = 'https://rineranalytics.wordpress.com/')
+knit2wp('air-forum-text-software-frequency.Rmd', title = 'Test',publish = FALSE)
+library(knitr)
+library(RWordPress)
+knit2wp('air-forum-text-software-frequency.Rmd', title = 'Test',publish = FALSE)
+options(WordPressLogin = c(user = 'Oorah247WO!'),
+WordPressURL = 'https://rineranalytics.wordpress.com/')
+knit2wp('air-forum-text-software-frequency.Rmd', title = 'Test',publish = FALSE)
+knit2wp('air-forum-text-software-frequency.Rmd', title = 'Test',publish = FALSE)
+options(WordpressLogin  = c(user = 'Oorah247WO!'),
+WordpressURL  = 'https://rineranalytics.wordpress.com/')
+knit2wp('air-forum-text-software-frequency.Rmd', title = 'Test',publish = FALSE)
+options(WordpressLogin  = c(user = 'Oorah247WO'),
+WordpressURL  = 'https://rineranalytics.wordpress.com/')
+knit2wp('air-forum-text-software-frequency.Rmd', title = 'Test',publish = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+library(pdftools)
+install.packages("pdftools")
+library(pdftools)
+# function to read in PDFs and get one word per line.
+text_prepr <- function(doc, forum_year){
+reg <- "([^A-Za-z\\d#@']|'(?![A-Za-z\\d#@]))"
+df <- pdf_text(doc)
+df <- data.frame(df)
+df <- df %>%
+rename(text = df) %>%
+unnest_tokens(word, text,  token = "regex", pattern = reg) %>%
+mutate(year = forum_year)
+return(df)
+}
+# apply function to programs books
+all_years <- bind_rows(
+text_prepr("data/AIR-2018-Forum-Program-Book.pdf", 2018),
+text_prepr("data/2017-AIR-Forum-Program-Book.pdf", 2017),
+text_prepr("data/2016_AIR-Forum_Program-Book.pdf", 2016),
+text_prepr("data/2015-Forum-Program-Book-Web.pdf", 2015),
+text_prepr("data/2014ForumProgramBookFinal.pdf", 2014),
+text_prepr("data/2013finalprogram.pdf", 2013)
+)
+library(tidyverse)
+# function to read in PDFs and get one word per line.
+text_prepr <- function(doc, forum_year){
+reg <- "([^A-Za-z\\d#@']|'(?![A-Za-z\\d#@]))"
+df <- pdf_text(doc)
+df <- data.frame(df)
+df <- df %>%
+rename(text = df) %>%
+unnest_tokens(word, text,  token = "regex", pattern = reg) %>%
+mutate(year = forum_year)
+return(df)
+}
+# apply function to programs books
+all_years <- bind_rows(
+text_prepr("data/AIR-2018-Forum-Program-Book.pdf", 2018),
+text_prepr("data/2017-AIR-Forum-Program-Book.pdf", 2017),
+text_prepr("data/2016_AIR-Forum_Program-Book.pdf", 2016),
+text_prepr("data/2015-Forum-Program-Book-Web.pdf", 2015),
+text_prepr("data/2014ForumProgramBookFinal.pdf", 2014),
+text_prepr("data/2013finalprogram.pdf", 2013)
+)
+library(tidytext)
+# function to read in PDFs and get one word per line.
+text_prepr <- function(doc, forum_year){
+reg <- "([^A-Za-z\\d#@']|'(?![A-Za-z\\d#@]))"
+df <- pdf_text(doc)
+df <- data.frame(df)
+df <- df %>%
+rename(text = df) %>%
+unnest_tokens(word, text,  token = "regex", pattern = reg) %>%
+mutate(year = forum_year)
+return(df)
+}
+# apply function to programs books
+all_years <- bind_rows(
+text_prepr("data/AIR-2018-Forum-Program-Book.pdf", 2018),
+text_prepr("data/2017-AIR-Forum-Program-Book.pdf", 2017),
+text_prepr("data/2016_AIR-Forum_Program-Book.pdf", 2016),
+text_prepr("data/2015-Forum-Program-Book-Web.pdf", 2015),
+text_prepr("data/2014ForumProgramBookFinal.pdf", 2014),
+text_prepr("data/2013finalprogram.pdf", 2013)
+)
+head(all_years)
+# filter for keywords and count by word and year
+software <- all_years %>%
+mutate(word = tolower(word)) %>%
+filter(word %in% c("excel", "r", "sas", "spss", "tableau")) %>%
+count(word, year) %>%
+complete(word, year, fill = list(n = 0))
+# make data frame of only 2018, so can include as labels at end of lines
+software_2018 <- software %>%
+filter(year == 2018)
+ggplot() +
+geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = "Number of Times Software is Mentioned in AIR Forum Program Book",
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE)
+visualize <- all_years %>%
+filter(str_detect(word, "visualiz")) %>%
+count(year)
+visualize
+all_years
+View(all_years)
+visualize <- all_years %>%
+group_by(year) %>%
+mutate(total = n())
+View(visualize)
+visualize <- all_years %>%
+group_by(year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz"))
+View(visualize)
+visualize <- all_years %>%
+group_by(year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(year) %>%
+summarise(prop = mean(visualiz)) %>%
+ungroup()
+View(visualize)
+ggplot(visualize, aes(x = year, y = prop)) +
+geom_line(size = 2) +
+geom_point(size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = 'Number of Times "Visualiz*" is Mentioned in AIR Forum Program Book',
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE)
+library(scales)
+ggplot(visualize, aes(x = year, y = prop)) +
+geom_line(size = 2) +
+geom_point(size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = 'Number of Times "Visualiz*" is Mentioned in AIR Forum Program Book',
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE) +
+scale_y_continuous(label = percent_format())
+ggplot(visualize, aes(x = year, y = prop)) +
+geom_line(size = 2) +
+geom_point(size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "# of Mentions",
+title = 'Percent of All Words That Were "Visualiz*" in AIR Forum Program Book',
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE) +
+scale_y_continuous(label = percent_format())
+ggplot(visualize, aes(x = year, y = prop)) +
+geom_line(size = 2) +
+geom_point(size = 3) +
+theme_minimal() +
+labs(x = "Forum Year", y = "% of Mentions",
+title = 'Percent of All Words That Were "Visualiz*" in AIR Forum Program Book',
+subtitle = "2013 to 2018 Forums") +
+guides(color = FALSE) +
+scale_y_continuous(label = percent_format())
+visualize
+all_years %>%
+group_by(year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz"))
+all_years %>%
+group_by(year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(year) %>%
+mutate(prop = sum(visualize))
+all_years %>%
+group_by(year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(year) %>%
+mutate(prop = sum(visualize)) %>%
+ungroup() %>%
+mutate(test = prop/total)
+all_years %>%
+group_by(year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(year) %>%
+mutate(prop = sum(visualize))
+all_years %>%
+group_by(year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz"))
+all_years
+View(all_years)
+all_years %>%
+count(year)
+all_years %>%
+count(word, year) %>%
+mutate(total = n()) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(year) %>%
+mutate(prop = sum(visualize)) %>%
+ungroup() %>%
+mutate(test = prop/total)
+all_years %>%
+count(word, year)
+all_years %>%
+count(word, year) %>%
+group_by(year) %>%
+mutate(total = sum(n)) %>%
+ungroup()
+all_years %>%
+count(word, year) %>%
+group_by(year) %>%
+mutate(total = sum(n)) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz"))
+all_years %>%
+count(word, year) %>%
+group_by(year) %>%
+mutate(total = sum(n)) %>%
+ungroup() %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(year) %>%
+mutate(vis = sum(visualize))
+all_years %>%
+count(word, year)
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz"))
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group(visualiz, year) %>%
+mutate(temp = sum(n))
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(visualiz, year) %>%
+mutate(temp = sum(n))
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(visualiz, year)
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(visualiz, year) %>%
+mutate(temp = sum(visualiz)) %>%
+ungroup()
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(visualiz, year)
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(visualiz, year) %>%
+summarise(temp = sum(visualiz))
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+group_by(visualiz, year)
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+count(visualiz, year)
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+count(visualiz, year) %>%
+group_by(year) %>%
+mutate(total = sum(n))
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+count(visualiz, year) %>%
+group_by(year) %>%
+mutate(total = sum(n)) %>%
+mutate(test = n/total)
+all_years %>%
+mutate(visualiz = str_detect(word, "visualiz")) %>%
+count(visualiz, year) %>%
+group_by(year) %>%
+mutate(total = sum(n)) %>%
+mutate(test = n/total) %>%
+filter(visualiz == TRUE)
+visualize
