@@ -1,1 +1,2 @@
 http://arie.rbind.io/*             https://arie.rbind.io/:splat  301!
+http://arie.netlify.com/*          https://arie.rbind.io/:splat  301!
