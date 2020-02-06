@@ -20,7 +20,7 @@
       <description>
 
 
-&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+&lt;p&gt;A multitude of tools and promising practices exist for visualizing data for informing and decision making. This session will feature a showcase of tools and techniques for utilizing data to inform and present. Presenters were all provided the same dataset and guiding questions and each used a different tool (Excel, R, Tableau, and SAS Visual Analytics) to create a visual display of the data. Each will present their work with the session moderator highlighting best practice in visualization throughout the presentation.&lt;/p&gt;
 </description>
     </item>
     
