@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>teaching | Arie Spirgel</title>
+    <link>/tags/teaching/</link>
+      <atom:link href="/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <description>teaching</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 14 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>teaching</title>
+      <link>/tags/teaching/</link>
+    </image>
+    
+    <item>
+      <title>Fellow R Instructors: Beware of the Curse of Knowledge!</title>
+      <link>/post/curse-of-knowledge/curse-of-knowledge/</link>
+      <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
+      <guid>/post/curse-of-knowledge/curse-of-knowledge/</guid>
+      <description>
+
+
+&lt;div id=&#34;the-curse-of-knowledge-in-everyday-life&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Curse of Knowledge in Everyday Life&lt;/h2&gt;
+&lt;p&gt;Several years ago my friend Lauren asked me for my recipe for BBQ seitan. I love food-related conversation, so I wasted no time. “Start by sauteing some chopped onion in oil…”, and as quickly as I began, she cut me off. “Hold on,” she interjected. “What kind of oil do you use? How much? How high do you turn the heat?”&lt;/p&gt;
+&lt;p&gt;Dissecting the conversation, what happened was that I implicitly made the absurd assumption that knowledge that is in my head must be in hers (i.e., “Use however much of whatever oil you’d like to at whatever heat you normally saute”). In other words, I fell victim to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Curse_of_knowledge&#34;&gt;curse of knowledge&lt;/a&gt;. I’m &lt;strong&gt;not&lt;/strong&gt; an expert cook - just ask my wife who always keeps the salt and pepper shaker within arm’s reach when I prepare a meal - but I did naively explain the recipe to Lauren as if she possessed my idiosyncratic definition of “saute”.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-curse-of-knowledge-when-teaching-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The Curse of Knowledge When Teaching R&lt;/h2&gt;
+&lt;p&gt;Scenarios like this are universal, and most of the time, they are harmless. However, they can be frustrating when people have invested time and money to learn R from you. Even if you yourself are relatively to new to R, it is easy to take for granted all that you know and what it’s like to be a true beginner. Consider the following questions and confusion that a new R user might have when you ask them to do something as seemingly innocuous as running a line of &lt;code&gt;read_csv()&lt;/code&gt; code you’ve provided:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“I just bought a book that says to use &lt;code&gt;read.csv()&lt;/code&gt;, but you use &lt;code&gt;read_csv()&lt;/code&gt;. They are so similar they must do exactly the same thing, right?”&lt;/li&gt;
+&lt;li&gt;“Excuse me, but are you saying &lt;em&gt;tibble&lt;/em&gt;? Do you mean &lt;em&gt;table&lt;/em&gt;?”&lt;/li&gt;
+&lt;li&gt;“I tried running &lt;code&gt;read_csv()&lt;/code&gt; but I got an error saying the function couldn’t be found. How does &lt;em&gt;that&lt;/em&gt; make sense?”&lt;/li&gt;
+&lt;li&gt;“I thought you said colons aren’t allowed in function names, so why did you write &lt;code&gt;readr::read_csv()&lt;/code&gt;?”&lt;/li&gt;
+&lt;li&gt;“The code you shared says &lt;code&gt;read_csv(&amp;quot;raw-data/survey-results.csv&amp;quot;)&lt;/code&gt; but I changed the &lt;code&gt;/&lt;/code&gt; to &lt;code&gt;\&lt;/code&gt; because that’s what the folders look like on my computer and now it doesn’t work. WTF, right?!”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not all of your students will tell you when they’re stuck, and because you can’t read their minds, what are you to do? &lt;strong&gt;Ask them!&lt;/strong&gt; Whether it’s a one day workshop or a semester long course, giving frequent, brief, assessments will help you identify areas of confusion and guide your lessons.&lt;/p&gt;
+&lt;p&gt;You might be thinking that when you have a large group of people, resolving every question that every student has is unrealistic. That may be true, but it is a shame when a student falls behind because an instructor misses an opportunity for a simple clarification. Consider the following (intentionally confusing) passage from Bransford and Johnson (1972):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The procedure is actually quite simple. First you arrange things into different groups… Of course, one pile may be sufficient depending on how much there is to do. If you have to go somewhere else due to lack of facilities that is the next step, otherwise you are pretty well set. It is important not to overdo any particular endeavor. That is, it is better to do too few things at once than too many. In the short run this may not seem important, but complications from doing too many can easily arise. A mistake can be expensive as well… At first the whole procedure will seem complicated. Soon, however, it will become just another facet of life. It is difficult to foresee any end to the necessity for this task in the immediate future, but then one never can tell. After the procedure is completed one arranges the materials into different groups again. Then they can be put into their appropriate places. Eventually they will be used once more and the whole cycle will have to be repeated. However, that is part of life. (Bransford and Johnson 1972 p. 722)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you’ve never seen this passage before, it probably makes little sense to you and its details are unlikely to stick in your mind. But if before you read it I gave you the passage’s title - &lt;em&gt;Washing Clothes&lt;/em&gt; - it would suddenly become much clearer. There are plenty of “washing clothes” examples in R, and as the instructor, it’s your job to construct an environment that helps you identify them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Frequent assessments will alert you when you succumb to the curse of knowledge and help you to correct your biases. If you’re teaching R - or for that matter, anything - and you’re not regularly checking in on what your students know and what their misconceptions are, it’s worth asking yourself what your goals are, because maximizing student understanding may not be one of them.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
