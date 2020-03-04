@@ -206,42 +206,6 @@
 
 
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-159718317-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-      dataLayer.push(arguments);
-  }
-
-  function trackOutboundLink(url) {
-    gtag('event', 'click', {
-         'event_category': 'outbound',
-         'event_label': url,
-         'transport_type': 'beacon',
-         'event_callback': function () {
-           document.location = url;
-         }
-    });
-    console.debug("Outbound link clicked: " + url);
-  }
-
-  function onClickCallback(event) {
-    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
-      return;
-    }
-    trackOutboundLink(event.target);  
-  }
-
-  gtag('js', new Date());
-  gtag('config', 'UA-159718317-1', {});
-
-  
-  document.addEventListener('click', onClickCallback, false);
-</script>
-
-
   
 
 
@@ -271,7 +235,7 @@
   
   <meta property="og:site_name" content="Arie Spirgel">
   <meta property="og:url" content="/tags/r/">
-  <meta property="og:title" content="R | Arie Spirgel">
+  <meta property="og:title" content="r | Arie Spirgel">
   <meta property="og:description" content="Senior Research Associate"><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
@@ -292,7 +256,7 @@
 
 
 
-  <title>R | Arie Spirgel</title>
+  <title>r | Arie Spirgel</title>
 
 </head>
 
@@ -482,7 +446,7 @@
     
   
 <div class="universal-wrapper pt-3">
-  <h1>R</h1>
+  <h1>r</h1>
 
   
 
