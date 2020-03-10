@@ -5,25 +5,12 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Arie Spirgel</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Arie Spirgel</title>
       <link>/</link>
     </image>
-    
-    <item>
-      <title>Introduction to R and ggplot2</title>
-      <link>/talk/2020-wcc-ggplot2/</link>
-      <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>/talk/2020-wcc-ggplot2/</guid>
-      <description>
-
-
-&lt;p&gt;Learn how to visualize data using R and ggplot2!&lt;/p&gt;
-&lt;p&gt;Whether you’re interested in data science, business, or working on a dissertation or research project, knowing how to visualize data is a vital skill. In this free, 2.5 hour workshop, you’ll be introduced to the R programming language and learn to visualize data using ggplot2. In the last 30 minutes of the workshop, Janine Morris from NSU’s Writing and Communication Center will talk about the features of effective data visualizations.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Why Use R for Institutional Research? Part 1, Many Models</title>
@@ -133,6 +120,19 @@ head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Claiming that there is more friction to learning R than there is to learning menu-driven tools is like saying learning to microwave TV dinners is easier than learning to cook the same meal from scratch. Both points might be true, but they obscure the ultimate goals of each: R, like cooking, unconstrains you, giving you the freedom to create whatever fills your imagination. And whether it’s running models for 150 majors or making soup for a large dinner party, learning to code and learning to cook can make your work not only more tenable, but more enjoyable, and in the long-run, simpler.&lt;/p&gt;
 &lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction to R and ggplot2</title>
+      <link>/talk/2020-wcc-ggplot2/</link>
+      <pubDate>Thu, 05 Mar 2020 12:00:00 +0000</pubDate>
+      <guid>/talk/2020-wcc-ggplot2/</guid>
+      <description>
+
+
+&lt;p&gt;Learn how to visualize data using R and ggplot2!&lt;/p&gt;
+&lt;p&gt;Whether you’re interested in data science, business, or working on a dissertation or research project, knowing how to visualize data is a vital skill. In this free, 2.5 hour workshop, you’ll be introduced to the R programming language and learn to visualize data using ggplot2. In the last 30 minutes of the workshop, Janine Morris from NSU’s Writing and Communication Center will talk about the features of effective data visualizations.&lt;/p&gt;
 </description>
     </item>
     

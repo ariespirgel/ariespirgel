@@ -5,7 +5,7 @@
     <link>/categories/</link>
       <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Categories</title>
@@ -13,18 +13,18 @@
     </image>
     
     <item>
-      <title>workshop</title>
-      <link>/categories/workshop/</link>
-      <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>/categories/workshop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>institutional research</title>
       <link>/categories/institutional-research/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
       <guid>/categories/institutional-research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>workshop</title>
+      <link>/categories/workshop/</link>
+      <pubDate>Thu, 05 Mar 2020 12:00:00 +0000</pubDate>
+      <guid>/categories/workshop/</guid>
       <description></description>
     </item>
     
