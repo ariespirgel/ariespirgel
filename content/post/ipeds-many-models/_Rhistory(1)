@@ -1,0 +1,512 @@
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score, color = sat_type)) +
+geom_point(alpha = .5) +
+geom_smooth(metho = "lm")
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score, color = sat_type)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm")
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score, color = sat_type)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm") +
+facet_wrap(~sat_type)
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm") +
+facet_wrap(~sat_type)
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm") +
+facet_grid(sector ~ sat_type)
+grad_rate_scores %>% count(sector)
+ggplot(filter(grad_rate_scores, sector != "Private for-profit, 4-year or above"),
+aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm") +
+facet_grid(sector ~ sat_type)
+library(scales)
+ggplot(filter(grad_rate_scores, sector != "Private for-profit, 4-year or above"),
+aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm") +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format())
+grad_rate_scores <- grad_rate_scores %>%
+filter(sector != "Private for-profit, 4-year or above")
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm") +
+facet_grid(sector ~ sat_type)
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth(method = "lm") +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format())
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format())
+df <- tibble(
+x = factor(1:10),
+g = c(1,2,0,3,0,0,1,2,0,3)
+)
+df
+ggplot(df, aes(x = x, y = g)) +
+geom_bar(stat = 'identity', fill = "black") +
+geom_hline(yintercept = seq(1, max(df$g)), color = "white")
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format())
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format())
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score")
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions")
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center")
+grad_rate_scores %>%
+mutate(sat_score = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center")
+grad_rate_scores
+grad_rate_scores %>%
+mutate(sat_score = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center")
+grad_rate_scores %>%
+#  mutate(sat_score = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center")
+grad_rate_scores %>%
+mutate(sat_type = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center")
+grad_rate_scores %>%
+mutate(sat_type = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center") +
+theme_minimal()
+grad_rate_scores %>%
+mutate(sat_type = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Omits Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center") +
+theme_minimal()
+library(tidyverse)
+grad_rate_scores <- read_csv("processed-data/scores-grad-rates.csv")
+grad_rate_scores %>%
+mutate(sat_type = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Omits Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center") +
+theme_minimal()
+# Chunk 1: setup
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+# Chunk 2
+library(tidyverse)
+# Chunk 3
+grad_rate_scores <- read_csv("processed-data/scores-grad-rates.csv")
+# Chunk 4
+grad_rate_scores
+# Chunk 5
+library(janitor)
+grad_rate_scores <- grad_rate_scores %>%
+clean_names()
+grad_rate_scores
+# Chunk 6
+grad_rate_scores <- grad_rate_scores %>%
+rename(grad_rate = graduation_rate_total_cohort_drvgr2018,
+sat_ebrw_25 = sat_evidence_based_reading_and_writing_25th_percentile_score_adm2018,
+sat_ebrw_75 = sat_evidence_based_reading_and_writing_75th_percentile_score_adm2018,
+sat_math_25 = sat_math_25th_percentile_score_adm2018,
+sat_math_75 = sat_math_75th_percentile_score_adm2018)
+grad_rate_scores
+# Chunk 7
+grad_rate_scores <- grad_rate_scores %>%
+mutate(average_ebrw = (sat_ebrw_25 + sat_ebrw_75) / 2,
+average_math = (sat_math_25 + sat_math_75) / 2)
+grad_rate_scores
+# Chunk 8
+grad_rate_scores <- grad_rate_scores %>%
+select(institution_name, sector, grad_rate, average_ebrw, average_math)
+grad_rate_scores
+# Chunk 9
+grad_rate_scores %>%
+arrange(-average_math)
+# Chunk 10
+grad_rate_scores <- grad_rate_scores %>%
+arrange(grad_rate) %>%
+filter(!is.na(grad_rate) & !is.na(average_ebrw) & !is.na(average_math))
+# Chunk 11
+grad_rate_scores <- grad_rate_scores %>%
+gather(sat_type, sat_score, average_ebrw, average_math)
+grad_rate_scores
+# Chunk 12
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5)
+# Chunk 13
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate, y = sat_score, color = sat_type)) +
+geom_point(alpha = .5)
+# Chunk 14
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+facet_wrap(~sat_type)
+# Chunk 15
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+facet_grid(sector ~ sat_type)
+# Chunk 16
+ggplot(grad_rate_scores, aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+facet_grid(sector ~ sat_type) +
+geom_smooth(method = "lm")
+# Chunk 17
+grad_rate_scores <- grad_rate_scores %>%
+filter(sector != "Private for-profit, 4-year or above")
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type)
+# Chunk 18
+library(scales)
+grad_rate_scores %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center")
+# Chunk 19
+grad_rate_scores %>%
+mutate(sat_type = if_else(sat_type == "average_ebrw", "Average EBRW", "Average Math")) %>%
+ggplot(aes(x = grad_rate / 100, y = sat_score)) +
+geom_point(alpha = .5) +
+geom_smooth() +
+facet_grid(sector ~ sat_type) +
+scale_x_continuous(label = percent_format()) +
+labs(x = "Graduation Rate", y = "SAT Score",
+title = "The Association Between Graduation Rates and SAT Scores at 4-Year Institutions",
+subtitle = "Omits Private for-profit, 4-year or above",
+caption = "Source: IPEDS Data Center") +
+theme_minimal()
+library(tidyverse)
+df <- read_csv("Data_3-3-2020 (1).csv")
+View(df)
+df
+df %>%
+janitor::clean_names()
+df <- df %>%
+janitor::clean_names()
+df <- df %>%
+janitor::clean_names()
+glimpse(df)
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d)) +
+geom_point()
+df <- read_csv("Data_3-3-2020 (2).csv")
+df <- df %>%
+janitor::clean_names()
+glimpse(df)
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d)) +
+geom_point()
+df <- read_csv("Data_3-3-2020---88.csv")
+df <- df %>%
+janitor::clean_names()
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d. color = )) +
+geom_point()
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d.)) +
+geom_point()
+glimpse(df)
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d)) +
+geom_point()
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d,
+color = sector)) +
+geom_point()
+glimpse(df)
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d,
+color = sector_of_institution_hd2018)) +
+geom_point()
+ggplot(df, aes(full_time_retention_rate_2018_ef2018d,  student_to_faculty_ratio_ef2018d,
+color = factor(sector_of_institution_hd2018))) +
+geom_point()
+ggplot(df, aes(applicants_total_adm2018,  admissions_total_adm2018,
+color = factor(sector_of_institution_hd2018))) +
+geom_point()
+ggplot(df, aes(applicants_total_adm2018,  admissions_total_adm2018,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~sector_of_institution_hd2018)
+ggplot(df, aes(enrolled_total_adm2018,  admissions_total_adm2018,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~sector_of_institution_hd2018)
+ggplot(df, aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~sector_of_institution_hd2018)
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~sector_of_institution_hd2018)
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional,
+color = factor(sector_of_institution_hd2018))) +
+geom_point()
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~sector_of_institution_hd2018)
+df <- read_csv("Data_3-3-2020---30.csv")
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~sector_of_institution_hd2018)
+df
+df <- df %>%
+janitor::clean_names()
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~sector_of_institution_hd2018)
+glimpse(df)
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~highest_degree_offered_hd2018)
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(grand_total_ef2018_all_students_undergraduate_total,  grand_total_ef2018_all_students_graduate_and_first_professional)) +
+geom_point() +
+facet_wrap(~highest_degree_offered_hd2018)
+df
+glimpse(df)
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(student_to_faculty_ratio_ef2018d,  full_time_retention_rate_2018_ef2018d)) +
+geom_point() +
+facet_wrap(~highest_degree_offered_hd2018)
+df %>%
+filter(sector_of_institution_hd2018 %in% c(1, 2, 3)) %>%
+ggplot(aes(student_to_faculty_ratio_ef2018d,  full_time_retention_rate_2018_ef2018d,
+color = factor(sector_of_institution_hd2018))) +
+geom_point() +
+facet_wrap(~highest_degree_offered_hd2018)
+library(irtools)
+library(tidyverse)
+weekly_eot
+weekly_eot %>%
+filter(term_code == "202020") %>%
+filter(str_detect(banner_major_description, "Cyber"))
+weekly_eot %>%
+filter(term_code == "202020") %>%
+filter(str_detect(banner_major_description, "Cyber")) %>%
+View()
+weekly_eot %>%
+filter(term_code == "202020") %>%
+filter(str_detect(banner_major_description, "engineering")) %>%
+View()
+weekly_eot %>%
+filter(term_code == "202020") %>%
+filter(str_detect(banner_major_description, "Engineering")) %>%
+View()
+weekly_eot %>%
+filter(term_code == "202020") %>%
+filter(str_detect(banner_major_description, "LLM")) %>%
+View()
+weekly_eot %>%
+filter(term_code == "202020") %>%
+View()
+weekly_eot %>%
+# filter(term_code == "202020") %>%
+View()
+weekly_eot %>%
+filter(college_description == "Shepard Broad College of Law (LW)") %>%
+count(banner_major_description)
+weekly_eot %>%
+# filter(college_description == "Shepard Broad College of Law (LW)") %>%
+#filter()
+#count(banner_major_description)
+# filter(term_code == "202020") %>%
+View()
+library(tidyverse)
+df <- read_csv("raw-data/college-2020-03-04.csv") %>%
+rename(sector_code = `Sector of institution (HD2018)`)
+sector <- read_csv("raw-data/college-labels.csv") %>%
+select(sector_code = Value, Sector = ValueLabel)
+df <- left_join(df, sector, by = "sector_code")
+df <- read_csv("raw-data/college-2020-03-04.csv") %>%
+rename(sector_code = `Sector of institution (HD2018)`)
+sector <- read_csv("raw-data/college-labels.csv") %>%
+select(sector_code = Value, Sector = ValueLabel)
+df <- left_join(df, sector, by = "sector_code") %>%
+select(-c(UnitID, sector_code, X9)) %>%
+select(`Institution Name`, Sector, everything())
+df
+library(tidyverse)
+df <- read_csv("raw-data/college-2020-03-04.csv") %>%
+rename(sector_code = `Sector of institution (HD2018)`)
+sector <- read_csv("raw-data/college-labels.csv") %>%
+select(sector_code = Value, Sector = ValueLabel)
+df <- left_join(df, sector, by = "sector_code") %>%
+select(-c(UnitID, sector_code, X12)) %>%
+select(`Institution Name`, Sector, everything())
+View(df)
+glimpse(df)
+ggplot(df, aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Part-time retention rate  2018 (EF2018D)` )) +
+geom_point()
+ggplot(df, aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Part-time retention rate  2018 (EF2018D)` )) +
+geom_jitter()
+ggplot(df, aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Part-time retention rate  2018 (EF2018D)` )) +
+geom_point(alpha = .5)
+ggplot(df, aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Part-time retention rate  2018 (EF2018D)` )) +
+geom_point(alpha = .2)
+ggplot(df, aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Part-time retention rate  2018 (EF2018D)` )) +
+geom_jitter()
+glimpse(df)
+ggplot(df, aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Part-time retention rate  2018 (EF2018D)` )) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+ggplot(df, aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Graduation rate  total cohort (DRVGR2018)` )) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+df %>%
+filter(`Grand total (EF2018  All students total)` > 1000) %>%
+ggplot(aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Graduation rate  total cohort (DRVGR2018)` )) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+df %>%
+#  filter(`Grand total (EF2018  All students total)` > 1000) %>%
+ggplot(aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Graduation rate  total cohort (DRVGR2018)` )) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+df %>%
+#  filter(`Grand total (EF2018  All students total)` > 1000) %>%
+ggplot(aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Graduation rate  total cohort (DRVGR2018)` ),
+color = `Grand total (EF2018  All students total)`) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+df %>%
+#  filter(`Grand total (EF2018  All students total)` > 1000) %>%
+ggplot(aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Graduation rate  total cohort (DRVGR2018)` ,
+color = `Grand total (EF2018  All students total)`)) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+df %>%
+#  filter(`Grand total (EF2018  All students total)` > 1000) %>%
+ggplot(aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Graduation rate  total cohort (DRVGR2018)` ,
+color = log(`Grand total (EF2018  All students total)`))) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+glimpse(df)
+df %>%
+filter(`Grand total (EF2018  All students total)` > 1000) %>%
+ggplot(aes(x = `Full-time retention rate  2018 (EF2018D)`, y =  `Graduation rate  total cohort (DRVGR2018)`)) +
+geom_jitter() +
+facet_wrap(~`Highest level of offering (HD2018)`)
+df <- read_csv("raw-data/college-2020-03-04.csv") %>%
+rename(sector_code = `Sector of institution (HD2018)`)
+df <- read_csv("raw-data/college-2020-03-04.csv") %>%
+rename(sector_code = `Sector of institution (HD2018)`)
+sector <- read_csv("raw-data/college-labels.csv") %>%
+select(sector_code = Value, Sector = ValueLabel)
+df <- left_join(df, sector, by = "sector_code") %>%
+select(-c(UnitID, sector_code, X12)) %>%
+select(`Institution Name`, Sector, everything())
+glimpse(df)
+library(irtools)
+df <- fall_19
+View(df)
+fall_19 %>% select(standing)
+fall_19 %>% select(standing) %>% View()

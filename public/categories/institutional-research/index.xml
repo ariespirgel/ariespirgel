@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>institutional research | Arie Spirgel</title>
+    <link>/categories/institutional-research/</link>
+      <atom:link href="/categories/institutional-research/index.xml" rel="self" type="application/rss+xml" />
+    <description>institutional research</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>institutional research</title>
+      <link>/categories/institutional-research/</link>
+    </image>
+    
+    <item>
+      <title>Why Use R for Institutional Research? Part 1, Many Models</title>
+      <link>/post/ipeds-many-models/01-r-for-institutional-research/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>/post/ipeds-many-models/01-r-for-institutional-research/</guid>
+      <description>
+
+
+&lt;div id=&#34;introduction&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;I first heard about R when I was in graduate school in 2008 and fellow students used it to analyze their data. I didn’t bother to learn it at the time because, one, I didn’t see the benefit of it, and two, I assumed that without any programming experience, it was too difficult. So I continued with my same workflow: Clean data and make charts in Excel, import data into SPSS to analyze it, and then paste my output into a Word document and write up the results.&lt;/p&gt;
+&lt;p&gt;I started working in institutional research in 2013 and I still hadn’t made the switch to R, but was beginning to see the drawbacks of my workflow and the upside of coding. I often had to generate the same reports on a regular basis where the only thing that would change was the data. Or I’d have to generate the same charts or tables for each of the 15 colleges at the university, and on bad days, each of the 150-something majors. This quickly became unsustainable when I would, for example, get one of these requests late on a Friday afternoon and had to have it ready for a Board meeting on Monday. R increasingly seemed like a preferable alternative.&lt;/p&gt;
+&lt;p&gt;Fast-forward 7 years and my SPSS license has long since expired, I don’t recall the last time I made a chart in Excel, and the only thing I use Word for is making grocery lists. Today, my entire workflow exists inside of R.&lt;/p&gt;
+&lt;p&gt;In the intervening years, I have frequently met other institutional researchers who are stuck in the same mindset I was in 2008: For people who have never coded, R seems too overwhelming to learn, and even if they were to learn it, they do not see the benefits of doing so. In future posts I plan to address the former, but in this series of posts I want to address the latter: What’s the point of learning R for institutional research? Rather than list all of the reasons why R is an excellent choice for doing institutional research, I want to show examples of how I use it. In this post, I’ll demonstrate the scenario of using R to run many models.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;If you are not an R user, do not worry about the details of the code below, but instead, pay attention to what the code is capable of producing&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-one-model&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Running One Model&lt;/h2&gt;
+&lt;p&gt;Whether you want to predict future enrollment or explain why some students do not graduate, modeling is an important skill in institutional research. To show how to run a linear model in R, for all colleges and universities in the &lt;a href=&#34;https://nces.ed.gov/ipeds/use-the-data&#34;&gt;IPEDS Data Center&lt;/a&gt;, I downloaded their state, one year retention rates (i.e., the percent of first-time in college students who re-enroll their second fall term), student-faculty ratios, and the number of undergraduate applications they received for a given year. Here is the code for reading in the data and what the first five rows of data look like:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(broom)
+library(drlib)
+
+ipeds &amp;lt;- read_rds(&amp;quot;processed-data/ipeds-sfr.rds&amp;quot;)
+
+head(ipeds, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
+##   name            state   undergrad_appli~ retention_rate student_faculty_~
+##   &amp;lt;chr&amp;gt;           &amp;lt;chr&amp;gt;              &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt;
+## 1 Educational Te~ Puerto~               NA             11                21
+## 2 A T Still Univ~ Missou~               NA             NA                NA
+## 3 Aaniiih Nakoda~ Montana               NA             34                10
+## 4 ABC Adult Scho~ Califo~               NA             NA                 4
+## 5 ABC Beauty Aca~ Texas                 NA             25                10&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In this contrived example, to build a linear model with retention rate as the outcome and student-faculty ratio and number of undergraduate applications as the predictors, I took the &lt;code&gt;ipeds&lt;/code&gt; data frame, piped it (&lt;code&gt;%&amp;gt;%&lt;/code&gt;) to the &lt;code&gt;lm&lt;/code&gt; function, and then cleaned up the results with the &lt;code&gt;tidy()&lt;/code&gt; function from the broom package. This gives us the model results:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds %&amp;gt;% 
+  lm(retention_rate ~ student_faculty_ratio + undergrad_applicants, data = .) %&amp;gt;% 
+  tidy()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 3 x 5
+##   term                   estimate std.error statistic  p.value
+##   &amp;lt;chr&amp;gt;                     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1 (Intercept)           76.2      0.868         87.8  0.      
+## 2 student_faculty_ratio -0.326    0.0589        -5.54 3.45e- 8
+## 3 undergrad_applicants   0.000504 0.0000315     16.0  3.03e-54&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;At this point you may be thinking, “So what? I can just easily do the same thing in SPSS, or even Excel”. That is true, but what if instead of running one model, you had to run 150?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;running-many-models&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Running Many Models&lt;/h2&gt;
+&lt;p&gt;As part of our university’s strategic business plan, I recently had to create separate models for each of the 150-something majors at the school. If I were still using SPSS, this would mean:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;days of pointing and clicking and copying and pasting.&lt;/li&gt;
+&lt;li&gt;doing the same thing over and over again each time the project requirements changed, which is an inevitability.&lt;/li&gt;
+&lt;li&gt;having no documentation about the decisions I made because everything was done by pointing and clicking.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Returning to the original data set, let’s say I wanted repeat the same model above, but separately for each state. Using R, I first filter the data to only include states with at least 50 schools (an arbitrarily chosen cutoff point):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds &amp;lt;- ipeds %&amp;gt;% 
+  add_count(state) %&amp;gt;% 
+  filter(n &amp;gt;= 50)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, I turn the model into a function:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;state_regression &amp;lt;- function(df) {
+ df %&amp;gt;% 
+  lm(retention_rate ~ student_faculty_ratio + undergrad_applicants, data = .) 
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From there, I can apply the function to each state in the data set, which returns a data frame with the model results for each state:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds_model &amp;lt;- ipeds %&amp;gt;% 
+  group_by(state) %&amp;gt;% 
+  nest() %&amp;gt;% 
+  mutate(model = map(data, state_regression),
+         tidy_model = map(model, tidy)) %&amp;gt;% 
+  unnest(tidy_model) 
+
+head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 8
+## # Groups:   state [2]
+##   state   data       model term       estimate std.error statistic  p.value
+##   &amp;lt;chr&amp;gt;   &amp;lt;list&amp;gt;     &amp;lt;lis&amp;gt; &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  (Intercep~ 87.5       5.80        15.1  2.48e-18
+## 2 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  student_f~ -0.869     0.315       -2.76 8.68e- 3
+## 3 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  undergrad~  0.00208   0.00140      1.49 1.45e- 1
+## 4 Missou~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  (Intercep~ 84.5       5.46        15.5  1.91e-22
+## 5 Missou~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  student_f~ -1.07      0.458       -2.33 2.30e- 2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, with a separate model for each state all in a data frame, I can treat the model output like I would any other data. For example, here, I visualize the model results for each state:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds_model %&amp;gt;% 
+  filter(term != &amp;quot;(Intercept)&amp;quot;) %&amp;gt;% 
+  mutate(term = if_else(term == &amp;quot;student_faculty_ratio&amp;quot;,
+                        &amp;quot;Student/Faculty Ratio&amp;quot;, &amp;quot;# of Undergraduate Applications&amp;quot;)) %&amp;gt;% 
+  ggplot(aes(x = reorder_within(state, -estimate, term),
+             y = estimate,
+             ymin = estimate - (2 * std.error),
+             ymax = estimate + (2 * std.error))) +
+  geom_pointrange(color = &amp;quot;grey60&amp;quot;) +
+  coord_flip() +
+  guides(color = FALSE) +
+  facet_wrap(~term, scales = &amp;quot;free&amp;quot;, ncol = 2) +
+  theme_classic() +
+  scale_x_reordered() +
+  geom_hline(yintercept = 0, linetype = 2) +
+  labs(
+    title = str_wrap(&amp;quot;Is First-Year Retention Associated with Student-Faulty Ratio and/or Undergraduate Applications?&amp;quot;, 75),
+       subtitle = &amp;quot;Limited to states with at least 50 schools&amp;quot;,
+       caption = &amp;quot;Source: IPEDS Data Center&amp;quot;,
+       x = NULL, y = &amp;quot;Estimate&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ipeds-many-models/01-r-for-institutional-research_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Claiming that there is more friction to learning R than there is to learning menu-driven tools is like saying learning to microwave TV dinners is easier than learning to cook the same meal from scratch. Both points might be true, but they obscure the ultimate goals of each: R, like cooking, unconstrains you, giving you the freedom to create whatever fills your imagination. And whether it’s running models for 150 majors or making soup for a large dinner party, learning to code and learning to cook can make your work not only more tenable, but more enjoyable, and in the long-run, simpler.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
