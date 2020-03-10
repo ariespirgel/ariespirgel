@@ -5,7 +5,7 @@
     <link>/categories/workshop/</link>
       <atom:link href="/categories/workshop/index.xml" rel="self" type="application/rss+xml" />
     <description>workshop</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 05 Mar 2020 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>workshop</title>
@@ -15,7 +15,7 @@
     <item>
       <title>Introduction to R and ggplot2</title>
       <link>/talk/2020-wcc-ggplot2/</link>
-      <pubDate>Thu, 05 Mar 2020 12:00:00 +0000</pubDate>
+      <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
       <guid>/talk/2020-wcc-ggplot2/</guid>
       <description>
 
