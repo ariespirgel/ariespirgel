@@ -12,7 +12,7 @@ summary: "Introduction to R and ggplot2"
 date: "2020-03-13T12:00:00Z"
 date_end: "2020-03-13T14:30:00Z"
 all_day: false
-# publishdate: "2019-06-15"
+publishdate: "2020-03-10"
 
 #links:
 #- icon: github
