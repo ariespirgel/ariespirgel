@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>conference presentation | Arie Spirgel</title>
-    <link>https://arie.rbind.io/categories/conference-presentation/</link>
-      <atom:link href="https://arie.rbind.io/categories/conference-presentation/index.xml" rel="self" type="application/rss+xml" />
+    <link>/categories/conference-presentation/</link>
+      <atom:link href="/categories/conference-presentation/index.xml" rel="self" type="application/rss+xml" />
     <description>conference presentation</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 31 May 2018 10:45:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>conference presentation</title>
-      <link>https://arie.rbind.io/categories/conference-presentation/</link>
+      <link>/categories/conference-presentation/</link>
     </image>
     
     <item>
       <title>Achieving Reproducibility in IR With R</title>
-      <link>https://arie.rbind.io/talk/2018-air/</link>
+      <link>/talk/2018-air/</link>
       <pubDate>Thu, 31 May 2018 10:45:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2018-air/</guid>
+      <guid>/talk/2018-air/</guid>
       <description>
 
 
@@ -26,9 +26,9 @@
     
     <item>
       <title>Data Visualization Showcase</title>
-      <link>https://arie.rbind.io/talk/2017-air/</link>
+      <link>/talk/2017-air/</link>
       <pubDate>Tue, 30 May 2017 15:30:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2017-air/</guid>
+      <guid>/talk/2017-air/</guid>
       <description>
 
 
@@ -38,9 +38,9 @@
     
     <item>
       <title>Creating Data Visualizations Using R: An Introduction for Non-Programmers</title>
-      <link>https://arie.rbind.io/talk/2016-air/</link>
+      <link>/talk/2016-air/</link>
       <pubDate>Fri, 01 Jul 2016 15:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2016-air/</guid>
+      <guid>/talk/2016-air/</guid>
       <description>
 
 

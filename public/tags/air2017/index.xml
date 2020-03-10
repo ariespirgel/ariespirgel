@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>air2017 | Arie Spirgel</title>
-    <link>https://arie.rbind.io/tags/air2017/</link>
-      <atom:link href="https://arie.rbind.io/tags/air2017/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tags/air2017/</link>
+      <atom:link href="/tags/air2017/index.xml" rel="self" type="application/rss+xml" />
     <description>air2017</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 30 May 2017 15:30:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>air2017</title>
-      <link>https://arie.rbind.io/tags/air2017/</link>
+      <link>/tags/air2017/</link>
     </image>
     
     <item>
       <title>Data Visualization Showcase</title>
-      <link>https://arie.rbind.io/talk/2017-air/</link>
+      <link>/talk/2017-air/</link>
       <pubDate>Tue, 30 May 2017 15:30:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2017-air/</guid>
+      <guid>/talk/2017-air/</guid>
       <description>
 
 

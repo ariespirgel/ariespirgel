@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>teaching | Arie Spirgel</title>
-    <link>https://arie.rbind.io/tags/teaching/</link>
-      <atom:link href="https://arie.rbind.io/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tags/teaching/</link>
+      <atom:link href="/tags/teaching/index.xml" rel="self" type="application/rss+xml" />
     <description>teaching</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 14 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>teaching</title>
-      <link>https://arie.rbind.io/tags/teaching/</link>
+      <link>/tags/teaching/</link>
     </image>
     
     <item>
       <title>Fellow R Instructors: Beware of the Curse of Knowledge!</title>
-      <link>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</link>
+      <link>/post/curse-of-knowledge/curse-of-knowledge/</link>
       <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</guid>
+      <guid>/post/curse-of-knowledge/curse-of-knowledge/</guid>
       <description>
 
 
