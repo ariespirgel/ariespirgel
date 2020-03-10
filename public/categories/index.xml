@@ -2,61 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories | Arie Spirgel</title>
-    <link>/categories/</link>
-      <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://arie.rbind.io/categories/</link>
+      <atom:link href="https://arie.rbind.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Categories</title>
-      <link>/categories/</link>
+      <link>https://arie.rbind.io/categories/</link>
     </image>
     
     <item>
-      <title>workshop</title>
-      <link>/categories/workshop/</link>
-      <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>/categories/workshop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>institutional research</title>
-      <link>/categories/institutional-research/</link>
+      <link>https://arie.rbind.io/categories/institutional-research/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/institutional-research/</guid>
+      <guid>https://arie.rbind.io/categories/institutional-research/</guid>
       <description></description>
     </item>
     
     <item>
       <title>education</title>
-      <link>/categories/education/</link>
+      <link>https://arie.rbind.io/categories/education/</link>
       <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/education/</guid>
+      <guid>https://arie.rbind.io/categories/education/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>workshop</title>
+      <link>https://arie.rbind.io/categories/workshop/</link>
+      <pubDate>Fri, 17 Jan 2020 11:00:00 +0000</pubDate>
+      <guid>https://arie.rbind.io/categories/workshop/</guid>
       <description></description>
     </item>
     
     <item>
       <title>visualization</title>
-      <link>/categories/visualization/</link>
+      <link>https://arie.rbind.io/categories/visualization/</link>
       <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/categories/visualization/</guid>
+      <guid>https://arie.rbind.io/categories/visualization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>nba</title>
-      <link>/categories/nba/</link>
+      <link>https://arie.rbind.io/categories/nba/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>/categories/nba/</guid>
+      <guid>https://arie.rbind.io/categories/nba/</guid>
       <description></description>
     </item>
     
     <item>
       <title>conference presentation</title>
-      <link>/categories/conference-presentation/</link>
+      <link>https://arie.rbind.io/categories/conference-presentation/</link>
       <pubDate>Thu, 31 May 2018 10:45:00 +0000</pubDate>
-      <guid>/categories/conference-presentation/</guid>
+      <guid>https://arie.rbind.io/categories/conference-presentation/</guid>
       <description></description>
     </item>
     

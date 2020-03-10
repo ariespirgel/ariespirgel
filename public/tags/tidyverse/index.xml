@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tidyverse | Arie Spirgel</title>
-    <link>/tags/tidyverse/</link>
-      <atom:link href="/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://arie.rbind.io/tags/tidyverse/</link>
+      <atom:link href="https://arie.rbind.io/tags/tidyverse/index.xml" rel="self" type="application/rss+xml" />
     <description>tidyverse</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 17 Jan 2020 11:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>tidyverse</title>
-      <link>/tags/tidyverse/</link>
+      <link>https://arie.rbind.io/tags/tidyverse/</link>
     </image>
     
     <item>
       <title>Welcome to the Tidyverse: Part 2</title>
-      <link>/talk/colorado-ed-part-2/</link>
+      <link>https://arie.rbind.io/talk/colorado-ed-part-2/</link>
       <pubDate>Fri, 17 Jan 2020 11:00:00 +0000</pubDate>
-      <guid>/talk/colorado-ed-part-2/</guid>
+      <guid>https://arie.rbind.io/talk/colorado-ed-part-2/</guid>
       <description>
 
 
@@ -30,9 +30,9 @@
     
     <item>
       <title>Welcome to the Tidyverse: Part 1</title>
-      <link>/talk/colorado-ed-part-1/</link>
+      <link>https://arie.rbind.io/talk/colorado-ed-part-1/</link>
       <pubDate>Tue, 14 Jan 2020 11:00:00 +0000</pubDate>
-      <guid>/talk/colorado-ed-part-1/</guid>
+      <guid>https://arie.rbind.io/talk/colorado-ed-part-1/</guid>
       <description>
 
 

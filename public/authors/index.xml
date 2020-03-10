@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors | Arie Spirgel</title>
-    <link>/authors/</link>
-      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://arie.rbind.io/authors/</link>
+      <atom:link href="https://arie.rbind.io/authors/index.xml" rel="self" type="application/rss+xml" />
     <description>Authors</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Authors</title>
-      <link>/authors/</link>
+      <link>https://arie.rbind.io/authors/</link>
     </image>
     
     <item>
       <title>arie</title>
-      <link>/authors/arie/</link>
-      <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>/authors/arie/</guid>
+      <link>https://arie.rbind.io/authors/arie/</link>
+      <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://arie.rbind.io/authors/arie/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>/authors/admin/</link>
+      <link>https://arie.rbind.io/authors/admin/</link>
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>/authors/admin/</guid>
+      <guid>https://arie.rbind.io/authors/admin/</guid>
       <description>&lt;p&gt;My background is in cognitive psychology, and for my &lt;a href=&#34;https://link.springer.com/article/10.1007/s10648-014-9290-2&#34;&gt;dissertation research&lt;/a&gt;, I examined how writing helps (or doesn&#39;t help) people learn new information. I have worked in higher education since 2011, and in 2019, I became &lt;a href=&#34;https://education.rstudio.com/trainers/&#34;&gt;certified by RStudio&lt;/a&gt; to teach the &lt;a href=&#34;https://www.tidyverse.org/&#34;&gt;tidyverse&lt;/a&gt;. I am interested in training groups and individuals to learn R and the tidyverse, as well as consulting with organizations to help them get the most out of their data.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Robert Ford</title>
-      <link>/authors/robert-ford/</link>
+      <link>https://arie.rbind.io/authors/robert-ford/</link>
       <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>/authors/robert-ford/</guid>
+      <guid>https://arie.rbind.io/authors/robert-ford/</guid>
       <description></description>
     </item>
     

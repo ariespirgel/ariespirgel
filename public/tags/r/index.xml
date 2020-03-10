@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>r | Arie Spirgel</title>
-    <link>/tags/r/</link>
-      <atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://arie.rbind.io/tags/r/</link>
+      <atom:link href="https://arie.rbind.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
     <description>r</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 14 Feb 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>r</title>
-      <link>/tags/r/</link>
+      <link>https://arie.rbind.io/tags/r/</link>
     </image>
     
     <item>
       <title>Fellow R Instructors: Beware of the Curse of Knowledge!</title>
-      <link>/post/curse-of-knowledge/curse-of-knowledge/</link>
+      <link>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</link>
       <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>/post/curse-of-knowledge/curse-of-knowledge/</guid>
+      <guid>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</guid>
       <description>
 
 
@@ -51,9 +51,9 @@
     
     <item>
       <title>Popularity of Various Data Analytic Tools at AIR Forums</title>
-      <link>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</link>
+      <link>https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</guid>
+      <guid>https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</guid>
       <description>
 
 
@@ -124,7 +124,7 @@ ggplot() +
        title = &amp;quot;Number of Times Software is Mentioned in AIR Forum Program Book&amp;quot;,
        subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
   guides(color = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;What stands out - and confirms what I’ve noticed at AIR Forums - is the rapid rise of Tableau. In 2014 I had never heard of it. In 2018, not knowing at least something about it seems unavoidable. Tableau is known for visual analytics, so it’s not surprising that its rise in populairty has coincided with an increasing interest in data visualization at AIR Forums.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# filter for keyword and count by word and year
 visualize &amp;lt;- all_years %&amp;gt;% 
@@ -147,7 +147,7 @@ ggplot(visualize, aes(x = year, y = prop)) +
        subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
   guides(color = FALSE) +
   scale_y_continuous(label = percent_format())&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Returning to the first chart, perhaps it’s my background in psychology - a field which has historically been dominated by SPSS - but I was surprised how little SPSS is mentioned (although, I wouldn’t be surprised to see it decrease in the future). As for R, it seems to have a presence, but I’m curious to see what happens to its popularity in institutional research over the next few years. Judging by my experience at recent Forums and the development of R tools that decrease the barrier to entry, my prediction is that interest will only grow.&lt;/p&gt;
 &lt;p&gt;I’m not sure if this need be said, but I will: This approach to evaluating software popularity is fraught with limitations. My goal, however, was not to get a precise estimate. Rather, I was interested in one, getting a general sense of broad trends, and two, sharing how just a little of bit R code can do so much!&lt;/p&gt;
 </description>
