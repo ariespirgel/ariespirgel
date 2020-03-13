@@ -1,5 +1,5 @@
 ---
-title: Introduction to R and ggplot2
+title: POSTPONED DUE TO CORONAVIRUS Introduction to R and ggplot2
 draft: false
 authors: [arie]
 event: 'WCC Workshop'
