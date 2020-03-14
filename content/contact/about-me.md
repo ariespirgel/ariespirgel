@@ -52,6 +52,6 @@ I have worked in higher education administration since 2011, and specifically, i
 
 After years of using point-and-click tools to analyze data, I began learning the R programming language. Using R has transformed how I work, improving the quality and efficiency of my workflow. Using R saves me dozens of hours per month and hundreds per year, and lets me do things with data that wouldn't otherwise be possible. It has helped prevent countless errors, and when errors do occur, it makes resolving them more straightforward. 
 
-I am [certified by RStudio](https://education.rstudio.com/trainers/) to teach the tidyverse, and either through training or consulting, I can help organizations benefit from R in the same way that I have. Please get in touch to learn more.
+I am [certified by RStudio](https://education.rstudio.com/trainers/) to teach the tidyverse, and I am available to train groups and individuals to learn R and the tidyverse, either in-person or virtually. Please get in touch to learn more.
 
 
