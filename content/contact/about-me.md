@@ -55,5 +55,3 @@ After years of using point-and-click tools to analyze data, I began learning the
 I am [certified by RStudio](https://education.rstudio.com/trainers/) to teach the tidyverse, and either through training or consulting, I can help organizations benefit from R in the same way that I have. Please get in touch to learn more.
 
 
-<img src="trainer-hex.png" class="block-center" alt="trainer-hex" style="width:30%;height:30%;">
-
