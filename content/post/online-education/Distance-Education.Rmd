@@ -142,7 +142,7 @@ distance %>%
   geom_col() +
   scale_y_continuous(label = percent_format()) +
   theme(legend.position = "top") +
-  labs(x = "Year", y = "% of Students",
+  labs(x = "Fall Term", y = "% of Students",
        title = "Percentage of Students Enrolled in Distance Education",
        fill = NULL,
        subtitle = "Fall 2012 to Fall 2018",
@@ -168,7 +168,7 @@ distance %>%
   facet_wrap(~level) +
   scale_y_continuous(label = percent_format()) +
   theme(legend.position = "top") +
-  labs(x = "Year", y = "% of Students",
+  labs(x = "Fall Term", y = "% of Students",
        title = "Percentage of Students Enrolled in Distance Education",
        fill = NULL,
        subtitle = "Fall 2012 to Fall 2018",
@@ -194,7 +194,7 @@ distance %>%
   facet_wrap(~level) +
   scale_y_continuous(label = percent_format()) +
   theme(legend.position = "top") +
-  labs(x = "Year", y = "% of Students",
+  labs(x = "Fall Term", y = "% of Students",
        title = "Percentage of Florida State U. Students Enrolled in Distance Education",
        fill = NULL,
        subtitle = "Fall 2012 to Fall 2018",

@@ -149,7 +149,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
   geom_col() +
   scale_y_continuous(label = percent_format()) +
   theme(legend.position = &amp;quot;top&amp;quot;) +
-  labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
+  labs(x = &amp;quot;Fall Term&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
        title = &amp;quot;Percentage of Students Enrolled in Distance Education&amp;quot;,
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
@@ -169,7 +169,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
   facet_wrap(~level) +
   scale_y_continuous(label = percent_format()) +
   theme(legend.position = &amp;quot;top&amp;quot;) +
-  labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
+  labs(x = &amp;quot;Fall Term&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
        title = &amp;quot;Percentage of Students Enrolled in Distance Education&amp;quot;,
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
@@ -190,7 +190,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
   facet_wrap(~level) +
   scale_y_continuous(label = percent_format()) +
   theme(legend.position = &amp;quot;top&amp;quot;) +
-  labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
+  labs(x = &amp;quot;Fall Term&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
        title = &amp;quot;Percentage of Florida State U. Students Enrolled in Distance Education&amp;quot;,
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
