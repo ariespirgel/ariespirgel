@@ -627,7 +627,7 @@ theme_set(theme_light())
 
 distance &lt;- read_csv(&quot;raw-data/distance-fall-12-18.csv&quot;)</code></pre>
 <p><img src="/img/data-preview.png" /><!-- --></p>
-<p>The data set contains 6,800 rows and 43 columns, and ignoring the <code>Institution Name</code> column, each of the remaining columns is some version of the following: <code>Students enrolled exclusively in distance education courses (EF2018A_DIST  Undergraduate total)</code>. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for <strong>exclusively distance</strong> <strong>undergraduate students</strong> in the fall term of <strong>2018</strong>. The problem, thus, is that this column actually contains three pieces of information:</p>
+<p>The data set contains 6,800 rows and 43 columns, and ignoring the <code>Institution Name</code> column, each of the remaining columns is some version of the following: <code>Students enrolled exclusively in distance education courses (EF2018A_DIST  Undergraduate total)</code>. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for <strong>exclusively distance</strong> <strong>undergraduate students</strong> in the fall term of <strong>2018</strong>. The problem, thus, is that this column (and all the other ones like it) actually contains three pieces of information:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Level</strong>, which can take on the values <em>undergraduate</em> or <em>graduate</em>.</li>
 <li><strong>Modality</strong>, which can take on the values <em>exlusively distance</em>, <em>some distance</em>, or <em>no distance</em>.</li>
@@ -706,7 +706,7 @@ distance</code></pre>
 <pre class="r"><code>distance &lt;- distance %&gt;% 
   mutate(year = parse_number(variable))</code></pre>
 <p>The tidying is now done, and so although this next step isn’t necessary, renaming and reordering the variables and factor levels will make the data easier to work with.</p>
-<pre class="r"><code># rename columns, reorder facto levels (e.g., Undergraduate before Graduate)
+<pre class="r"><code># rename columns, reorder factor levels (e.g., Undergraduate before Graduate)
 distance &lt;- distance %&gt;%
   select(institution_name = `Institution Name`, level,
          modality, year, headcount) %&gt;% 
@@ -732,7 +732,7 @@ distance</code></pre>
 </div>
 <div id="visualizing-the-data" class="section level2">
 <h2>Visualizing the Data</h2>
-<p>With the data in a tidy format you can now do…pretty much whatever you want with it! In these examples, I chose to visualize it, which demonstrates how - thanks to tidy data(!) - you can recycle the same code with slight alterations to make different plots. First, here are overall trends in distance education.</p>
+<p>With the data in a tidy format you can now do…pretty much whatever you want with it! In the examples below, I chose to visualize it, which demonstrates how - thanks to tidy data(!) - you can recycle the same code with slight alterations to make different plots. First, here are overall trends in distance education.</p>
 <pre class="r"><code>distance %&gt;% 
   mutate(headcount = replace_na(headcount, 0)) %&gt;% 
   group_by(year, modality) %&gt;% 
@@ -751,7 +751,7 @@ distance</code></pre>
        subtitle = &quot;Fall 2012 to Fall 2018&quot;,
        caption = &quot;Source: IPEDS Data Center&quot;)</code></pre>
 <p><img src="/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>Next, I change the grouping variables to repeat the same chart except here, I partition the data by level.</p>
+<p>Next, I change the grouping variables to repeat the same chart except here I partition the data by level.</p>
 <pre class="r"><code>distance %&gt;% 
   mutate(headcount = replace_na(headcount, 0)) %&gt;% 
   group_by(year, modality, level) %&gt;% 

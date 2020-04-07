@@ -47,7 +47,7 @@ knitr::include_graphics("/img/data-preview.png")
 ```
 
 
-The data set contains 6,800 rows and 43 columns, and ignoring the `Institution Name` column, each of the remaining columns is some version of the following: ``r names(select(distance, 2))``. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for **exclusively distance** **undergraduate students** in the fall term of **2018**. The problem, thus, is that this column actually contains three pieces of information:
+The data set contains 6,800 rows and 43 columns, and ignoring the `Institution Name` column, each of the remaining columns is some version of the following: ``r names(select(distance, 2))``. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for **exclusively distance** **undergraduate students** in the fall term of **2018**. The problem, thus, is that this column (and all the other ones like it) actually contains three pieces of information:
   
   1. **Level**, which can take on the values *undergraduate* or *graduate*.
   2. **Modality**, which can take on the values *exlusively distance*, *some distance*, or *no distance*.
@@ -111,7 +111,7 @@ The tidying is now done, and so although this next step isn't necessary, renamin
 
 ```{r}
 
-# rename columns, reorder facto levels (e.g., Undergraduate before Graduate)
+# rename columns, reorder factor levels (e.g., Undergraduate before Graduate)
 distance <- distance %>%
   select(institution_name = `Institution Name`, level,
          modality, year, headcount) %>% 
@@ -125,7 +125,7 @@ Behold, tidy data!
 
 ## Visualizing the Data
 
-With the data in a tidy format you can now do...pretty much whatever you want with it! In these examples, I chose to visualize it, which demonstrates how - thanks to tidy data(!) - you can recycle the same code with slight alterations to make different plots.
+With the data in a tidy format you can now do...pretty much whatever you want with it! In the examples below, I chose to visualize it, which demonstrates how - thanks to tidy data(!) - you can recycle the same code with slight alterations to make different plots.
 First, here are overall trends in distance education.
 
 ```{r}
@@ -151,7 +151,7 @@ distance %>%
 
 ```
 
-Next, I change the grouping variables to repeat the same chart except here, I partition the data by level.
+Next, I change the grouping variables to repeat the same chart except here I partition the data by level.
 
 ```{r}
 
