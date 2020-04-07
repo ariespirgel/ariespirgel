@@ -27,7 +27,7 @@ If you've downloaded enough data from the [IPEDS Data Center](https://nces.ed.go
 
 ## Reading in the Data
 
-I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center. In this first section, I read in the data, and display a subset of what the full data set looks like.
+I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every college and university in the IPEDS Data Center. In this first section, I read in the data, and display a subset of what the full data set looks like.
 
 ```{r}
 

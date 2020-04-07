@@ -23,7 +23,7 @@
 &lt;p&gt;If you’ve downloaded enough data from the &lt;a href=&#34;https://nces.ed.gov/ipeds/use-the-data&#34;&gt;IPEDS Data Center&lt;/a&gt; using the “Compare Institutions” interface, you’ve probably realized that, depending on what you’re downloading, the data provided is rarely in a format ready for analysis. Here, via a specific example, I describe what makes the IPEDS data format impractical, and how to use R to resolve that.&lt;/p&gt;
 &lt;div id=&#34;reading-in-the-data&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Reading in the Data&lt;/h2&gt;
-&lt;p&gt;I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center. In this first section, I read in the data, and display a subset of what the full data set looks like.&lt;/p&gt;
+&lt;p&gt;I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every college and university in the IPEDS Data Center. In this first section, I read in the data, and display a subset of what the full data set looks like.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
 library(scales)
 
