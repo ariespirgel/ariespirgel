@@ -1,0 +1,206 @@
+---
+aliases: [distance-ed]
+title: "Tidying IPEDS Data in R"
+authors: [arie]
+# summary: tidying ipeds data in r
+date: '2020-04-07'
+categories:
+  - education
+tags:
+  - r
+  - ipeds
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+```
+
+If you've downloaded enough data from the [IPEDS Data Center](https://nces.ed.gov/ipeds/use-the-data) using the "Compare Institutions" interface, you've probably realized that, depending on what you're downloading, the data provided is rarely in a format ready for analysis. Here, via a specific example, I describe what makes the IPEDS data format impractical, and how to use R to resolve that.
+
+## Reading in the Data
+
+I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center. In this first section, I read in the data, and display a subset of what the full data set looks like.
+
+```{r}
+
+library(tidyverse)
+library(scales)
+
+theme_set(theme_light())
+
+distance <- read_csv("raw-data/distance-fall-12-18.csv")
+
+
+
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics("/img/data-preview.png")
+```
+
+
+The data set contains 6,800 rows and 43 columns, and ignoring the `Institution Name` column, each of the remaining columns is some version of the following: ``r names(select(distance, 2))``. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for **exclusively distance** **undergraduate students** in the fall term of **2018**. The problem, thus, is that this column actually contains three pieces of information:
+  
+  1. **Level**, which can take on the values *undergraduate* or *graduate*.
+  2. **Modality**, which can take on the values *exlusively distance*, *some distance*, or *no distance*.
+  3. **Year**, which can take on any integer value from *2012* to *2018*. 
+
+This untidy format is exactly what makes IPEDS data tricky to work with. In contrast, tidy  data - which means each variable is in its own column, each observation is in its own row, and each value is in its own cell^[https://r4ds.had.co.nz/tidy-data.html] - is advantageous not just for working with data in R, but other software as well (e.g., pivot tables in Excel).
+
+## Tidying the Data
+
+The first step to tidying this data is to pivot it so that all of the column names that contain the type of headcount are in one column, and the actual headcounts are in a different column. To do that, I use the `gather()`^[`pivot_longer()` is an updated version of `gather()`.] function. I first provide `gather()` with the names of the two new variables that are being created - I call them `variable` and `headcount`, but they can be called anything you want - and then which columns I want pivoted from wide to long; here, I pivot everything from the 2nd column to the last column of the data set.
+
+```{r}
+
+distance <- distance %>% 
+  gather(variable, headcount, 2:ncol(.))
+
+distance
+
+```
+
+As you can see above, the data set now only has three columns, not 43. Same data, different layout. Looks better already, right?!?
+
+We're not done though. Remember, each row of the `variable` column contains three pieces of information: level, modality, and year. So for the next three steps I split that column apart so each of these variables are in their own column. First, I'll make a new column for level.
+
+There are countless ways of reaching the same endpoint in R, and in this instance, I use `str_detect()` to tell R to put "Undergraduate" in the `level` column if it detects the string "Undergraduate" in the `variable` column, and then perform the analogous task for "Graduate".
+
+```{r}
+
+distance <- distance %>% 
+  mutate(level = case_when(
+           str_detect(variable, "Undergraduate") ~ "Undergraduate",
+           str_detect(variable, "Graduate") ~ "Graduate"))
+
+distance
+```
+
+See the new column on the end with `level`? 
+
+Next I do the same thing for modality: I tell R to look for specific strings, and make a new column based on those strings.
+
+```{r}
+
+distance <- distance %>% 
+         mutate(modality = case_when(
+           str_detect(variable, "not enrolled in any") ~ "No Distance",
+           str_detect(variable, "in some") ~ "Some Distance",
+           str_detect(variable, "exclusively") ~ "Exclusively Distance"))
+
+distance
+
+```
+
+The last step of tidying is to get `year` in its own column. I *could* tell R to make a new variable and put "2012" if it detects "2012", "2013" if it detects "2013", and so-on, but there is a much simpler way: the `parse_number()` function, which drops any non-numeric characters from a string.
+
+```{r}
+distance <- distance %>% 
+  mutate(year = parse_number(variable))
+```
+
+The tidying is now done, and so although this next step isn't necessary, renaming and reordering the variables and factor levels will make the data easier to work with.
+
+```{r}
+
+# rename columns, reorder facto levels (e.g., Undergraduate before Graduate)
+distance <- distance %>%
+  select(institution_name = `Institution Name`, level,
+         modality, year, headcount) %>% 
+  mutate(level = fct_relevel(level, "Undergraduate"),
+         modality = fct_relevel(modality, "Some Distance")) 
+
+distance
+```
+
+Behold, tidy data!
+
+## Visualizing the Data
+
+With the data in a tidy format you can now do...pretty much whatever you want with it! In these examples, I chose to visualize it, which demonstrates how - thanks to tidy data(!) - you can recycle the same code with slight alterations to make different plots.
+First, here are overall trends in distance education.
+
+```{r}
+
+distance %>% 
+  mutate(headcount = replace_na(headcount, 0)) %>% 
+  group_by(year, modality) %>% 
+  summarise(total = sum(headcount)) %>% 
+  group_by(year) %>% 
+  mutate(prop = total / sum(total)) %>% 
+  ungroup() %>% 
+  filter(modality != "No Distance") %>% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = "top") +
+  labs(x = "Year", y = "% of Students",
+       title = "Percentage of Students Enrolled in Distance Education",
+       fill = NULL,
+       subtitle = "Fall 2012 to Fall 2018",
+       caption = "Source: IPEDS Data Center")
+ 
+
+```
+
+Next, I change the grouping variables to repeat the same chart except here, I partition the data by level.
+
+```{r}
+
+distance %>% 
+  mutate(headcount = replace_na(headcount, 0)) %>% 
+  group_by(year, modality, level) %>% 
+  summarise(total = sum(headcount)) %>% 
+  group_by(year, level) %>% 
+  mutate(prop = total / sum(total)) %>% 
+  ungroup() %>% 
+  filter(modality != "No Distance") %>% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  facet_wrap(~level) +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = "top") +
+  labs(x = "Year", y = "% of Students",
+       title = "Percentage of Students Enrolled in Distance Education",
+       fill = NULL,
+       subtitle = "Fall 2012 to Fall 2018",
+       caption = "Source: IPEDS Data Center")
+
+```
+
+And once more, limiting the results to a single institution: Florida State University.
+
+```{r}
+
+distance %>% 
+  filter(institution_name == "Florida State University") %>% 
+  mutate(headcount = replace_na(headcount, 0)) %>% 
+  group_by(year, modality, level) %>% 
+  summarise(total = sum(headcount)) %>% 
+  group_by(year, level) %>% 
+  mutate(prop = total / sum(total)) %>% 
+  ungroup() %>% 
+  filter(modality != "No Distance") %>% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  facet_wrap(~level) +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = "top") +
+  labs(x = "Year", y = "% of Students",
+       title = "Percentage of Florida State U. Students Enrolled in Distance Education",
+       fill = NULL,
+       subtitle = "Fall 2012 to Fall 2018",
+       caption = "Source: IPEDS Data Center")
+```
+
+## Conclusion
+
+Among its many benefits, tidy data lets you devote more attention to *what* you want to do rather than *how* you want to do it. Yes, tidying data takes longer at the start, but in the long-run, it will save you time. In that way, it's just like learning R!

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent &amp; Upcoming Talks / Workshops | Arie Spirgel</title>
+    <link>/my-talk/</link>
+      <atom:link href="/my-talk/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent &amp; Upcoming Talks / Workshops</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Recent &amp; Upcoming Talks / Workshops</title>
+      <link>/my-talk/</link>
+    </image>
+    
+    <item>
+      <title>POSTPONED DUE TO CORONAVIRUS Introduction to R and ggplot2</title>
+      <link>/my-talk/2020-wcc-ggplot2/</link>
+      <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
+      <guid>/my-talk/2020-wcc-ggplot2/</guid>
+      <description>
+
+
+&lt;p&gt;Learn how to visualize data using R and ggplot2!&lt;/p&gt;
+&lt;p&gt;Whether you’re interested in data science, business, or working on a dissertation or research project, knowing how to visualize data is a vital skill. In this free, 2.5 hour workshop, you’ll be introduced to the R programming language and learn to visualize data using ggplot2. In the last 30 minutes of the workshop, Janine Morris from NSU’s Writing and Communication Center will talk about the features of effective data visualizations.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Welcome to the Tidyverse: Part 2</title>
+      <link>/my-talk/colorado-ed-part-2/</link>
+      <pubDate>Fri, 17 Jan 2020 11:00:00 +0000</pubDate>
+      <guid>/my-talk/colorado-ed-part-2/</guid>
+      <description>
+
+
+&lt;p&gt;Part 2 of “&lt;a href=&#34;https://github.com/rstudio-education/welcome-to-the-tidyverse&#34;&gt;Welcome to the Tidyverse&lt;/a&gt;”, which covers the following topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modeling with &lt;code&gt;modelr&lt;/code&gt; and &lt;code&gt;broom&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Reporting with &lt;code&gt;rmarkdown&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Welcome to the Tidyverse: Part 1</title>
+      <link>/my-talk/colorado-ed-part-1/</link>
+      <pubDate>Tue, 14 Jan 2020 11:00:00 +0000</pubDate>
+      <guid>/my-talk/colorado-ed-part-1/</guid>
+      <description>
+
+
+&lt;p&gt;Part 1 of “&lt;a href=&#34;https://github.com/rstudio-education/welcome-to-the-tidyverse&#34;&gt;Welcome to the Tidyverse&lt;/a&gt;”, which covers the following topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Introduction to R.&lt;/li&gt;
+&lt;li&gt;Visualization with &lt;code&gt;ggplot2&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Tranformation with &lt;code&gt;dplyr&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Achieving Reproducibility in IR With R</title>
+      <link>/my-talk/2018-air/</link>
+      <pubDate>Thu, 31 May 2018 10:45:00 +0000</pubDate>
+      <guid>/my-talk/2018-air/</guid>
+      <description>
+
+
+&lt;p&gt;Although the concept of reproducibility is typically reserved for the sciences, the presenter will argue that by adopting its principles, IR offices would see immeasurable benefits in efficiency, accuracy, and transparency. Reproducible workflows preserve every decision made about data analyses (e.g., removing a student who withdrew) and allow users to quickly and accurately respond to requests for modifications (e.g., group tables by college instead of major). One barrier to reproducibility, however, is that it requires coding. Using examples from the free R programming language, the presenter will show that not only is R an ideal software for reproducibility, but that many of its modern features are designed to get novices quickly doing powerful things. The primary goals of the presentation are for audience members to leave convinced that they can learn R, and that if they do, they will become better at their jobs.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Data Visualization Showcase</title>
+      <link>/my-talk/2017-air/</link>
+      <pubDate>Tue, 30 May 2017 15:30:00 +0000</pubDate>
+      <guid>/my-talk/2017-air/</guid>
+      <description>
+
+
+&lt;p&gt;A multitude of tools and promising practices exist for visualizing data for informing and decision making. This session will feature a showcase of tools and techniques for utilizing data to inform and present. Presenters were all provided the same dataset and guiding questions and each used a different tool (Excel, R, Tableau, and SAS Visual Analytics) to create a visual display of the data. Each will present their work with the session moderator highlighting best practice in visualization throughout the presentation.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating Data Visualizations Using R: An Introduction for Non-Programmers</title>
+      <link>/my-talk/2016-air/</link>
+      <pubDate>Fri, 01 Jul 2016 15:00:00 +0000</pubDate>
+      <guid>/my-talk/2016-air/</guid>
+      <description>
+
+
+&lt;p&gt;Creating graphs is a central part of the IR workload, but it can be frustrating. If you make graphs using Excel, you might spend hours mindlessly pointing-and-clicking, which then has to be repeated if updates to the graphs are required. The presenter will begin by arguing in favor of two points: First, IR professionals would be better off using R (a free and open-source programming language), and second, even those without any programming experience can learn R well enough to reap its majesty. A demonstration will be given on how to create and modify a scatter plot using ggplot2, an R package for building highly customizable visualizations. The primary goal of the presentation is for audience members to leave feeling empowered to learn to use R to improve the quantity, quality, and reproducibility of their work&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -149,7 +149,7 @@ The logo - which I added using the cowplot package - is functionally unnecessary
 
 
 ggdraw() +
-  draw_image("C:/Users/aspirgel/Desktop/ariespirgel/static/img/us-map.png",
+  draw_image("us-map.png",
              y = .85,
              x = 0.1,
              width = .15,

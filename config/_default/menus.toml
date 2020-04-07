@@ -11,7 +11,7 @@
 
 [[main]]
   name = "Talks / Workshops"
-  url = "/talks"
+  url = "/list"
   weight = 20
   
 [[main]]

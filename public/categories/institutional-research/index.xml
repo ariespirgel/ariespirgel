@@ -39,13 +39,13 @@ ipeds &amp;lt;- read_rds(&amp;quot;processed-data/ipeds-sfr.rds&amp;quot;)
 
 head(ipeds, 5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
-##   name            state   undergrad_appli~ retention_rate student_faculty_~
-##   &amp;lt;chr&amp;gt;           &amp;lt;chr&amp;gt;              &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt;
-## 1 Educational Te~ Puerto~               NA             11                21
-## 2 A T Still Univ~ Missou~               NA             NA                NA
-## 3 Aaniiih Nakoda~ Montana               NA             34                10
-## 4 ABC Adult Scho~ Califo~               NA             NA                 4
-## 5 ABC Beauty Aca~ Texas                 NA             25                10&lt;/code&gt;&lt;/pre&gt;
+##   name                state   undergrad_applic… retention_rate student_faculty_…
+##   &amp;lt;chr&amp;gt;               &amp;lt;chr&amp;gt;               &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt;
+## 1 Educational Techni… Puerto…                NA             11                21
+## 2 A T Still Universi… Missou…                NA             NA                NA
+## 3 Aaniiih Nakoda Col… Montana                NA             34                10
+## 4 ABC Adult School    Califo…                NA             NA                 4
+## 5 ABC Beauty Academy  Texas                  NA             25                10&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In this contrived example, to build a linear model with retention rate as the outcome and student-faculty ratio and number of undergraduate applications as the predictors, I took the &lt;code&gt;ipeds&lt;/code&gt; data frame, piped it (&lt;code&gt;%&amp;gt;%&lt;/code&gt;) to the &lt;code&gt;lm&lt;/code&gt; function, and then cleaned up the results with the &lt;code&gt;tidy()&lt;/code&gt; function from the broom package. This gives us the model results:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds %&amp;gt;% 
   lm(retention_rate ~ student_faculty_ratio + undergrad_applicants, data = .) %&amp;gt;% 
@@ -86,13 +86,13 @@ head(ipeds, 5)&lt;/code&gt;&lt;/pre&gt;
 head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 8
 ## # Groups:   state [2]
-##   state   data       model term       estimate std.error statistic  p.value
-##   &amp;lt;chr&amp;gt;   &amp;lt;list&amp;gt;     &amp;lt;lis&amp;gt; &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
-## 1 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  (Intercep~ 87.5       5.80        15.1  2.48e-18
-## 2 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  student_f~ -0.869     0.315       -2.76 8.68e- 3
-## 3 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  undergrad~  0.00208   0.00140      1.49 1.45e- 1
-## 4 Missou~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  (Intercep~ 84.5       5.46        15.5  1.91e-22
-## 5 Missou~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  student_f~ -1.07      0.458       -2.33 2.30e- 2&lt;/code&gt;&lt;/pre&gt;
+##   state            data model term         estimate std.error statistic  p.value
+##   &amp;lt;chr&amp;gt;    &amp;lt;list&amp;lt;df[,5&amp;gt; &amp;lt;lis&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1 Puerto …    [146 × 5] &amp;lt;lm&amp;gt;  (Intercept)  87.5       5.80        15.1  2.48e-18
+## 2 Puerto …    [146 × 5] &amp;lt;lm&amp;gt;  student_fac… -0.869     0.315       -2.76 8.68e- 3
+## 3 Puerto …    [146 × 5] &amp;lt;lm&amp;gt;  undergrad_a…  0.00208   0.00140      1.49 1.45e- 1
+## 4 Missouri    [171 × 5] &amp;lt;lm&amp;gt;  (Intercept)  84.5       5.46        15.5  1.91e-22
+## 5 Missouri    [171 × 5] &amp;lt;lm&amp;gt;  student_fac… -1.07      0.458       -2.33 2.30e- 2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now, with a separate model for each state all in a data frame, I can treat the model output like I would any other data. For example, here, I visualize the model results for each state:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds_model %&amp;gt;% 
   filter(term != &amp;quot;(Intercept)&amp;quot;) %&amp;gt;% 

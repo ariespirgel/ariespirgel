@@ -1,0 +1,10 @@
+add <- function(x, y) {
+x + y
+}
+add(1,2)
+ad::d <- function(x, y) {
+x + y
+}
+ad::d(1,2)
+?read_csv
+read_csv("arie.csv")

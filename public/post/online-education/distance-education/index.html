@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.7.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Arie Spirgel">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="If you’ve downloaded enough data from the IPEDS Data Center using the “Compare Institutions” interface, you’ve probably realized that, depending on what you’re downloading, the data provided is rarely in a format ready for analysis. Here, via a specific example, I describe what makes the IPEDS data format impractical, and how to use R to resolve that.
+Reading in the Data I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/online-education/distance-education/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#41B6E6">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-159718317-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-159718317-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/online-education/distance-education/">
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@ariespirgel">
+  <meta property="twitter:creator" content="@ariespirgel">
+  
+  <meta property="og:site_name" content="Arie Spirgel">
+  <meta property="og:url" content="/post/online-education/distance-education/">
+  <meta property="og:title" content="Tidying IPEDS Data in R | Arie Spirgel">
+  <meta property="og:description" content="If you’ve downloaded enough data from the IPEDS Data Center using the “Compare Institutions” interface, you’ve probably realized that, depending on what you’re downloading, the data provided is rarely in a format ready for analysis. Here, via a specific example, I describe what makes the IPEDS data format impractical, and how to use R to resolve that.
+Reading in the Data I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-04-07T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-04-07T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/online-education/distance-education/"
+  },
+  "headline": "Tidying IPEDS Data in R",
+  
+  "datePublished": "2020-04-07T00:00:00Z",
+  "dateModified": "2020-04-07T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "arie"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Arie Spirgel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "img//"
+    }
+  },
+  "description": "If you’ve downloaded enough data from the IPEDS Data Center using the “Compare Institutions” interface, you’ve probably realized that, depending on what you’re downloading, the data provided is rarely in a format ready for analysis. Here, via a specific example, I describe what makes the IPEDS data format impractical, and how to use R to resolve that.\nReading in the Data I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Tidying IPEDS Data in R | Arie Spirgel</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Arie Spirgel</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Arie Spirgel</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/list"><span>Talks / Workshops</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/contact"><span>About / Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Tidying IPEDS Data in R</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/arie/">arie</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Apr 7, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/education/">education</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>If you’ve downloaded enough data from the <a href="https://nces.ed.gov/ipeds/use-the-data">IPEDS Data Center</a> using the “Compare Institutions” interface, you’ve probably realized that, depending on what you’re downloading, the data provided is rarely in a format ready for analysis. Here, via a specific example, I describe what makes the IPEDS data format impractical, and how to use R to resolve that.</p>
+<div id="reading-in-the-data" class="section level2">
+<h2>Reading in the Data</h2>
+<p>I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center. In this first section, I read in the data, and display a subset of what the full data set looks like.</p>
+<pre class="r"><code>library(tidyverse)
+library(scales)
+
+theme_set(theme_light())
+
+distance &lt;- read_csv(&quot;raw-data/distance-fall-12-18.csv&quot;)</code></pre>
+<p><img src="/img/data-preview.png" /><!-- --></p>
+<p>The data set contains 6,800 rows and 43 columns, and ignoring the <code>Institution Name</code> column, each of the remaining columns is some version of the following: <code>Students enrolled exclusively in distance education courses (EF2018A_DIST  Undergraduate total)</code>. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for <strong>exclusively distance</strong> <strong>undergraduate students</strong> in the fall term of <strong>2018</strong>. The problem, thus, is that this column actually contains three pieces of information:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Level</strong>, which can take on the values <em>undergraduate</em> or <em>graduate</em>.</li>
+<li><strong>Modality</strong>, which can take on the values <em>exlusively distance</em>, <em>some distance</em>, or <em>no distance</em>.</li>
+<li><strong>Year</strong>, which can take on any integer value from <em>2012</em> to <em>2018</em>.</li>
+</ol>
+<p>This untidy format is exactly what makes IPEDS data tricky to work with. In contrast, tidy data - which means each variable is in its own column, each observation is in its own row, and each value is in its own cell<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> - is advantageous not just for working with data in R, but other software as well (e.g., pivot tables in Excel).</p>
+</div>
+<div id="tidying-the-data" class="section level2">
+<h2>Tidying the Data</h2>
+<p>The first step to tidying this data is to pivot it so that all of the column names that contain the type of headcount are in one column, and the actual headcounts are in a different column. To do that, I use the <code>gather()</code><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> function. I first provide <code>gather()</code> with the names of the two new variables that are being created - I call them <code>variable</code> and <code>headcount</code>, but they can be called anything you want - and then which columns I want pivoted from wide to long; here, I pivot everything from the 2nd column to the last column of the data set.</p>
+<pre class="r"><code>distance &lt;- distance %&gt;% 
+  gather(variable, headcount, 2:ncol(.))
+
+distance</code></pre>
+<pre><code>## # A tibble: 285,600 x 3
+##    `Institution Name`             variable                             headcount
+##    &lt;chr&gt;                          &lt;chr&gt;                                    &lt;dbl&gt;
+##  1 Educational Technical College… Students enrolled exclusively in di…        NA
+##  2 A T Still University of Healt… Students enrolled exclusively in di…        NA
+##  3 Aaniiih Nakoda College         Students enrolled exclusively in di…        NA
+##  4 ABC Adult School               Students enrolled exclusively in di…        NA
+##  5 ABC Beauty Academy             Students enrolled exclusively in di…        NA
+##  6 ABCO Technology                Students enrolled exclusively in di…        NA
+##  7 Abcott Institute               Students enrolled exclusively in di…        NA
+##  8 Abdill Career College Inc      Students enrolled exclusively in di…        NA
+##  9 Abilene Christian University   Students enrolled exclusively in di…        32
+## 10 Abraham Baldwin Agricultural … Students enrolled exclusively in di…       377
+## # … with 285,590 more rows</code></pre>
+<p>As you can see above, the data set now only has three columns, not 43. Same data, different layout. Looks better already, right?!?</p>
+<p>We’re not done though. Remember, each row of the <code>variable</code> column contains three pieces of information: level, modality, and year. So for the next three steps I split that column apart so each of these variables are in their own column. First, I’ll make a new column for level.</p>
+<p>There are countless ways of reaching the same endpoint in R, and in this instance, I use <code>str_detect()</code> to tell R to put “Undergraduate” in the <code>level</code> column if it detects the string “Undergraduate” in the <code>variable</code> column, and then perform the analogous task for “Graduate”.</p>
+<pre class="r"><code>distance &lt;- distance %&gt;% 
+  mutate(level = case_when(
+           str_detect(variable, &quot;Undergraduate&quot;) ~ &quot;Undergraduate&quot;,
+           str_detect(variable, &quot;Graduate&quot;) ~ &quot;Graduate&quot;))
+
+distance</code></pre>
+<pre><code>## # A tibble: 285,600 x 4
+##    `Institution Name`          variable                        headcount level  
+##    &lt;chr&gt;                       &lt;chr&gt;                               &lt;dbl&gt; &lt;chr&gt;  
+##  1 Educational Technical Coll… Students enrolled exclusively …        NA Underg…
+##  2 A T Still University of He… Students enrolled exclusively …        NA Underg…
+##  3 Aaniiih Nakoda College      Students enrolled exclusively …        NA Underg…
+##  4 ABC Adult School            Students enrolled exclusively …        NA Underg…
+##  5 ABC Beauty Academy          Students enrolled exclusively …        NA Underg…
+##  6 ABCO Technology             Students enrolled exclusively …        NA Underg…
+##  7 Abcott Institute            Students enrolled exclusively …        NA Underg…
+##  8 Abdill Career College Inc   Students enrolled exclusively …        NA Underg…
+##  9 Abilene Christian Universi… Students enrolled exclusively …        32 Underg…
+## 10 Abraham Baldwin Agricultur… Students enrolled exclusively …       377 Underg…
+## # … with 285,590 more rows</code></pre>
+<p>See the new column on the end with <code>level</code>?</p>
+<p>Next I do the same thing for modality: I tell R to look for specific strings, and make a new column based on those strings.</p>
+<pre class="r"><code>distance &lt;- distance %&gt;% 
+         mutate(modality = case_when(
+           str_detect(variable, &quot;not enrolled in any&quot;) ~ &quot;No Distance&quot;,
+           str_detect(variable, &quot;in some&quot;) ~ &quot;Some Distance&quot;,
+           str_detect(variable, &quot;exclusively&quot;) ~ &quot;Exclusively Distance&quot;))
+
+distance</code></pre>
+<pre><code>## # A tibble: 285,600 x 5
+##    `Institution Name`       variable                 headcount level  modality  
+##    &lt;chr&gt;                    &lt;chr&gt;                        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
+##  1 Educational Technical C… Students enrolled exclu…        NA Under… Exclusive…
+##  2 A T Still University of… Students enrolled exclu…        NA Under… Exclusive…
+##  3 Aaniiih Nakoda College   Students enrolled exclu…        NA Under… Exclusive…
+##  4 ABC Adult School         Students enrolled exclu…        NA Under… Exclusive…
+##  5 ABC Beauty Academy       Students enrolled exclu…        NA Under… Exclusive…
+##  6 ABCO Technology          Students enrolled exclu…        NA Under… Exclusive…
+##  7 Abcott Institute         Students enrolled exclu…        NA Under… Exclusive…
+##  8 Abdill Career College I… Students enrolled exclu…        NA Under… Exclusive…
+##  9 Abilene Christian Unive… Students enrolled exclu…        32 Under… Exclusive…
+## 10 Abraham Baldwin Agricul… Students enrolled exclu…       377 Under… Exclusive…
+## # … with 285,590 more rows</code></pre>
+<p>The last step of tidying is to get <code>year</code> in its own column. I <em>could</em> tell R to make a new variable and put “2012” if it detects “2012”, “2013” if it detects “2013”, and so-on, but there is a much simpler way: the <code>parse_number()</code> function, which drops any non-numeric characters from a string.</p>
+<pre class="r"><code>distance &lt;- distance %&gt;% 
+  mutate(year = parse_number(variable))</code></pre>
+<p>The tidying is now done, and so although this next step isn’t necessary, renaming and reordering the variables and factor levels will make the data easier to work with.</p>
+<pre class="r"><code># rename columns, reorder facto levels (e.g., Undergraduate before Graduate)
+distance &lt;- distance %&gt;%
+  select(institution_name = `Institution Name`, level,
+         modality, year, headcount) %&gt;% 
+  mutate(level = fct_relevel(level, &quot;Undergraduate&quot;),
+         modality = fct_relevel(modality, &quot;Some Distance&quot;)) 
+
+distance</code></pre>
+<pre><code>## # A tibble: 285,600 x 5
+##    institution_name                    level      modality        year headcount
+##    &lt;chr&gt;                               &lt;fct&gt;      &lt;fct&gt;          &lt;dbl&gt;     &lt;dbl&gt;
+##  1 Educational Technical College-Reci… Undergrad… Exclusively D…  2018        NA
+##  2 A T Still University of Health Sci… Undergrad… Exclusively D…  2018        NA
+##  3 Aaniiih Nakoda College              Undergrad… Exclusively D…  2018        NA
+##  4 ABC Adult School                    Undergrad… Exclusively D…  2018        NA
+##  5 ABC Beauty Academy                  Undergrad… Exclusively D…  2018        NA
+##  6 ABCO Technology                     Undergrad… Exclusively D…  2018        NA
+##  7 Abcott Institute                    Undergrad… Exclusively D…  2018        NA
+##  8 Abdill Career College Inc           Undergrad… Exclusively D…  2018        NA
+##  9 Abilene Christian University        Undergrad… Exclusively D…  2018        32
+## 10 Abraham Baldwin Agricultural Colle… Undergrad… Exclusively D…  2018       377
+## # … with 285,590 more rows</code></pre>
+<p>Behold, tidy data!</p>
+</div>
+<div id="visualizing-the-data" class="section level2">
+<h2>Visualizing the Data</h2>
+<p>With the data in a tidy format you can now do…pretty much whatever you want with it! In these examples, I chose to visualize it, which demonstrates how - thanks to tidy data(!) - you can recycle the same code with slight alterations to make different plots. First, here are overall trends in distance education.</p>
+<pre class="r"><code>distance %&gt;% 
+  mutate(headcount = replace_na(headcount, 0)) %&gt;% 
+  group_by(year, modality) %&gt;% 
+  summarise(total = sum(headcount)) %&gt;% 
+  group_by(year) %&gt;% 
+  mutate(prop = total / sum(total)) %&gt;% 
+  ungroup() %&gt;% 
+  filter(modality != &quot;No Distance&quot;) %&gt;% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = &quot;top&quot;) +
+  labs(x = &quot;Year&quot;, y = &quot;% of Students&quot;,
+       title = &quot;Percentage of Students Enrolled in Distance Education&quot;,
+       fill = NULL,
+       subtitle = &quot;Fall 2012 to Fall 2018&quot;,
+       caption = &quot;Source: IPEDS Data Center&quot;)</code></pre>
+<p><img src="/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Next, I change the grouping variables to repeat the same chart except here, I partition the data by level.</p>
+<pre class="r"><code>distance %&gt;% 
+  mutate(headcount = replace_na(headcount, 0)) %&gt;% 
+  group_by(year, modality, level) %&gt;% 
+  summarise(total = sum(headcount)) %&gt;% 
+  group_by(year, level) %&gt;% 
+  mutate(prop = total / sum(total)) %&gt;% 
+  ungroup() %&gt;% 
+  filter(modality != &quot;No Distance&quot;) %&gt;% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  facet_wrap(~level) +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = &quot;top&quot;) +
+  labs(x = &quot;Year&quot;, y = &quot;% of Students&quot;,
+       title = &quot;Percentage of Students Enrolled in Distance Education&quot;,
+       fill = NULL,
+       subtitle = &quot;Fall 2012 to Fall 2018&quot;,
+       caption = &quot;Source: IPEDS Data Center&quot;)</code></pre>
+<p><img src="/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>And once more, limiting the results to a single institution: Florida State University.</p>
+<pre class="r"><code>distance %&gt;% 
+  filter(institution_name == &quot;Florida State University&quot;) %&gt;% 
+  mutate(headcount = replace_na(headcount, 0)) %&gt;% 
+  group_by(year, modality, level) %&gt;% 
+  summarise(total = sum(headcount)) %&gt;% 
+  group_by(year, level) %&gt;% 
+  mutate(prop = total / sum(total)) %&gt;% 
+  ungroup() %&gt;% 
+  filter(modality != &quot;No Distance&quot;) %&gt;% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  facet_wrap(~level) +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = &quot;top&quot;) +
+  labs(x = &quot;Year&quot;, y = &quot;% of Students&quot;,
+       title = &quot;Percentage of Florida State U. Students Enrolled in Distance Education&quot;,
+       fill = NULL,
+       subtitle = &quot;Fall 2012 to Fall 2018&quot;,
+       caption = &quot;Source: IPEDS Data Center&quot;)</code></pre>
+<p><img src="/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>Among its many benefits, tidy data lets you devote more attention to <em>what</em> you want to do rather than <em>how</em> you want to do it. Yes, tidying data takes longer at the start, but in the long-run, it will save you time. In that way, it’s just like learning R!</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://r4ds.had.co.nz/tidy-data.html" class="uri">https://r4ds.had.co.nz/tidy-data.html</a><a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p><code>pivot_longer()</code> is an updated version of <code>gather()</code>.<a href="#fnref2">↩</a></p></li>
+</ol>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/r/">r</a>
+  
+  <a class="badge badge-light" href="/tags/ipeds/">ipeds</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/online-education/distance-education/&amp;text=Tidying%20IPEDS%20Data%20in%20R" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/online-education/distance-education/&amp;t=Tidying%20IPEDS%20Data%20in%20R" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Tidying%20IPEDS%20Data%20in%20R&amp;body=/post/online-education/distance-education/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/online-education/distance-education/&amp;title=Tidying%20IPEDS%20Data%20in%20R" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Tidying%20IPEDS%20Data%20in%20R%20/post/online-education/distance-education/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/online-education/distance-education/&amp;title=Tidying%20IPEDS%20Data%20in%20R" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/arie/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/ipeds-many-models/01-r-for-institutional-research/">Why Use R for Institutional Research? Part 1, Many Models</a></li>
+      
+      <li><a href="/post/gender-college-presidents/gender-college-presidents/">An Analysis of Gender Disparity Among Higher Education Chief Administrators</a></li>
+      
+      <li><a href="/post/air-forum-text-software-frequency/air-forum-text-software-frequency/">Popularity of Various Data Analytic Tools at AIR Forums</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

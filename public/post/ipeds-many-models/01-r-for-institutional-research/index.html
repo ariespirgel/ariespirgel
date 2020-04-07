@@ -28,7 +28,7 @@
   
     
   
-  <meta name="description" content="IntroductionI first heard about R when I was in graduate school in 2008 and fellow students used it to analyze their data. I didn’t bother to learn it at the time because, one, I didn’t see the benefit of it, and two, I assumed that without any programming experience, it was too difficult. So I continued with my same workflow: Clean data and make charts in Excel, import data into SPSS to analyze it, and then paste my output into a Word document and write up the results.">
+  <meta name="description" content="Introduction I first heard about R when I was in graduate school in 2008 and fellow students used it to analyze their data. I didn’t bother to learn it at the time because, one, I didn’t see the benefit of it, and two, I assumed that without any programming experience, it was too difficult. So I continued with my same workflow: Clean data and make charts in Excel, import data into SPSS to analyze it, and then paste my output into a Word document and write up the results.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/ipeds-many-models/01-r-for-institutional-research/">
@@ -270,7 +270,7 @@
   <meta property="og:site_name" content="Arie Spirgel">
   <meta property="og:url" content="/post/ipeds-many-models/01-r-for-institutional-research/">
   <meta property="og:title" content="Why Use R for Institutional Research? Part 1, Many Models | Arie Spirgel">
-  <meta property="og:description" content="IntroductionI first heard about R when I was in graduate school in 2008 and fellow students used it to analyze their data. I didn’t bother to learn it at the time because, one, I didn’t see the benefit of it, and two, I assumed that without any programming experience, it was too difficult. So I continued with my same workflow: Clean data and make charts in Excel, import data into SPSS to analyze it, and then paste my output into a Word document and write up the results."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="og:description" content="Introduction I first heard about R when I was in graduate school in 2008 and fellow students used it to analyze their data. I didn’t bother to learn it at the time because, one, I didn’t see the benefit of it, and two, I assumed that without any programming experience, it was too difficult. So I continued with my same workflow: Clean data and make charts in Excel, import data into SPSS to analyze it, and then paste my output into a Word document and write up the results."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
@@ -322,7 +322,7 @@
       "url": "img//"
     }
   },
-  "description": "Introduction\rI first heard about R when I was in graduate school in 2008 and fellow students used it to analyze their data. I didn’t bother to learn it at the time because, one, I didn’t see the benefit of it, and two, I assumed that without any programming experience, it was too difficult. So I continued with my same workflow: Clean data and make charts in Excel, import data into SPSS to analyze it, and then paste my output into a Word document and write up the results."
+  "description": "Introduction I first heard about R when I was in graduate school in 2008 and fellow students used it to analyze their data. I didn’t bother to learn it at the time because, one, I didn’t see the benefit of it, and two, I assumed that without any programming experience, it was too difficult. So I continued with my same workflow: Clean data and make charts in Excel, import data into SPSS to analyze it, and then paste my output into a Word document and write up the results."
 }
 </script>
 
@@ -454,7 +454,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/talks"><span>Talks / Workshops</span></a>
+          <a class="nav-link " href="/list"><span>Talks / Workshops</span></a>
         </li>
 
         
@@ -633,13 +633,13 @@ ipeds &lt;- read_rds(&quot;processed-data/ipeds-sfr.rds&quot;)
 
 head(ipeds, 5)</code></pre>
 <pre><code>## # A tibble: 5 x 5
-##   name            state   undergrad_appli~ retention_rate student_faculty_~
-##   &lt;chr&gt;           &lt;chr&gt;              &lt;dbl&gt;          &lt;dbl&gt;             &lt;dbl&gt;
-## 1 Educational Te~ Puerto~               NA             11                21
-## 2 A T Still Univ~ Missou~               NA             NA                NA
-## 3 Aaniiih Nakoda~ Montana               NA             34                10
-## 4 ABC Adult Scho~ Califo~               NA             NA                 4
-## 5 ABC Beauty Aca~ Texas                 NA             25                10</code></pre>
+##   name                state   undergrad_applic… retention_rate student_faculty_…
+##   &lt;chr&gt;               &lt;chr&gt;               &lt;dbl&gt;          &lt;dbl&gt;             &lt;dbl&gt;
+## 1 Educational Techni… Puerto…                NA             11                21
+## 2 A T Still Universi… Missou…                NA             NA                NA
+## 3 Aaniiih Nakoda Col… Montana                NA             34                10
+## 4 ABC Adult School    Califo…                NA             NA                 4
+## 5 ABC Beauty Academy  Texas                  NA             25                10</code></pre>
 <p>In this contrived example, to build a linear model with retention rate as the outcome and student-faculty ratio and number of undergraduate applications as the predictors, I took the <code>ipeds</code> data frame, piped it (<code>%&gt;%</code>) to the <code>lm</code> function, and then cleaned up the results with the <code>tidy()</code> function from the broom package. This gives us the model results:</p>
 <pre class="r"><code>ipeds %&gt;% 
   lm(retention_rate ~ student_faculty_ratio + undergrad_applicants, data = .) %&gt;% 
@@ -680,13 +680,13 @@ head(ipeds, 5)</code></pre>
 head(ipeds_model, 5)</code></pre>
 <pre><code>## # A tibble: 5 x 8
 ## # Groups:   state [2]
-##   state   data       model term       estimate std.error statistic  p.value
-##   &lt;chr&gt;   &lt;list&gt;     &lt;lis&gt; &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-## 1 Puerto~ &lt;tibble [~ &lt;lm&gt;  (Intercep~ 87.5       5.80        15.1  2.48e-18
-## 2 Puerto~ &lt;tibble [~ &lt;lm&gt;  student_f~ -0.869     0.315       -2.76 8.68e- 3
-## 3 Puerto~ &lt;tibble [~ &lt;lm&gt;  undergrad~  0.00208   0.00140      1.49 1.45e- 1
-## 4 Missou~ &lt;tibble [~ &lt;lm&gt;  (Intercep~ 84.5       5.46        15.5  1.91e-22
-## 5 Missou~ &lt;tibble [~ &lt;lm&gt;  student_f~ -1.07      0.458       -2.33 2.30e- 2</code></pre>
+##   state            data model term         estimate std.error statistic  p.value
+##   &lt;chr&gt;    &lt;list&lt;df[,5&gt; &lt;lis&gt; &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 Puerto …    [146 × 5] &lt;lm&gt;  (Intercept)  87.5       5.80        15.1  2.48e-18
+## 2 Puerto …    [146 × 5] &lt;lm&gt;  student_fac… -0.869     0.315       -2.76 8.68e- 3
+## 3 Puerto …    [146 × 5] &lt;lm&gt;  undergrad_a…  0.00208   0.00140      1.49 1.45e- 1
+## 4 Missouri    [171 × 5] &lt;lm&gt;  (Intercept)  84.5       5.46        15.5  1.91e-22
+## 5 Missouri    [171 × 5] &lt;lm&gt;  student_fac… -1.07      0.458       -2.33 2.30e- 2</code></pre>
 <p>Now, with a separate model for each state all in a data frame, I can treat the model output like I would any other data. For example, here, I visualize the model results for each state:</p>
 <pre class="r"><code>ipeds_model %&gt;% 
   filter(term != &quot;(Intercept)&quot;) %&gt;% 

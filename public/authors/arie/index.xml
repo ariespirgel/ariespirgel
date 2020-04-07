@@ -5,12 +5,211 @@
     <link>/authors/arie/</link>
       <atom:link href="/authors/arie/index.xml" rel="self" type="application/rss+xml" />
     <description>arie</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>arie</title>
       <link>/authors/arie/</link>
     </image>
+    
+    <item>
+      <title>Tidying IPEDS Data in R</title>
+      <link>/post/online-education/distance-education/</link>
+      <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/online-education/distance-education/</guid>
+      <description>
+
+
+&lt;p&gt;If you’ve downloaded enough data from the &lt;a href=&#34;https://nces.ed.gov/ipeds/use-the-data&#34;&gt;IPEDS Data Center&lt;/a&gt; using the “Compare Institutions” interface, you’ve probably realized that, depending on what you’re downloading, the data provided is rarely in a format ready for analysis. Here, via a specific example, I describe what makes the IPEDS data format impractical, and how to use R to resolve that.&lt;/p&gt;
+&lt;div id=&#34;reading-in-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Reading in the Data&lt;/h2&gt;
+&lt;p&gt;I first downloaded Fall 2012 to Fall 2018 distance education headcounts for every institution in the IPEDS Data Center. In this first section, I read in the data, and display a subset of what the full data set looks like.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+library(scales)
+
+theme_set(theme_light())
+
+distance &amp;lt;- read_csv(&amp;quot;raw-data/distance-fall-12-18.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/img/data-preview.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;The data set contains 6,800 rows and 43 columns, and ignoring the &lt;code&gt;Institution Name&lt;/code&gt; column, each of the remaining columns is some version of the following: &lt;code&gt;Students enrolled exclusively in distance education courses (EF2018A_DIST  Undergraduate total)&lt;/code&gt;. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for &lt;strong&gt;exclusively distance&lt;/strong&gt; &lt;strong&gt;undergraduate students&lt;/strong&gt; in the fall term of &lt;strong&gt;2018&lt;/strong&gt;. The problem, thus, is that this column actually contains three pieces of information:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Level&lt;/strong&gt;, which can take on the values &lt;em&gt;undergraduate&lt;/em&gt; or &lt;em&gt;graduate&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modality&lt;/strong&gt;, which can take on the values &lt;em&gt;exlusively distance&lt;/em&gt;, &lt;em&gt;some distance&lt;/em&gt;, or &lt;em&gt;no distance&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Year&lt;/strong&gt;, which can take on any integer value from &lt;em&gt;2012&lt;/em&gt; to &lt;em&gt;2018&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This untidy format is exactly what makes IPEDS data tricky to work with. In contrast, tidy data - which means each variable is in its own column, each observation is in its own row, and each value is in its own cell&lt;a href=&#34;#fn1&#34; class=&#34;footnoteRef&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; - is advantageous not just for working with data in R, but other software as well (e.g., pivot tables in Excel).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidying-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Tidying the Data&lt;/h2&gt;
+&lt;p&gt;The first step to tidying this data is to pivot it so that all of the column names that contain the type of headcount are in one column, and the actual headcounts are in a different column. To do that, I use the &lt;code&gt;gather()&lt;/code&gt;&lt;a href=&#34;#fn2&#34; class=&#34;footnoteRef&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt; function. I first provide &lt;code&gt;gather()&lt;/code&gt; with the names of the two new variables that are being created - I call them &lt;code&gt;variable&lt;/code&gt; and &lt;code&gt;headcount&lt;/code&gt;, but they can be called anything you want - and then which columns I want pivoted from wide to long; here, I pivot everything from the 2nd column to the last column of the data set.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance &amp;lt;- distance %&amp;gt;% 
+  gather(variable, headcount, 2:ncol(.))
+
+distance&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 285,600 x 3
+##    `Institution Name`             variable                             headcount
+##    &amp;lt;chr&amp;gt;                          &amp;lt;chr&amp;gt;                                    &amp;lt;dbl&amp;gt;
+##  1 Educational Technical College… Students enrolled exclusively in di…        NA
+##  2 A T Still University of Healt… Students enrolled exclusively in di…        NA
+##  3 Aaniiih Nakoda College         Students enrolled exclusively in di…        NA
+##  4 ABC Adult School               Students enrolled exclusively in di…        NA
+##  5 ABC Beauty Academy             Students enrolled exclusively in di…        NA
+##  6 ABCO Technology                Students enrolled exclusively in di…        NA
+##  7 Abcott Institute               Students enrolled exclusively in di…        NA
+##  8 Abdill Career College Inc      Students enrolled exclusively in di…        NA
+##  9 Abilene Christian University   Students enrolled exclusively in di…        32
+## 10 Abraham Baldwin Agricultural … Students enrolled exclusively in di…       377
+## # … with 285,590 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see above, the data set now only has three columns, not 43. Same data, different layout. Looks better already, right?!?&lt;/p&gt;
+&lt;p&gt;We’re not done though. Remember, each row of the &lt;code&gt;variable&lt;/code&gt; column contains three pieces of information: level, modality, and year. So for the next three steps I split that column apart so each of these variables are in their own column. First, I’ll make a new column for level.&lt;/p&gt;
+&lt;p&gt;There are countless ways of reaching the same endpoint in R, and in this instance, I use &lt;code&gt;str_detect()&lt;/code&gt; to tell R to put “Undergraduate” in the &lt;code&gt;level&lt;/code&gt; column if it detects the string “Undergraduate” in the &lt;code&gt;variable&lt;/code&gt; column, and then perform the analogous task for “Graduate”.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance &amp;lt;- distance %&amp;gt;% 
+  mutate(level = case_when(
+           str_detect(variable, &amp;quot;Undergraduate&amp;quot;) ~ &amp;quot;Undergraduate&amp;quot;,
+           str_detect(variable, &amp;quot;Graduate&amp;quot;) ~ &amp;quot;Graduate&amp;quot;))
+
+distance&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 285,600 x 4
+##    `Institution Name`          variable                        headcount level  
+##    &amp;lt;chr&amp;gt;                       &amp;lt;chr&amp;gt;                               &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  
+##  1 Educational Technical Coll… Students enrolled exclusively …        NA Underg…
+##  2 A T Still University of He… Students enrolled exclusively …        NA Underg…
+##  3 Aaniiih Nakoda College      Students enrolled exclusively …        NA Underg…
+##  4 ABC Adult School            Students enrolled exclusively …        NA Underg…
+##  5 ABC Beauty Academy          Students enrolled exclusively …        NA Underg…
+##  6 ABCO Technology             Students enrolled exclusively …        NA Underg…
+##  7 Abcott Institute            Students enrolled exclusively …        NA Underg…
+##  8 Abdill Career College Inc   Students enrolled exclusively …        NA Underg…
+##  9 Abilene Christian Universi… Students enrolled exclusively …        32 Underg…
+## 10 Abraham Baldwin Agricultur… Students enrolled exclusively …       377 Underg…
+## # … with 285,590 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;See the new column on the end with &lt;code&gt;level&lt;/code&gt;?&lt;/p&gt;
+&lt;p&gt;Next I do the same thing for modality: I tell R to look for specific strings, and make a new column based on those strings.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance &amp;lt;- distance %&amp;gt;% 
+         mutate(modality = case_when(
+           str_detect(variable, &amp;quot;not enrolled in any&amp;quot;) ~ &amp;quot;No Distance&amp;quot;,
+           str_detect(variable, &amp;quot;in some&amp;quot;) ~ &amp;quot;Some Distance&amp;quot;,
+           str_detect(variable, &amp;quot;exclusively&amp;quot;) ~ &amp;quot;Exclusively Distance&amp;quot;))
+
+distance&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 285,600 x 5
+##    `Institution Name`       variable                 headcount level  modality  
+##    &amp;lt;chr&amp;gt;                    &amp;lt;chr&amp;gt;                        &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt;  &amp;lt;chr&amp;gt;     
+##  1 Educational Technical C… Students enrolled exclu…        NA Under… Exclusive…
+##  2 A T Still University of… Students enrolled exclu…        NA Under… Exclusive…
+##  3 Aaniiih Nakoda College   Students enrolled exclu…        NA Under… Exclusive…
+##  4 ABC Adult School         Students enrolled exclu…        NA Under… Exclusive…
+##  5 ABC Beauty Academy       Students enrolled exclu…        NA Under… Exclusive…
+##  6 ABCO Technology          Students enrolled exclu…        NA Under… Exclusive…
+##  7 Abcott Institute         Students enrolled exclu…        NA Under… Exclusive…
+##  8 Abdill Career College I… Students enrolled exclu…        NA Under… Exclusive…
+##  9 Abilene Christian Unive… Students enrolled exclu…        32 Under… Exclusive…
+## 10 Abraham Baldwin Agricul… Students enrolled exclu…       377 Under… Exclusive…
+## # … with 285,590 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The last step of tidying is to get &lt;code&gt;year&lt;/code&gt; in its own column. I &lt;em&gt;could&lt;/em&gt; tell R to make a new variable and put “2012” if it detects “2012”, “2013” if it detects “2013”, and so-on, but there is a much simpler way: the &lt;code&gt;parse_number()&lt;/code&gt; function, which drops any non-numeric characters from a string.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance &amp;lt;- distance %&amp;gt;% 
+  mutate(year = parse_number(variable))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The tidying is now done, and so although this next step isn’t necessary, renaming and reordering the variables and factor levels will make the data easier to work with.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# rename columns, reorder facto levels (e.g., Undergraduate before Graduate)
+distance &amp;lt;- distance %&amp;gt;%
+  select(institution_name = `Institution Name`, level,
+         modality, year, headcount) %&amp;gt;% 
+  mutate(level = fct_relevel(level, &amp;quot;Undergraduate&amp;quot;),
+         modality = fct_relevel(modality, &amp;quot;Some Distance&amp;quot;)) 
+
+distance&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 285,600 x 5
+##    institution_name                    level      modality        year headcount
+##    &amp;lt;chr&amp;gt;                               &amp;lt;fct&amp;gt;      &amp;lt;fct&amp;gt;          &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;
+##  1 Educational Technical College-Reci… Undergrad… Exclusively D…  2018        NA
+##  2 A T Still University of Health Sci… Undergrad… Exclusively D…  2018        NA
+##  3 Aaniiih Nakoda College              Undergrad… Exclusively D…  2018        NA
+##  4 ABC Adult School                    Undergrad… Exclusively D…  2018        NA
+##  5 ABC Beauty Academy                  Undergrad… Exclusively D…  2018        NA
+##  6 ABCO Technology                     Undergrad… Exclusively D…  2018        NA
+##  7 Abcott Institute                    Undergrad… Exclusively D…  2018        NA
+##  8 Abdill Career College Inc           Undergrad… Exclusively D…  2018        NA
+##  9 Abilene Christian University        Undergrad… Exclusively D…  2018        32
+## 10 Abraham Baldwin Agricultural Colle… Undergrad… Exclusively D…  2018       377
+## # … with 285,590 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Behold, tidy data!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;visualizing-the-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Visualizing the Data&lt;/h2&gt;
+&lt;p&gt;With the data in a tidy format you can now do…pretty much whatever you want with it! In these examples, I chose to visualize it, which demonstrates how - thanks to tidy data(!) - you can recycle the same code with slight alterations to make different plots. First, here are overall trends in distance education.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance %&amp;gt;% 
+  mutate(headcount = replace_na(headcount, 0)) %&amp;gt;% 
+  group_by(year, modality) %&amp;gt;% 
+  summarise(total = sum(headcount)) %&amp;gt;% 
+  group_by(year) %&amp;gt;% 
+  mutate(prop = total / sum(total)) %&amp;gt;% 
+  ungroup() %&amp;gt;% 
+  filter(modality != &amp;quot;No Distance&amp;quot;) %&amp;gt;% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = &amp;quot;top&amp;quot;) +
+  labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
+       title = &amp;quot;Percentage of Students Enrolled in Distance Education&amp;quot;,
+       fill = NULL,
+       subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
+       caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Next, I change the grouping variables to repeat the same chart except here, I partition the data by level.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance %&amp;gt;% 
+  mutate(headcount = replace_na(headcount, 0)) %&amp;gt;% 
+  group_by(year, modality, level) %&amp;gt;% 
+  summarise(total = sum(headcount)) %&amp;gt;% 
+  group_by(year, level) %&amp;gt;% 
+  mutate(prop = total / sum(total)) %&amp;gt;% 
+  ungroup() %&amp;gt;% 
+  filter(modality != &amp;quot;No Distance&amp;quot;) %&amp;gt;% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  facet_wrap(~level) +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = &amp;quot;top&amp;quot;) +
+  labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
+       title = &amp;quot;Percentage of Students Enrolled in Distance Education&amp;quot;,
+       fill = NULL,
+       subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
+       caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;And once more, limiting the results to a single institution: Florida State University.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance %&amp;gt;% 
+  filter(institution_name == &amp;quot;Florida State University&amp;quot;) %&amp;gt;% 
+  mutate(headcount = replace_na(headcount, 0)) %&amp;gt;% 
+  group_by(year, modality, level) %&amp;gt;% 
+  summarise(total = sum(headcount)) %&amp;gt;% 
+  group_by(year, level) %&amp;gt;% 
+  mutate(prop = total / sum(total)) %&amp;gt;% 
+  ungroup() %&amp;gt;% 
+  filter(modality != &amp;quot;No Distance&amp;quot;) %&amp;gt;% 
+  ggplot(aes(x = factor(year), y = prop, fill = modality)) +
+  geom_col() +
+  facet_wrap(~level) +
+  scale_y_continuous(label = percent_format()) +
+  theme(legend.position = &amp;quot;top&amp;quot;) +
+  labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;% of Students&amp;quot;,
+       title = &amp;quot;Percentage of Florida State U. Students Enrolled in Distance Education&amp;quot;,
+       fill = NULL,
+       subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
+       caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Among its many benefits, tidy data lets you devote more attention to &lt;em&gt;what&lt;/em&gt; you want to do rather than &lt;em&gt;how&lt;/em&gt; you want to do it. Yes, tidying data takes longer at the start, but in the long-run, it will save you time. In that way, it’s just like learning R!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://r4ds.had.co.nz/tidy-data.html&#34; class=&#34;uri&#34;&gt;https://r4ds.had.co.nz/tidy-data.html&lt;/a&gt;&lt;a href=&#34;#fnref1&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;&lt;code&gt;pivot_longer()&lt;/code&gt; is an updated version of &lt;code&gt;gather()&lt;/code&gt;.&lt;a href=&#34;#fnref2&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>POSTPONED DUE TO CORONAVIRUS Introduction to R and ggplot2</title>
@@ -52,13 +251,13 @@ ipeds &amp;lt;- read_rds(&amp;quot;processed-data/ipeds-sfr.rds&amp;quot;)
 
 head(ipeds, 5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 5
-##   name            state   undergrad_appli~ retention_rate student_faculty_~
-##   &amp;lt;chr&amp;gt;           &amp;lt;chr&amp;gt;              &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt;
-## 1 Educational Te~ Puerto~               NA             11                21
-## 2 A T Still Univ~ Missou~               NA             NA                NA
-## 3 Aaniiih Nakoda~ Montana               NA             34                10
-## 4 ABC Adult Scho~ Califo~               NA             NA                 4
-## 5 ABC Beauty Aca~ Texas                 NA             25                10&lt;/code&gt;&lt;/pre&gt;
+##   name                state   undergrad_applic… retention_rate student_faculty_…
+##   &amp;lt;chr&amp;gt;               &amp;lt;chr&amp;gt;               &amp;lt;dbl&amp;gt;          &amp;lt;dbl&amp;gt;             &amp;lt;dbl&amp;gt;
+## 1 Educational Techni… Puerto…                NA             11                21
+## 2 A T Still Universi… Missou…                NA             NA                NA
+## 3 Aaniiih Nakoda Col… Montana                NA             34                10
+## 4 ABC Adult School    Califo…                NA             NA                 4
+## 5 ABC Beauty Academy  Texas                  NA             25                10&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In this contrived example, to build a linear model with retention rate as the outcome and student-faculty ratio and number of undergraduate applications as the predictors, I took the &lt;code&gt;ipeds&lt;/code&gt; data frame, piped it (&lt;code&gt;%&amp;gt;%&lt;/code&gt;) to the &lt;code&gt;lm&lt;/code&gt; function, and then cleaned up the results with the &lt;code&gt;tidy()&lt;/code&gt; function from the broom package. This gives us the model results:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds %&amp;gt;% 
   lm(retention_rate ~ student_faculty_ratio + undergrad_applicants, data = .) %&amp;gt;% 
@@ -99,13 +298,13 @@ head(ipeds, 5)&lt;/code&gt;&lt;/pre&gt;
 head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## # A tibble: 5 x 8
 ## # Groups:   state [2]
-##   state   data       model term       estimate std.error statistic  p.value
-##   &amp;lt;chr&amp;gt;   &amp;lt;list&amp;gt;     &amp;lt;lis&amp;gt; &amp;lt;chr&amp;gt;         &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
-## 1 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  (Intercep~ 87.5       5.80        15.1  2.48e-18
-## 2 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  student_f~ -0.869     0.315       -2.76 8.68e- 3
-## 3 Puerto~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  undergrad~  0.00208   0.00140      1.49 1.45e- 1
-## 4 Missou~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  (Intercep~ 84.5       5.46        15.5  1.91e-22
-## 5 Missou~ &amp;lt;tibble [~ &amp;lt;lm&amp;gt;  student_f~ -1.07      0.458       -2.33 2.30e- 2&lt;/code&gt;&lt;/pre&gt;
+##   state            data model term         estimate std.error statistic  p.value
+##   &amp;lt;chr&amp;gt;    &amp;lt;list&amp;lt;df[,5&amp;gt; &amp;lt;lis&amp;gt; &amp;lt;chr&amp;gt;           &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;     &amp;lt;dbl&amp;gt;    &amp;lt;dbl&amp;gt;
+## 1 Puerto …    [146 × 5] &amp;lt;lm&amp;gt;  (Intercept)  87.5       5.80        15.1  2.48e-18
+## 2 Puerto …    [146 × 5] &amp;lt;lm&amp;gt;  student_fac… -0.869     0.315       -2.76 8.68e- 3
+## 3 Puerto …    [146 × 5] &amp;lt;lm&amp;gt;  undergrad_a…  0.00208   0.00140      1.49 1.45e- 1
+## 4 Missouri    [171 × 5] &amp;lt;lm&amp;gt;  (Intercept)  84.5       5.46        15.5  1.91e-22
+## 5 Missouri    [171 × 5] &amp;lt;lm&amp;gt;  student_fac… -1.07      0.458       -2.33 2.30e- 2&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Now, with a separate model for each state all in a data frame, I can treat the model output like I would any other data. For example, here, I visualize the model results for each state:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ipeds_model %&amp;gt;% 
   filter(term != &amp;quot;(Intercept)&amp;quot;) %&amp;gt;% 
@@ -292,7 +491,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;h2&gt;Step 5: Add an Icon&lt;/h2&gt;
 &lt;p&gt;The logo - which I added using the cowplot package - is functionally unnecessary but aesthetically powerful. It is the cilantro garnish on top of your beans and rice: Doesn’t add much flavor, but makes you all the more eager to dig in!&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggdraw() +
-  draw_image(&amp;quot;C:/Users/aspirgel/Desktop/ariespirgel/static/img/us-map.png&amp;quot;,
+  draw_image(&amp;quot;us-map.png&amp;quot;,
              y = .85,
              x = 0.1,
              width = .15,
@@ -572,7 +771,7 @@ all_years &amp;lt;- bind_rows(
   text_prepr(&amp;quot;data/2014ForumProgramBookFinal.pdf&amp;quot;, 2014),
   text_prepr(&amp;quot;data/2013finalprogram.pdf&amp;quot;, 2013)
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This resulted in a data frame with a total 447583 rows (one row for each word), a glimpse of which is printed below:&lt;/p&gt;
+&lt;p&gt;This resulted in a data frame with a total 447582 rows (one row for each word), a glimpse of which is printed below:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(all_years)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##            word year
 ## 1   association 2018

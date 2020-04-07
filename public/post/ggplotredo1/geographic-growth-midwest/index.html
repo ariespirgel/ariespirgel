@@ -29,7 +29,7 @@
     
   
   <meta name="description" content="With ggplot2 - the ubiquitous tool for making plots in R - you can create beautiful data visualizations without doing much to the defaults. By applying the template below (see R for Data Science), adding a theme (e.g., theme_light()), and giving your chart custom labels, you can have a publication-ready visualization.
-ggplot(data = &lt;DATA&gt;) &#43; &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;),stat = &lt;STAT&gt;, position = &lt;POSITION&gt;) &#43;&lt;COORDINATE_FUNCTION&gt; &#43;&lt;FACET_FUNCTION&gt;But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference.">
+ggplot(data = &lt;DATA&gt;) &#43; &lt;GEOM_FUNCTION&gt;( mapping = aes(&lt;MAPPINGS&gt;), stat = &lt;STAT&gt;, position = &lt;POSITION&gt; ) &#43; &lt;COORDINATE_FUNCTION&gt; &#43; &lt;FACET_FUNCTION&gt; But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference.">
 
   
   <link rel="alternate" hreflang="en-us" href="/post/ggplotredo1/geographic-growth-midwest/">
@@ -272,7 +272,7 @@ ggplot(data = &lt;DATA&gt;) &#43; &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPI
   <meta property="og:url" content="/post/ggplotredo1/geographic-growth-midwest/">
   <meta property="og:title" content="ggplot2: Going Beyond the Defaults | Arie Spirgel">
   <meta property="og:description" content="With ggplot2 - the ubiquitous tool for making plots in R - you can create beautiful data visualizations without doing much to the defaults. By applying the template below (see R for Data Science), adding a theme (e.g., theme_light()), and giving your chart custom labels, you can have a publication-ready visualization.
-ggplot(data = &lt;DATA&gt;) &#43; &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPINGS&gt;),stat = &lt;STAT&gt;, position = &lt;POSITION&gt;) &#43;&lt;COORDINATE_FUNCTION&gt; &#43;&lt;FACET_FUNCTION&gt;But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+ggplot(data = &lt;DATA&gt;) &#43; &lt;GEOM_FUNCTION&gt;( mapping = aes(&lt;MAPPINGS&gt;), stat = &lt;STAT&gt;, position = &lt;POSITION&gt; ) &#43; &lt;COORDINATE_FUNCTION&gt; &#43; &lt;FACET_FUNCTION&gt; But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
   <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
   
     
@@ -324,7 +324,7 @@ ggplot(data = &lt;DATA&gt;) &#43; &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPI
       "url": "img//"
     }
   },
-  "description": "With ggplot2 - the ubiquitous tool for making plots in R - you can create beautiful data visualizations without doing much to the defaults. By applying the template below (see R for Data Science), adding a theme (e.g., theme_light()), and giving your chart custom labels, you can have a publication-ready visualization.\nggplot(data = \u0026lt;DATA\u0026gt;) + \u0026lt;GEOM_FUNCTION\u0026gt;(\rmapping = aes(\u0026lt;MAPPINGS\u0026gt;),\rstat = \u0026lt;STAT\u0026gt;, position = \u0026lt;POSITION\u0026gt;\r) +\r\u0026lt;COORDINATE_FUNCTION\u0026gt; +\r\u0026lt;FACET_FUNCTION\u0026gt;\rBut the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference."
+  "description": "With ggplot2 - the ubiquitous tool for making plots in R - you can create beautiful data visualizations without doing much to the defaults. By applying the template below (see R for Data Science), adding a theme (e.g., theme_light()), and giving your chart custom labels, you can have a publication-ready visualization.\nggplot(data = \u0026lt;DATA\u0026gt;) + \u0026lt;GEOM_FUNCTION\u0026gt;( mapping = aes(\u0026lt;MAPPINGS\u0026gt;), stat = \u0026lt;STAT\u0026gt;, position = \u0026lt;POSITION\u0026gt; ) + \u0026lt;COORDINATE_FUNCTION\u0026gt; + \u0026lt;FACET_FUNCTION\u0026gt; But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference."
 }
 </script>
 
@@ -456,7 +456,7 @@ ggplot(data = &lt;DATA&gt;) &#43; &lt;GEOM_FUNCTION&gt;(mapping = aes(&lt;MAPPI
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/talks"><span>Talks / Workshops</span></a>
+          <a class="nav-link " href="/list"><span>Talks / Workshops</span></a>
         </li>
 
         
@@ -694,7 +694,7 @@ library(cowplot)</code></pre>
 <h2>Step 5: Add an Icon</h2>
 <p>The logo - which I added using the cowplot package - is functionally unnecessary but aesthetically powerful. It is the cilantro garnish on top of your beans and rice: Doesn’t add much flavor, but makes you all the more eager to dig in!</p>
 <pre class="r"><code>ggdraw() +
-  draw_image(&quot;C:/Users/aspirgel/Desktop/ariespirgel/static/img/us-map.png&quot;,
+  draw_image(&quot;us-map.png&quot;,
              y = .85,
              x = 0.1,
              width = .15,

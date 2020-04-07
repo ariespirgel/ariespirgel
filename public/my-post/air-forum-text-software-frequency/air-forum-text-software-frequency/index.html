@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.7.0">
+
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Data: It’s become a cliche to say that it’s everywhere and in quantities that are unimaginable. But data in its raw form, whether in a structured database or on the internet, is of limited use until a human does something to it: Gather it, clean it, visualize it, model it, write about it, and so-on.
+The amount of data that those in institutional research encounter requires powerful tools to work with.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#41B6E6">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-159718317-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-159718317-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/">
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@ariespirgel">
+  <meta property="twitter:creator" content="@ariespirgel">
+  
+  <meta property="og:site_name" content="Arie Spirgel">
+  <meta property="og:url" content="/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/">
+  <meta property="og:title" content="Popularity of Various Data Analytic Tools at AIR Forums | Arie Spirgel">
+  <meta property="og:description" content="Data: It’s become a cliche to say that it’s everywhere and in quantities that are unimaginable. But data in its raw form, whether in a structured database or on the internet, is of limited use until a human does something to it: Gather it, clean it, visualize it, model it, write about it, and so-on.
+The amount of data that those in institutional research encounter requires powerful tools to work with."><meta property="og:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2018-08-24T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2018-08-24T00:00:00&#43;00:00">
+  
+
+  
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Popularity of Various Data Analytic Tools at AIR Forums | Arie Spirgel</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Arie Spirgel</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Arie Spirgel</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/talks"><span>Talks / Workshops</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/contact"><span>About / Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Popularity of Various Data Analytic Tools at AIR Forums</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/arie/">arie</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 24, 2018
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/categories/education/">education</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<p>Data: It’s become a cliche to say that it’s everywhere and in quantities that are unimaginable. But data in its raw form, whether in a structured database or on the internet, is of limited use until a human does something to it: Gather it, clean it, visualize it, model it, write about it, and so-on.</p>
+<p>The amount of data that those in institutional research encounter requires powerful tools to work with. And those tools exist. Lots of them. Everything from free, open-source software, to software costing hundreds of thousands dollars offered by companies that won’t stop emailing you despite unsubscribing from their list on a weekly basis.</p>
+<p>On the rare occasion someone asks me which software I’d recommend, I always say R. In my experience, its ability to do everything you’d want and need to do as an institutional researcher is unmatched (cut to five minutes later when that someone regrets having asked me and is looking for ways to exit the conversation). But rather than use this space to drone on about why I think R is amazing, my goal here is to reveal the software preferences of others in the field. (And obviously, I used R to do this!)</p>
+<p>It’s not a perfect approach, but my thinking was I could see how often different tools were mentioned in AIR Forum program books and how that’s changed over time. My first step was to download the program books from the forum website going back six years. Next, I created a function to read each of the programs books into R and <a href="https://www.tidyverse.org/">tidy</a> them so every individual word within each book is contained on its own line in a single data frame.</p>
+<pre class="r"><code># load packages
+library(pdftools)
+library(tidyverse)
+library(tidytext)
+library(scales)
+
+# function to read in PDFs and get one word per line.
+text_prepr &lt;- function(doc, forum_year){
+  
+  reg &lt;- &quot;([^A-Za-z\\d#@&#39;]|&#39;(?![A-Za-z\\d#@]))&quot;
+  
+  df &lt;- pdf_text(doc)
+  
+  df &lt;- data.frame(df)
+
+  df &lt;- df %&gt;%
+    rename(text = df) %&gt;%
+    unnest_tokens(word, text,  token = &quot;regex&quot;, pattern = reg) %&gt;%
+    mutate(year = forum_year)
+  
+  return(df)
+}
+
+# apply function to programs books
+all_years &lt;- bind_rows(
+  text_prepr(&quot;data/AIR-2018-Forum-Program-Book.pdf&quot;, 2018),
+  text_prepr(&quot;data/2017-AIR-Forum-Program-Book.pdf&quot;, 2017),
+  text_prepr(&quot;data/2016_AIR-Forum_Program-Book.pdf&quot;, 2016),
+  text_prepr(&quot;data/2015-Forum-Program-Book-Web.pdf&quot;, 2015),
+  text_prepr(&quot;data/2014ForumProgramBookFinal.pdf&quot;, 2014),
+  text_prepr(&quot;data/2013finalprogram.pdf&quot;, 2013)
+)</code></pre>
+<p>This resulted in a data frame with a total 447582 rows (one row for each word), a glimpse of which is printed below:</p>
+<pre class="r"><code>head(all_years)</code></pre>
+<pre><code>##            word year
+## 1   association 2018
+## 2           for 2018
+## 3 institutional 2018
+## 4      research 2018
+## 5          2018 2018
+## 6           may 2018</code></pre>
+<p>Next, I decided on which words I would ask R to look for. Somewhat arbitrarily and somewhat based on my experience at AIR Forums, I chose the following: <em>Excel</em>, <em>R</em>, <em>SAS</em>, <em>SPSS</em>, and <em>Tableau</em>. The code below (1) searches for mentions of those tools in the list of words created above (2) counts the results by year (3) builds a chart of the results. To clarify, the resulting chart displays the number of times each software is mentioned in each of the AIR Forum program books for each of the respective years.</p>
+<pre class="r"><code># filter for keywords and count by word and year
+software &lt;- all_years %&gt;% 
+  mutate(word = tolower(word)) %&gt;% 
+  filter(word %in% c(&quot;excel&quot;, &quot;r&quot;, &quot;sas&quot;, &quot;spss&quot;, &quot;tableau&quot;)) %&gt;% 
+  count(word, year) %&gt;% 
+  complete(word, year, fill = list(n = 0))
+
+# make data frame of only 2018, so can include as labels at end of lines
+software_2018 &lt;- software %&gt;% 
+  filter(year == 2018)
+
+# create chart
+ggplot() +
+  geom_line(data = software, aes(x = year, y = n, color = word, group = word), size = 2) +
+  geom_text(data = software_2018, aes(x = year, y = n, label = word), nudge_y = 2) +
+  geom_point(data = software, aes(x = year, y = n, color = word), size = 3) +
+  theme_minimal() +
+  labs(x = &quot;Forum Year&quot;, y = &quot;# of Mentions&quot;,
+       title = &quot;Number of Times Software is Mentioned in AIR Forum Program Book&quot;,
+       subtitle = &quot;2013 to 2018 Forums&quot;) +
+  guides(color = FALSE)</code></pre>
+<p><img src="/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>What stands out - and confirms what I’ve noticed at AIR Forums - is the rapid rise of Tableau. In 2014 I had never heard of it. In 2018, not knowing at least something about it seems unavoidable. Tableau is known for visual analytics, so it’s not surprising that its rise in populairty has coincided with an increasing interest in data visualization at AIR Forums.</p>
+<pre class="r"><code># filter for keyword and count by word and year
+visualize &lt;- all_years %&gt;% 
+  group_by(year) %&gt;% 
+  mutate(total = n()) %&gt;% 
+  ungroup() %&gt;% 
+  mutate(visualiz = str_detect(word, &quot;visualiz&quot;)) %&gt;%
+  group_by(year) %&gt;% 
+  summarise(prop = mean(visualiz)) %&gt;% 
+  ungroup()
+
+
+# create chart
+ggplot(visualize, aes(x = year, y = prop)) +
+  geom_line(size = 2) +
+  geom_point(size = 3) +
+  theme_minimal() +
+  labs(x = &quot;Forum Year&quot;, y = &quot;% of Mentions&quot;,
+       title = &#39;Percent of All Words That Were &quot;Visualiz*&quot; in AIR Forum Program Book&#39;,
+       subtitle = &quot;2013 to 2018 Forums&quot;) +
+  guides(color = FALSE) +
+  scale_y_continuous(label = percent_format())</code></pre>
+<p><img src="/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Returning to the first chart, perhaps it’s my background in psychology - a field which has historically been dominated by SPSS - but I was surprised how little SPSS is mentioned (although, I wouldn’t be surprised to see it decrease in the future). As for R, it seems to have a presence, but I’m curious to see what happens to its popularity in institutional research over the next few years. Judging by my experience at recent Forums and the development of R tools that decrease the barrier to entry, my prediction is that interest will only grow.</p>
+<p>I’m not sure if this need be said, but I will: This approach to evaluating software popularity is fraught with limitations. My goal, however, was not to get a precise estimate. Rather, I was interested in one, getting a general sense of broad trends, and two, sharing how just a little of bit R code can do so much!</p>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/r/">r</a>
+  
+  <a class="badge badge-light" href="/tags/spss/">spss</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/&amp;text=Popularity%20of%20Various%20Data%20Analytic%20Tools%20at%20AIR%20Forums" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/&amp;t=Popularity%20of%20Various%20Data%20Analytic%20Tools%20at%20AIR%20Forums" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Popularity%20of%20Various%20Data%20Analytic%20Tools%20at%20AIR%20Forums&amp;body=/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/&amp;title=Popularity%20of%20Various%20Data%20Analytic%20Tools%20at%20AIR%20Forums" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Popularity%20of%20Various%20Data%20Analytic%20Tools%20at%20AIR%20Forums%20/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/my-post/air-forum-text-software-frequency/air-forum-text-software-frequency/&amp;title=Popularity%20of%20Various%20Data%20Analytic%20Tools%20at%20AIR%20Forums" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/arie/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -56,7 +56,7 @@ all_years &amp;lt;- bind_rows(
   text_prepr(&amp;quot;data/2014ForumProgramBookFinal.pdf&amp;quot;, 2014),
   text_prepr(&amp;quot;data/2013finalprogram.pdf&amp;quot;, 2013)
 )&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This resulted in a data frame with a total 447583 rows (one row for each word), a glimpse of which is printed below:&lt;/p&gt;
+&lt;p&gt;This resulted in a data frame with a total 447582 rows (one row for each word), a glimpse of which is printed below:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;head(all_years)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##            word year
 ## 1   association 2018
