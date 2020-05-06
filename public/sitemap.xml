@@ -4,17 +4,42 @@
   
   <url>
     <loc>/authors/arie/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/authors/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/</loc>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/tidyverse/</loc>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/air-online-workshop/</loc>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/workshop/</loc>
+    <lastmod>2020-05-25T14:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -38,11 +63,6 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/online-education/distance-education/</loc>
     <lastmod>2020-04-07T00:00:00+00:00</lastmod>
   </url>
@@ -58,17 +78,7 @@
   </url>
   
   <url>
-    <loc>/talk/</loc>
-    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/wcc/</loc>
-    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/workshop/</loc>
     <lastmod>2020-03-13T12:00:00+00:00</lastmod>
   </url>
   
@@ -103,17 +113,7 @@
   </url>
   
   <url>
-    <loc>/tags/tidyverse/</loc>
-    <lastmod>2020-01-17T11:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/colorado-ed-part-2/</loc>
-    <lastmod>2020-01-17T11:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/talk/colorado-ed-part-1/</loc>
+    <loc>/talk/colorado-ed/</loc>
     <lastmod>2020-01-14T11:00:00+00:00</lastmod>
   </url>
   

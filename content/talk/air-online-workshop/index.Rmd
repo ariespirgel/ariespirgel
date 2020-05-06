@@ -1,0 +1,44 @@
+---
+title: "Welcome to the Tidyverse"
+draft: false
+authors: [arie]
+event: 
+event_url: https://www.airweb.org/event/2020/05/25/event/welcome-to-the-tidyverse
+location: Remote 
+summary: "Introduction to the Tidyverse"
+
+# Talk start and end times.
+#   End time can optionally be hidden by prefixing the line with `#`.
+date: "2020-05-25T14:00:00Z"
+#date_end: "2019-09-30T16:30:00Z"
+all_day: false
+# publishdate: "2019-06-15"
+
+#links:
+#- icon: github
+#  icon_pack: fab
+#  name: materials
+# url: https://www.airweb.org/event/2020/05/25/event/welcome-to-the-tidyverse
+
+categories:
+  - workshop
+tags:
+  - tidyverse
+# lastmod: '2019-06-16T02:20:01-07:00'
+featured: no
+image:
+  caption: ""
+  focal_point: 'center'
+  preview_only: no
+projects: []
+---
+
+Four-Part Webinar Series: May 25, 26, 27, and 28, 2–3:45 p.m. ET
+
+Institutional research professionals have a seemingly endless number of tools to choose from to analyze and report data. Besides being free and open-source, R is one of the few that lets users seamlessly complete the entirety of the data analysis pipeline, from importing data to making beautiful presentations, and everything in between. In this webinar, you will learn how to use the tidyverse—a collection of R packages for data science—to visualize, transform, model, and report data in R.
+
+As a result of this webinar series, participants will:
+
+Registration closes one hour prior to the webinar. Attendees will have access to the webinar recording for 30 days following the live event. 
+
+https://www.airweb.org/event/2020/05/25/event/welcome-to-the-tidyverse

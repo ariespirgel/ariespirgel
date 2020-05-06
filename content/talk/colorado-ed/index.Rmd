@@ -1,5 +1,5 @@
 ---
-title: "Welcome to the Tidyverse: Part 1"
+title: "Welcome to the Tidyverse"
 draft: false
 authors: [arie]
 event: 'Training for education non-profits'
@@ -33,8 +33,13 @@ image:
 projects: []
 ---
 
-Part 1 of "[Welcome to the Tidyverse](https://github.com/rstudio-education/welcome-to-the-tidyverse)", which covers the following topics:
+Part 1 covers:
 
  - Introduction to R.
  - Visualization with `ggplot2`.
  - Tranformation with `dplyr`.
+
+Part 2 covers:
+
+ - Modeling with `modelr` and `broom`.
+ - Reporting with `rmarkdown`.
