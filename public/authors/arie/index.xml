@@ -5,26 +5,12 @@
     <link>/authors/arie/</link>
       <atom:link href="/authors/arie/index.xml" rel="self" type="application/rss+xml" />
     <description>arie</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 25 May 2020 14:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>arie</title>
       <link>/authors/arie/</link>
     </image>
-    
-    <item>
-      <title>Welcome to the Tidyverse</title>
-      <link>/talk/air-online-workshop/</link>
-      <pubDate>Mon, 25 May 2020 14:00:00 +0000</pubDate>
-      <guid>/talk/air-online-workshop/</guid>
-      <description>
-
-
-&lt;p&gt;Four-Part Webinar Series: May 25, 26, 27, and 28, 2–3:45 p.m. ET&lt;/p&gt;
-&lt;p&gt;Institutional research professionals have a seemingly endless number of tools to choose from to analyze and report data. Besides being free and open-source, R is one of the few that lets users seamlessly complete the entirety of the data analysis pipeline, from importing data to making beautiful presentations, and everything in between. In this webinar, you will learn how to use the tidyverse—a collection of R packages for data science—to visualize, transform, model, and report data in R.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.airweb.org/event/2020/05/25/event/welcome-to-the-tidyverse&#34; class=&#34;uri&#34;&gt;https://www.airweb.org/event/2020/05/25/event/welcome-to-the-tidyverse&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Tidying IPEDS Data in R</title>

@@ -9,10 +9,10 @@
   url = "/post"
   weight = 15
 
-[[main]]
-  name = "Talks / Workshops"
-  url = "/list"
-  weight = 20
+# [[main]]
+#  name = "Talks / Workshops"
+#  url = "/list"
+#  weight = 20
   
 [[main]]
   name = "About / Contact"
