@@ -1,0 +1,133 @@
+---
+aliases: [nba-first-names]
+title: "Which NBA First Name Creates the Best Starting Five?"
+authors: [arie]
+# summary: greatest nba first names
+date: '2020-05-27'
+categories:
+  - nba
+tags:
+  - ggplot2
+# Projects (optional).
+#   Associate this post with one or more of your projects.
+#   Simply enter your project's folder or file name without extension.
+#   E.g. `projects = ["internal-project"]` references `content/project/deep-learning/index.md`.
+#   Otherwise, set `projects = []`.
+projects: []
+---
+
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/pymjs/pym.v1.js"></script>
+<script src="/rmarkdown-libs/widgetframe-binding/widgetframe.js"></script>
+
+
+<p>Michael. Larry. Moses. Mention these names to the most casual of NBA fans, and they know that you mean Jordan, Bird, and Malone, and not Doleac, Siegfried, and Brown. Even among other highly accomplished individuals, the all-time greats are so transcendent that they are recognized by their first names alone.</p>
+<p>We all agree who the best Michael is, but who are the other great (or good) Michaels? And LeBron is the best LeBron, but has a different LeBron ever played in the NBA (spoiler alert: no)? My goal here was to answer these types of questions by building the best possible starting fives based on NBA players who share a first name. Shea Serrano from the Ringer did the <a href="https://www.theringer.com/nba/2017/7/7/16077712/nba-first-name-game-e1a2249dcab0">same thing</a> a few years ago, but here, I use a more statistical approach than he did, and slightly different rules. The rules/system I used are:</p>
+<ul>
+<li>For each player, I selected the season that they accomplished their highest <a href="https://www.basketball-reference.com/about/ws.html">win share per 48</a> minutes AND played at least 1,000 minutes.</li>
+<li>The best starting fives are those that had the highest <em>combined</em> win shares per 48.</li>
+<li>Each team must include two guards, two forwards, and one center. This meant that, for example, Laker great and guard Michael Cooper was not on team Michael, because Michael Redd’s best season was better than Cooper’s best season, and you already know who got the other guard spot on team Michael.</li>
+<li>I used names exactly as they appear in Basketball Reference (e.g., David Robinson counts only as a David, not as a Dave).</li>
+<li>The Basketball Reference data spans from the 1950-1951 season to the 2019-2020 (heretofore) abbreviated season, so every player from that period can be included.</li>
+</ul>
+<div id="step-1-get-the-data-from-basketball-reference" class="section level2">
+<h2>Step 1: Get the Data from Basketball Reference</h2>
+<pre class="r"><code>library(tidyverse)
+library(nbastatR)
+library(ggrepel)
+library(DT)</code></pre>
+<pre class="r"><code># get data from BREF
+ws &lt;- bref_players_stats(seasons = 1951:2020, tables = c(&quot;advanced&quot;, &quot;totals&quot;))</code></pre>
+</div>
+<div id="step-2-clean-data" class="section level2">
+<h2>Step 2: Clean Data</h2>
+<pre class="r"><code># select variables and filter for min 1,000 minutes
+ws &lt;- ws %&gt;% 
+  filter(minutes &gt;= 1000) %&gt;% 
+  select(year = yearSeason,
+         player = namePlayer, id = idPlayerNBA, 
+         position = groupPosition,
+         win_share = ratioWSPer48) 
+
+# give first name its own column
+ws &lt;- ws %&gt;% 
+  separate(player, into = c(&quot;first&quot;, &quot;last&quot;), sep = &quot; &quot;,
+           remove = FALSE) %&gt;% 
+  mutate(first = str_trim(first, side = &quot;both&quot;))</code></pre>
+</div>
+<div id="step-3-select-each-players-best-season" class="section level2">
+<h2>Step 3: Select Each Player’s Best Season</h2>
+<pre class="r"><code># select each player&#39;s best season.
+# michael cage tied for his best seasons at forward and center.  
+# so I decided to select him as a center.
+# the next best michael center was doleac.
+best_season &lt;- ws %&gt;% 
+  group_by(player, id) %&gt;%
+  filter(win_share == max(win_share)) %&gt;% 
+  ungroup() %&gt;% 
+  select(-year) %&gt;% 
+  unique() %&gt;% 
+  filter(id != 262 | position == &quot;F&quot;)</code></pre>
+</div>
+<div id="step-4-build-starting-fives" class="section level2">
+<h2>Step 4: Build Starting Fives</h2>
+<pre class="r"><code>best_season &lt;- best_season %&gt;% 
+  group_by(first, position) %&gt;% 
+  mutate(rank = rank(-win_share)) %&gt;% 
+  ungroup() 
+
+best_season &lt;- best_season %&gt;% 
+  filter( (position %in% c(&quot;F&quot;, &quot;G&quot;) &amp; rank %in% c(1, 2) |
+            position == &quot;C&quot; &amp; rank == 1) ) %&gt;% 
+  add_count(first) %&gt;% 
+  filter(n == 5)
+
+best_names &lt;- best_season %&gt;% 
+  group_by(first) %&gt;% 
+  mutate(total = sum(win_share)) %&gt;% 
+  ungroup() </code></pre>
+</div>
+<div id="drumrollresults" class="section level2">
+<h2>Drumroll…Results</h2>
+<p>Like Shea in his piece, I concluded that you can not build a better team than a team made up Kevins. Here are the top 20 first name teams:</p>
+<pre class="r"><code>best_names %&gt;% 
+  distinct(first, total) %&gt;% 
+  mutate(first = fct_reorder(first, total)) %&gt;% 
+  arrange(-total) %&gt;% 
+  slice(1:20) %&gt;% 
+  ggplot(aes(x = total, y = first,
+             fill = total)) +
+  geom_col() +
+  guides(fill = FALSE) +
+  scale_fill_gradient(low = &quot;yellow&quot;, high = &quot;red&quot;) +
+  labs(x = &quot;Win Share / 48&quot;, y = NULL,
+       title = &quot;Which NBA First Name Creates the Best Starting Five?&quot;,
+       subtitle = &quot;Teams must include two guards, two forwards, and one center.&quot;,
+       caption = &quot;Data is from Basketball Reference, and spans 1951 to 2020 seasons.\nCreated by Arie Spirgel&quot;) </code></pre>
+<p><img src="/post/nba-first-names/nba-first-names_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>And here is my complete list of starting fives:</p>
+<pre class="r"><code>dt &lt;- best_names %&gt;% 
+  select(`First Name` = first, last, `Combined WS / 48` = total) %&gt;% 
+  group_by(`First Name`) %&gt;% 
+  mutate(rank = rank(last, ties.method = &quot;first&quot;)) %&gt;% 
+  spread(rank, last) %&gt;% 
+  arrange(-`Combined WS / 48`) %&gt;% 
+  datatable(filter = &quot;top&quot;, rownames = FALSE)
+
+
+widgetframe::frameWidget(dt)</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/post/nba-first-names/nba-first-names_files/figure-html//widgets/widget_unnamed-chunk-8.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="my-not-so-statistical-thoughts-on-a-hypothetical-season" class="section level2">
+<h2>My (Not So Statistical) Thoughts on a Hypothetical Season</h2>
+<p>If you were building a starting five of <em>any</em> NBA players, regardless of first name, you could not do much better than Kevin Garnett and Kevin Durant as your forwards. The guards on the Kevins are Johnson and Martin, who would complement the forwards well. Johnson was an explosive point-guard who averaged 17.9 points and 9.1 assists for his 12-year NBA career. And Kevin Martin’s shooting would space the floor, helping Garnett and Durant further dominate in all of the ways that they do.</p>
+<p>After Kevin, my list diverged from Shea’s, in large part because of the different rules we used. He had the Michaels second, but they were 11th on my list. This is of course silly, because prime MJ with I-don’t-care-who would never finish 11th in any actual basketball tournament. We both had the Larrys and Chrises highly ranked, but the Georges and Bobs were third and fourth on my list, who Shea respectively doesn’t mention and thinks they would be fun to watch but wouldn’t win a game.</p>
+<p>So, smart money is on the Kevins, but they’d be lucky to avoid a match-up with the Davids, whose frontcourt of Robinson, Lee and West, at a combined 20.5 feet, are more Goliath than David. In addition to Robinson, the Davids also have a Hall of Famer in the backcourt with Thompson. The Davids would be physical to play against and fun to watch, but like everyone else, likely wouldn’t be able to keep up with the Kevins.</p>
+<p>The James team would also be a tough out. Harden would love to be surrounded by shooters like Posey and Jones and would thrive on the break with Worthy. But in this alternate reality, if Worthy had still spent his career playing with Magic Johnson - one of the most unselfish players ever - he would struggle watching Harden dribble around for 18 seconds before launching isolation step-back threes. That said, with the right coaching and the right sacrifices, this team is a dark horse.</p>
+<p>Tim Duncan’s teams are always good (because he is Tim Duncan). But then, put him in the two-man game with five-time all-star Tim Hardaway and have Legler spot up in the corner, and this team is closer to great. If their other forward - Tim Thomas - were to heed Duncan’s mentorship, perhaps his career would reach greater heights and he could help to earn the Tims a finals bout with the Kevins.</p>
+<p>The most fun team to watch would be the Chrises, who in Paul, Mullin, and Webber, have three of the more creative players, and in Anderson, one of the most expressive. Play-by-play announcers would regularly applaud their ball movement and the extra pass, and if they stayed healthy, could be a problem for more heavily favored teams. Either way, this team is a League Pass fan-favorite.</p>
+<p>The Derricks have two big-name stars in Coleman and Rose, and a solid supporting cost in White, Jones Jr., and Favors. Loyal fans would go into the season with high hopes and championship aspirations, but ultimately, this team doesn’t have the star-power to get very far.</p>
+<p>Some other notable teams. With Barkley and Oakley, the Charles team would undoubtedly lead the league in technicals. The Steves would be one of the best shooting teams - led by Nash, Kerr, and Novack - but with such a small backcourt, would not be able to compete. The all-time top Dannys might not immediately come to mind (Ainge, Granger, Green, Manning, and Fortson), but they are a good shooting team with size and experience, and whose whole is greater than the sum of its parts.</p>
+<p>Any discussion of all-time NBA greats begins with Michael, LeBron, Bill Russell, Magic, and Kareem. Except this one, that is contrived and based on a hypothetical world. In this scenario, which is based on made-up rules and could only exist if traveling through time were possible, it is the Kevins who come out on top. Congratulations to them!</p>
+</div>
