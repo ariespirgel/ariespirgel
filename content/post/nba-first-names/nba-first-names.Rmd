@@ -163,7 +163,6 @@ dt <- best_names %>%
   arrange(-`Combined WS / 48`) %>% 
   datatable(filter = "top", rownames = FALSE)
 
-
 widgetframe::frameWidget(dt)
 ```
 
