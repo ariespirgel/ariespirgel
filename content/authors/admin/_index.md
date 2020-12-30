@@ -17,10 +17,10 @@ interests:
 - Learning sciences
 - Animal welfare
 name: Arie Spirgel
-organizations:
-- name: Nova Southeastern University
-  url: ""
-role: Senior Research Associate
+#organizations:
+#- name: Nova Southeastern University
+#  url: ""
+#role: Senior Research Associate
 social:
 - icon: envelope
   icon_pack: fas
@@ -37,4 +37,4 @@ social:
 superuser: true
 ---
 
-My background is in cognitive psychology, and for my [dissertation research](https://link.springer.com/article/10.1007/s10648-014-9290-2), I examined how writing helps (or doesn't help) people learn new information. I have worked in higher education since 2011, and in 2019, I became [certified by RStudio](https://education.rstudio.com/trainers/) to teach the [tidyverse](https://www.tidyverse.org/). I am available to train groups and individuals to learn R and the tidyverse, either in-person or virtually.
+My background is in cognitive psychology, and for my [dissertation research](https://link.springer.com/article/10.1007/s10648-014-9290-2), I examined how writing helps (or doesn't help) people learn new information. I have worked in  education since 2011, and I am [certified by RStudio](https://education.rstudio.com/trainers/) to teach the [tidyverse](https://www.tidyverse.org/). I am available to train groups or individuals to learn R and the tidyverse, and to consult with organizations to help them meet their data analytic needs.

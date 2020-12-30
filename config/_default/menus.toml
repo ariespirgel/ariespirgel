@@ -4,20 +4,20 @@
 #   The weight parameter defines the order that the links will appear in.
 
 
-[[main]]
-  name = "Blog"
-  url = "/post"
-  weight = 15
+#[[main]]
+#  name = "Blog"
+#  url = "/post"
+#  weight = 15
 
 # [[main]]
 #  name = "Talks / Workshops"
 #  url = "/list"
 #  weight = 20
   
-[[main]]
-  name = "About / Contact"
-  url = "/contact"
-  weight = 25
+#[[main]]
+#  name = "About / Contact"
+#  url = "/contact"
+#  weight = 25
 
 
 
