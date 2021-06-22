@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wcc | Arie Spirgel</title>
-    <link>/tags/wcc/</link>
-      <atom:link href="/tags/wcc/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://arie.rbind.io/tags/wcc/</link>
+      <atom:link href="https://arie.rbind.io/tags/wcc/index.xml" rel="self" type="application/rss+xml" />
     <description>wcc</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>wcc</title>
-      <link>/tags/wcc/</link>
+      <link>https://arie.rbind.io/tags/wcc/</link>
     </image>
     
     <item>
       <title>POSTPONED DUE TO CORONAVIRUS Introduction to R and ggplot2</title>
-      <link>/talk/2020-wcc-ggplot2/</link>
+      <link>https://arie.rbind.io/talk/2020-wcc-ggplot2/</link>
       <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>/talk/2020-wcc-ggplot2/</guid>
+      <guid>https://arie.rbind.io/talk/2020-wcc-ggplot2/</guid>
       <description>
 
 

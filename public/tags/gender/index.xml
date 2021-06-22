@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gender | Arie Spirgel</title>
-    <link>/tags/gender/</link>
-      <atom:link href="/tags/gender/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://arie.rbind.io/tags/gender/</link>
+      <atom:link href="https://arie.rbind.io/tags/gender/index.xml" rel="self" type="application/rss+xml" />
     <description>gender</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 24 Aug 2018 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>gender</title>
-      <link>/tags/gender/</link>
+      <link>https://arie.rbind.io/tags/gender/</link>
     </image>
     
     <item>
       <title>An Analysis of Gender Disparity Among Higher Education Chief Administrators</title>
-      <link>/post/gender-college-presidents/gender-college-presidents/</link>
+      <link>https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>/post/gender-college-presidents/gender-college-presidents/</guid>
+      <guid>https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents/</guid>
       <description>
 
 
@@ -141,7 +141,7 @@ female_prop_sex %&amp;gt;%
   labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;Percent Women&amp;quot;,
        title = &amp;quot;Percentage of Chief Administrators Who Are Women&amp;quot;,
        subtitle = &amp;quot;All IPEDS Institutions, Years 1990-2016&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are three things to notice about the chart:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;The increasing percentage of chief administrators who are women&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;.&lt;/li&gt;
@@ -169,7 +169,7 @@ female_by_sector %&amp;gt;%
   labs(x = NULL, y = &amp;quot;Percent Women&amp;quot;,
        title = &amp;quot;Percentage of Chief Aministrators Who Are Women,\nby Sector&amp;quot;,
        subtitle = &amp;quot;All IPEDS Institutions, Year 2016&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Although they are a minority in every sector, women make up a higher percentage of chief administrators at 2-year schools than at 4-year schools. One institution type is not better than another, but they serve different functions (e.g., teaching vs. research), meaning the disparities by sector further exaggerate the existing imbalance. For example, in 2016, 35% of academic chief administrators were women, yet the institutions they led accounted for only 29% of all students enrolled at institutions of higher education.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;

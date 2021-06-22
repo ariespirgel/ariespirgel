@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks / Workshops | Arie Spirgel</title>
-    <link>/talk/</link>
-      <atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://arie.rbind.io/talk/</link>
+      <atom:link href="https://arie.rbind.io/talk/index.xml" rel="self" type="application/rss+xml" />
     <description>Recent &amp; Upcoming Talks / Workshops</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
     <image>
-      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Recent &amp; Upcoming Talks / Workshops</title>
-      <link>/talk/</link>
+      <link>https://arie.rbind.io/talk/</link>
     </image>
     
     <item>
       <title>POSTPONED DUE TO CORONAVIRUS Introduction to R and ggplot2</title>
-      <link>/talk/2020-wcc-ggplot2/</link>
+      <link>https://arie.rbind.io/talk/2020-wcc-ggplot2/</link>
       <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>/talk/2020-wcc-ggplot2/</guid>
+      <guid>https://arie.rbind.io/talk/2020-wcc-ggplot2/</guid>
       <description>
 
 
@@ -27,9 +27,9 @@
     
     <item>
       <title>Welcome to the Tidyverse</title>
-      <link>/talk/colorado-ed/</link>
+      <link>https://arie.rbind.io/talk/colorado-ed/</link>
       <pubDate>Tue, 14 Jan 2020 11:00:00 +0000</pubDate>
-      <guid>/talk/colorado-ed/</guid>
+      <guid>https://arie.rbind.io/talk/colorado-ed/</guid>
       <description>
 
 
@@ -49,9 +49,9 @@
     
     <item>
       <title>Achieving Reproducibility in IR With R</title>
-      <link>/talk/2018-air/</link>
+      <link>https://arie.rbind.io/talk/2018-air/</link>
       <pubDate>Thu, 31 May 2018 10:45:00 +0000</pubDate>
-      <guid>/talk/2018-air/</guid>
+      <guid>https://arie.rbind.io/talk/2018-air/</guid>
       <description>
 
 
@@ -61,9 +61,9 @@
     
     <item>
       <title>Data Visualization Showcase</title>
-      <link>/talk/2017-air/</link>
+      <link>https://arie.rbind.io/talk/2017-air/</link>
       <pubDate>Tue, 30 May 2017 15:30:00 +0000</pubDate>
-      <guid>/talk/2017-air/</guid>
+      <guid>https://arie.rbind.io/talk/2017-air/</guid>
       <description>
 
 
@@ -73,9 +73,9 @@
     
     <item>
       <title>Creating Data Visualizations Using R: An Introduction for Non-Programmers</title>
-      <link>/talk/2016-air/</link>
+      <link>https://arie.rbind.io/talk/2016-air/</link>
       <pubDate>Fri, 01 Jul 2016 15:00:00 +0000</pubDate>
-      <guid>/talk/2016-air/</guid>
+      <guid>https://arie.rbind.io/talk/2016-air/</guid>
       <description>
 
 
