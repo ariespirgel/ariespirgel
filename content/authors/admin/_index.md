@@ -1,4 +1,5 @@
 ---
+bio: This is a test
 authors: 
   - arie
 name: Arie Spirgel
