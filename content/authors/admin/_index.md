@@ -1,8 +1,17 @@
 ---
-bio: This is a test
-authors: 
-  - arie
+# Display name
 name: Arie Spirgel
+
+# Username (this should match the folder name)
+title: Arie Spirgel
+authors:
+- admin
+
+# Is this the primary user of the site?
+superuser: true
+
+bio: test 
+
 social:
 - icon: envelope
   icon_pack: fas
