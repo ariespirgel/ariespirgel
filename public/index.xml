@@ -2,34 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Arie Spirgel</title>
-    <link>https://arie.rbind.io/</link>
-      <atom:link href="https://arie.rbind.io/index.xml" rel="self" type="application/rss+xml" />
+    <link>/</link>
+      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Arie Spirgel</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Jan 2019 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Arie Spirgel</title>
-      <link>https://arie.rbind.io/</link>
+      <link>/</link>
     </image>
     
     <item>
-      <title></title>
-      <link>https://arie.rbind.io/about/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/about/about/</guid>
-      <description>&lt;p&gt;Forthcoming&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Which NBA First Name Creates the Best Starting Five?</title>
-      <link>https://arie.rbind.io/post/nba-first-names/nba-first-names/</link>
+      <link>/post/nba-first-names/nba-first-names/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/nba-first-names/nba-first-names/</guid>
+      <guid>/post/nba-first-names/nba-first-names/</guid>
       <description>
-&lt;script src=&#34;https://arie.rbind.io/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://arie.rbind.io/rmarkdown-libs/pymjs/pym.v1.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://arie.rbind.io/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/pymjs/pym.v1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Michael. Larry. Moses. Mention these names to the most casual of NBA fans, and they know that you mean Jordan, Bird, and Malone, and not Doleac, Siegfried, and Brown. Even among other highly accomplished individuals, the all-time greats are so transcendent that they are recognized by their first names alone.&lt;/p&gt;
@@ -115,7 +106,7 @@ best_names &amp;lt;- best_season %&amp;gt;%
        title = &amp;quot;Which NBA First Name Creates the Best Starting Five?&amp;quot;,
        subtitle = &amp;quot;Teams must include two guards, two forwards, and one center.&amp;quot;,
        caption = &amp;quot;Data is from Basketball Reference, and spans 1951 to 2020 seasons.\nCreated by Arie Spirgel&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/nba-first-names/nba-first-names_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/nba-first-names/nba-first-names_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;And here is my complete list of starting fives:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dt &amp;lt;- best_names %&amp;gt;% 
   select(`First Name` = first, last, `Combined WS / 48` = total) %&amp;gt;% 
@@ -146,9 +137,9 @@ widgetframe::frameWidget(dt)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Tidying IPEDS Data in R</title>
-      <link>https://arie.rbind.io/post/online-education/distance-education/</link>
+      <link>/post/online-education/distance-education/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/online-education/distance-education/</guid>
+      <guid>/post/online-education/distance-education/</guid>
       <description>
 
 
@@ -162,7 +153,7 @@ library(scales)
 theme_set(theme_light())
 
 distance &amp;lt;- read_csv(&amp;quot;raw-data/distance-fall-12-18.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/img/data-preview.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/data-preview.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;p&gt;The data set contains 6,800 rows and 43 columns, and ignoring the &lt;code&gt;Institution Name&lt;/code&gt; column, each of the remaining columns is some version of the following: &lt;code&gt;Students enrolled exclusively in distance education courses (EF2018A_DIST  Undergraduate total)&lt;/code&gt;. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for &lt;strong&gt;exclusively distance&lt;/strong&gt; &lt;strong&gt;undergraduate students&lt;/strong&gt; in the fall term of &lt;strong&gt;2018&lt;/strong&gt;. The problem, thus, is that this column (and all the other ones like it) actually contains three pieces of information:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;strong&gt;Level&lt;/strong&gt;, which can take on the values &lt;em&gt;undergraduate&lt;/em&gt; or &lt;em&gt;graduate&lt;/em&gt;.&lt;/li&gt;
@@ -286,7 +277,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Next, I change the grouping variables to repeat the same chart except here I partition the data by level.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance %&amp;gt;% 
   mutate(headcount = replace_na(headcount, 0)) %&amp;gt;% 
@@ -306,7 +297,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;And once more, limiting the results to a single institution: Florida State University.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance %&amp;gt;% 
   filter(institution_name == &amp;quot;Florida State University&amp;quot;) %&amp;gt;% 
@@ -327,7 +318,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
@@ -345,9 +336,9 @@ distance&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>POSTPONED DUE TO CORONAVIRUS Introduction to R and ggplot2</title>
-      <link>https://arie.rbind.io/talk/2020-wcc-ggplot2/</link>
+      <link>/talk/2020-wcc-ggplot2/</link>
       <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2020-wcc-ggplot2/</guid>
+      <guid>/talk/2020-wcc-ggplot2/</guid>
       <description>
 
 
@@ -358,9 +349,9 @@ distance&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Why Use R for Institutional Research? Part 1, Many Models</title>
-      <link>https://arie.rbind.io/post/ipeds-many-models/01-r-for-institutional-research/</link>
+      <link>/post/ipeds-many-models/01-r-for-institutional-research/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/ipeds-many-models/01-r-for-institutional-research/</guid>
+      <guid>/post/ipeds-many-models/01-r-for-institutional-research/</guid>
       <description>
 
 
@@ -458,7 +449,7 @@ head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
        subtitle = &amp;quot;Limited to states with at least 50 schools&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;,
        x = NULL, y = &amp;quot;Estimate&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ipeds-many-models/01-r-for-institutional-research_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ipeds-many-models/01-r-for-institutional-research_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
@@ -469,9 +460,9 @@ head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Fellow R Instructors: Beware of the Curse of Knowledge!</title>
-      <link>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</link>
+      <link>/post/curse-of-knowledge/curse-of-knowledge/</link>
       <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</guid>
+      <guid>/post/curse-of-knowledge/curse-of-knowledge/</guid>
       <description>
 
 
@@ -506,9 +497,9 @@ head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Welcome to the Tidyverse</title>
-      <link>https://arie.rbind.io/talk/colorado-ed/</link>
+      <link>/talk/colorado-ed/</link>
       <pubDate>Tue, 14 Jan 2020 11:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/colorado-ed/</guid>
+      <guid>/talk/colorado-ed/</guid>
       <description>
 
 
@@ -528,9 +519,9 @@ head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>ggplot2: Going Beyond the Defaults</title>
-      <link>https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest/</link>
+      <link>/post/ggplotredo1/geographic-growth-midwest/</link>
       <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest/</guid>
+      <guid>/post/ggplotredo1/geographic-growth-midwest/</guid>
       <description>
 
 
@@ -545,7 +536,7 @@ head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
   &amp;lt;FACET_FUNCTION&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference. Like cooking, where adding a little bit of salt or giving a dish a few extra minutes in the oven can transform a meal from acceptable to outstanding, relatively small changes to a chart can do the same.&lt;/p&gt;
 &lt;p&gt;Take the example below, in which one of &lt;a href=&#34;http://stephanieevergreen.com/before-and-after-business-slides/&#34;&gt;Stephanie Evergreen’s&lt;/a&gt; clients started with the slide on the top, and she helped them create the one below it:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/img/evergreen-before.png&#34; width=&#34;400&#34; /&gt;&lt;img src=&#34;https://arie.rbind.io/img/evergreen-after.png&#34; width=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/evergreen-before.png&#34; width=&#34;400&#34; /&gt;&lt;img src=&#34;/img/evergreen-after.png&#34; width=&#34;400&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Both charts contain the same information, and even if you can’t express why, you just &lt;em&gt;know&lt;/em&gt; the one on the bottom is better. Continuing with the cooking analogy, the charts are like two Mexican restaurants that use the same ingredients, but at one, the guacamole is fresher, the rice is more flavorful, and the tortillas are made in house.&lt;/p&gt;
 &lt;p&gt;ggplot2 was designed so users can &lt;a href=&#34;https://r4ds.had.co.nz/data-visualisation.html&#34;&gt;build any plot that they can imagine&lt;/a&gt;, so as attractive as its defaults are, my goal with this series of posts is to venture beyond the minor design adjustments I typically make and learn to tweak charts from ordinary to outstanding. My first goal was to use ggplot2 to reproduce the chart that Dr. Evergreen created for her client, which based on her post, I think she did in Excel.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -576,7 +567,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
        title = &amp;quot;Geographic growth dominated by Midwest.&amp;quot;,
        subtitle = &amp;quot;5 year growth&amp;quot;,
        caption = &amp;quot;Source: Our Smart Source 2015&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-2-update-the-colors-and-remove-the-legend&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 2: Update the Colors and Remove the Legend&lt;/h2&gt;
@@ -584,7 +575,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
   scale_fill_manual(values = c(&amp;quot;#4D643D&amp;quot;, &amp;quot;#D7DBDD&amp;quot;)) +
   guides(fill = FALSE))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-3-white-background-and-minimal-gridlines&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 3: White Background and Minimal Gridlines&lt;/h2&gt;
@@ -593,7 +584,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()  +
   theme(panel.grid.minor.x = element_blank(),
         panel.grid.major.y = element_blank()))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-4-change-font-and-convert-axis-to&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 4: Change Font and Convert Axis to %&lt;/h2&gt;
@@ -606,7 +597,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
         axis.text.y = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;),
         axis.text.x = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;)) +
   scale_y_continuous(label = percent_format(), limits = c(0, .25))) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-5-add-an-icon&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 5: Add an Icon&lt;/h2&gt;
@@ -619,7 +610,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
              height = .15
            ) +
   draw_plot(p)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
@@ -631,9 +622,9 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>A Brief History of NBA Three-Point Attempts: 1998 to 2018 Seasons</title>
-      <link>https://arie.rbind.io/post/history-3s/history-of-basketball/</link>
+      <link>/post/history-3s/history-of-basketball/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/history-3s/history-of-basketball/</guid>
+      <guid>/post/history-3s/history-of-basketball/</guid>
       <description>
 
 
@@ -646,24 +637,24 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;percentage-of-all-shot-attempts-that-were-threes&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Percentage of All Shot Attempts That Were Threes&lt;/h1&gt;
 &lt;p&gt;It’s easy to forget how recent the explosion in three-point attempts has been. The chart below, which displays the percentage of all shot attempts that were threes, shows a gradual increase from 1998 to 2007. But from 2008 until 2012, the numbers leveled off, and it seemed peak-three had been reached. Then 2014 to 2018 happened, and the increase during that time period alone (8%) was greater than it was from all of 1998 to 2012 (7%)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Although it’s a bit of an aside, despite the increase in the number of attempts, the percentage of three-pointers that have been made has remained relatively steady, as displayed below.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;distribution-of-threes&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Distribution of Threes&lt;/h1&gt;
 &lt;p&gt;As I mentioned above, three-point shots are no longer limited to certain positions, a point that is reflected in the histogram below. It shows players’ average number of three-point attempts per game along the x-axis, and the number of players falling within that range for the season is represented along the y-axis. Over time, notice how the distribution gets flatter. In 1998, the group who shot between zero and 0.5 threes per game appeared with the most frequency. But by 2018 that bar dropped significantly and the other bars lifted up. And pay attention to right side of the chart beginning in 2016.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-4-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-4-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;top-attempters-by-year&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Top Attempters by Year&lt;/h1&gt;
 &lt;p&gt;Who are these gunners that are changing how basketball is played? The chart below displays the three players who averaged the most threes per game for each season from 1998 to 2018. Even the casual fan will not be surprised by the more recent appearances on the chart: Splash-Brothers Curry and Thompson; and Gordon and Harden, whose GM is the aforementioned Daryl Morey.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;curry-explains-it-all&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Curry Explains it All&lt;/h1&gt;
 &lt;p&gt;Daryl Morey’s influence on the game and the state of the evolution of the three-point shot is encapsulated by the shot charts below, which I downloaded using &lt;a href=&#34;https://github.com/toddwschneider/ballr&#34;&gt;Todd Schneider’s ballr package&lt;/a&gt;. The chart on the left is Stephen Curry’s shot chart from his 2009-2010 rookie season, and the shot chart on the right is from his 2017-2018 season. It’s almost as if during that time the in-between game disappeared, leaving only three point shots and shots at the basket. That, folks, is modern basketball.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/img/stephen-curry-2018-19-shot-chart-heat-map.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/stephen-curry-2018-19-shot-chart-heat-map.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Conclusion&lt;/h1&gt;
@@ -674,17 +665,17 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Talks &amp; Workshops</title>
-      <link>https://arie.rbind.io/list/</link>
+      <link>/list/</link>
       <pubDate>Tue, 01 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/list/</guid>
+      <guid>/list/</guid>
       <description></description>
     </item>
     
     <item>
       <title>An Analysis of Gender Disparity Among Higher Education Chief Administrators</title>
-      <link>https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents/</link>
+      <link>/post/gender-college-presidents/gender-college-presidents/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents/</guid>
+      <guid>/post/gender-college-presidents/gender-college-presidents/</guid>
       <description>
 
 
@@ -809,7 +800,7 @@ female_prop_sex %&amp;gt;%
   labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;Percent Women&amp;quot;,
        title = &amp;quot;Percentage of Chief Administrators Who Are Women&amp;quot;,
        subtitle = &amp;quot;All IPEDS Institutions, Years 1990-2016&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are three things to notice about the chart:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;The increasing percentage of chief administrators who are women&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;.&lt;/li&gt;
@@ -837,7 +828,7 @@ female_by_sector %&amp;gt;%
   labs(x = NULL, y = &amp;quot;Percent Women&amp;quot;,
        title = &amp;quot;Percentage of Chief Aministrators Who Are Women,\nby Sector&amp;quot;,
        subtitle = &amp;quot;All IPEDS Institutions, Year 2016&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Although they are a minority in every sector, women make up a higher percentage of chief administrators at 2-year schools than at 4-year schools. One institution type is not better than another, but they serve different functions (e.g., teaching vs. research), meaning the disparities by sector further exaggerate the existing imbalance. For example, in 2016, 35% of academic chief administrators were women, yet the institutions they led accounted for only 29% of all students enrolled at institutions of higher education.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
@@ -858,9 +849,9 @@ female_by_sector %&amp;gt;%
     
     <item>
       <title>Popularity of Various Data Analytic Tools at AIR Forums</title>
-      <link>https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</link>
+      <link>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</guid>
+      <guid>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</guid>
       <description>
 
 
@@ -931,7 +922,7 @@ ggplot() +
        title = &amp;quot;Number of Times Software is Mentioned in AIR Forum Program Book&amp;quot;,
        subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
   guides(color = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;What stands out - and confirms what I’ve noticed at AIR Forums - is the rapid rise of Tableau. In 2014 I had never heard of it. In 2018, not knowing at least something about it seems unavoidable. Tableau is known for visual analytics, so it’s not surprising that its rise in populairty has coincided with an increasing interest in data visualization at AIR Forums.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# filter for keyword and count by word and year
 visualize &amp;lt;- all_years %&amp;gt;% 
@@ -954,7 +945,7 @@ ggplot(visualize, aes(x = year, y = prop)) +
        subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
   guides(color = FALSE) +
   scale_y_continuous(label = percent_format())&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Returning to the first chart, perhaps it’s my background in psychology - a field which has historically been dominated by SPSS - but I was surprised how little SPSS is mentioned (although, I wouldn’t be surprised to see it decrease in the future). As for R, it seems to have a presence, but I’m curious to see what happens to its popularity in institutional research over the next few years. Judging by my experience at recent Forums and the development of R tools that decrease the barrier to entry, my prediction is that interest will only grow.&lt;/p&gt;
 &lt;p&gt;I’m not sure if this need be said, but I will: This approach to evaluating software popularity is fraught with limitations. My goal, however, was not to get a precise estimate. Rather, I was interested in one, getting a general sense of broad trends, and two, sharing how just a little of bit R code can do so much!&lt;/p&gt;
 </description>
@@ -962,9 +953,9 @@ ggplot(visualize, aes(x = year, y = prop)) +
     
     <item>
       <title>Achieving Reproducibility in IR With R</title>
-      <link>https://arie.rbind.io/talk/2018-air/</link>
+      <link>/talk/2018-air/</link>
       <pubDate>Thu, 31 May 2018 10:45:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2018-air/</guid>
+      <guid>/talk/2018-air/</guid>
       <description>
 
 
@@ -974,9 +965,9 @@ ggplot(visualize, aes(x = year, y = prop)) +
     
     <item>
       <title>Data Visualization Showcase</title>
-      <link>https://arie.rbind.io/talk/2017-air/</link>
+      <link>/talk/2017-air/</link>
       <pubDate>Tue, 30 May 2017 15:30:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2017-air/</guid>
+      <guid>/talk/2017-air/</guid>
       <description>
 
 
@@ -986,9 +977,9 @@ ggplot(visualize, aes(x = year, y = prop)) +
     
     <item>
       <title>Creating Data Visualizations Using R: An Introduction for Non-Programmers</title>
-      <link>https://arie.rbind.io/talk/2016-air/</link>
+      <link>/talk/2016-air/</link>
       <pubDate>Fri, 01 Jul 2016 15:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2016-air/</guid>
+      <guid>/talk/2016-air/</guid>
       <description>
 
 

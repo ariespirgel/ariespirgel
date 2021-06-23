@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>workshop | Arie Spirgel</title>
-    <link>https://arie.rbind.io/categories/workshop/</link>
-      <atom:link href="https://arie.rbind.io/categories/workshop/index.xml" rel="self" type="application/rss+xml" />
+    <link>/categories/workshop/</link>
+      <atom:link href="/categories/workshop/index.xml" rel="self" type="application/rss+xml" />
     <description>workshop</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 13 Mar 2020 12:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>workshop</title>
-      <link>https://arie.rbind.io/categories/workshop/</link>
+      <link>/categories/workshop/</link>
     </image>
     
     <item>
       <title>POSTPONED DUE TO CORONAVIRUS Introduction to R and ggplot2</title>
-      <link>https://arie.rbind.io/talk/2020-wcc-ggplot2/</link>
+      <link>/talk/2020-wcc-ggplot2/</link>
       <pubDate>Fri, 13 Mar 2020 12:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2020-wcc-ggplot2/</guid>
+      <guid>/talk/2020-wcc-ggplot2/</guid>
       <description>
 
 
@@ -27,9 +27,9 @@
     
     <item>
       <title>Welcome to the Tidyverse</title>
-      <link>https://arie.rbind.io/talk/colorado-ed/</link>
+      <link>/talk/colorado-ed/</link>
       <pubDate>Tue, 14 Jan 2020 11:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/colorado-ed/</guid>
+      <guid>/talk/colorado-ed/</guid>
       <description>
 
 

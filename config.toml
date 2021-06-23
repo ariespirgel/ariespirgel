@@ -11,7 +11,7 @@ title = "Arie Spirgel"
 
 # The URL of your site.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
-baseurl = "https://arie.rbind.io"
+baseurl = "https://arie.rbind.io/"
 
 googleAnalytics  = "UA-98425636-1"
 

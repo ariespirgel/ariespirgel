@@ -1,139 +1,223 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
-    <loc>https://arie.rbind.io/about/about/</loc>
-  </url><url>
-    <loc>https://arie.rbind.io/authors/arie/</loc>
+    <loc>/authors/arie/</loc>
     <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/authors/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/categories/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/ggplot2/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/categories/nba/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/nba-first-names/nba-first-names/</loc>
-    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/categories/education/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/ipeds/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/r/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/online-education/distance-education/</loc>
-    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/talk/2020-wcc-ggplot2/</loc>
-    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/talk/</loc>
-    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/wcc/</loc>
-    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/categories/workshop/</loc>
-    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/categories/institutional-research/</loc>
-    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/modeling/</loc>
-    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/ipeds-many-models/01-r-for-institutional-research/</loc>
-    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/cognitive-bias/</loc>
-    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</loc>
-    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/teaching/</loc>
-    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/tidyverse/</loc>
-    <lastmod>2020-01-14T11:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/talk/colorado-ed/</loc>
-    <lastmod>2020-01-14T11:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest/</loc>
-    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/categories/visualization/</loc>
-    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/history-3s/history-of-basketball/</loc>
-    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/gganimate/</loc>
-    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/list/</loc>
-    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents/</loc>
-    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/gender/</loc>
-    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</loc>
-    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/spss/</loc>
-    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/talk/2018-air/</loc>
-    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/air2018/</loc>
-    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/categories/conference-presentation/</loc>
-    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/rmarkdown/</loc>
-    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/air2017/</loc>
-    <lastmod>2017-05-30T15:30:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/talk/2017-air/</loc>
-    <lastmod>2017-05-30T15:30:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/tags/air2016/</loc>
-    <lastmod>2016-07-01T15:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/talk/2016-air/</loc>
-    <lastmod>2016-07-01T15:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://arie.rbind.io/authors/admin/</loc>
-  </url><url>
-    <loc>https://arie.rbind.io/publication_types/</loc>
-  </url><url>
-    <loc>https://arie.rbind.io/about/</loc>
   </url>
+  
+  <url>
+    <loc>/authors/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ggplot2/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/nba/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/nba-first-names/nba-first-names/</loc>
+    <lastmod>2020-05-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/education/</loc>
+    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ipeds/</loc>
+    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/online-education/distance-education/</loc>
+    <lastmod>2020-04-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/2020-wcc-ggplot2/</loc>
+    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/</loc>
+    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/wcc/</loc>
+    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/workshop/</loc>
+    <lastmod>2020-03-13T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/institutional-research/</loc>
+    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/modeling/</loc>
+    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/ipeds-many-models/01-r-for-institutional-research/</loc>
+    <lastmod>2020-03-10T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/cognitive-bias/</loc>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/curse-of-knowledge/curse-of-knowledge/</loc>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/teaching/</loc>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/tidyverse/</loc>
+    <lastmod>2020-01-14T11:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/colorado-ed/</loc>
+    <lastmod>2020-01-14T11:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/ggplotredo1/geographic-growth-midwest/</loc>
+    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/visualization/</loc>
+    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/history-3s/history-of-basketball/</loc>
+    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/gganimate/</loc>
+    <lastmod>2019-01-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/list/</loc>
+    <lastmod>2019-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/gender-college-presidents/gender-college-presidents/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/gender/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/spss/</loc>
+    <lastmod>2018-08-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/2018-air/</loc>
+    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/air2018/</loc>
+    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/conference-presentation/</loc>
+    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rmarkdown/</loc>
+    <lastmod>2018-05-31T10:45:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/air2017/</loc>
+    <lastmod>2017-05-30T15:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/2017-air/</loc>
+    <lastmod>2017-05-30T15:30:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/air2016/</loc>
+    <lastmod>2016-07-01T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/talk/2016-air/</loc>
+    <lastmod>2016-07-01T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/admin/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
+  </url>
+  
 </urlset>

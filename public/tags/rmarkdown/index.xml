@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rmarkdown | Arie Spirgel</title>
-    <link>https://arie.rbind.io/tags/rmarkdown/</link>
-      <atom:link href="https://arie.rbind.io/tags/rmarkdown/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tags/rmarkdown/</link>
+      <atom:link href="/tags/rmarkdown/index.xml" rel="self" type="application/rss+xml" />
     <description>rmarkdown</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 31 May 2018 10:45:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>rmarkdown</title>
-      <link>https://arie.rbind.io/tags/rmarkdown/</link>
+      <link>/tags/rmarkdown/</link>
     </image>
     
     <item>
       <title>Achieving Reproducibility in IR With R</title>
-      <link>https://arie.rbind.io/talk/2018-air/</link>
+      <link>/talk/2018-air/</link>
       <pubDate>Thu, 31 May 2018 10:45:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/talk/2018-air/</guid>
+      <guid>/talk/2018-air/</guid>
       <description>
 
 

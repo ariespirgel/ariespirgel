@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>visualization | Arie Spirgel</title>
-    <link>https://arie.rbind.io/categories/visualization/</link>
-      <atom:link href="https://arie.rbind.io/categories/visualization/index.xml" rel="self" type="application/rss+xml" />
+    <link>/categories/visualization/</link>
+      <atom:link href="/categories/visualization/index.xml" rel="self" type="application/rss+xml" />
     <description>visualization</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>visualization</title>
-      <link>https://arie.rbind.io/categories/visualization/</link>
+      <link>/categories/visualization/</link>
     </image>
     
     <item>
       <title>ggplot2: Going Beyond the Defaults</title>
-      <link>https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest/</link>
+      <link>/post/ggplotredo1/geographic-growth-midwest/</link>
       <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest/</guid>
+      <guid>/post/ggplotredo1/geographic-growth-midwest/</guid>
       <description>
 
 
@@ -31,7 +31,7 @@
   &amp;lt;FACET_FUNCTION&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;But the more I pay attention to how people respond to visualizations, the more I realize how minor improvements can make a major difference. Like cooking, where adding a little bit of salt or giving a dish a few extra minutes in the oven can transform a meal from acceptable to outstanding, relatively small changes to a chart can do the same.&lt;/p&gt;
 &lt;p&gt;Take the example below, in which one of &lt;a href=&#34;http://stephanieevergreen.com/before-and-after-business-slides/&#34;&gt;Stephanie Evergreen’s&lt;/a&gt; clients started with the slide on the top, and she helped them create the one below it:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/img/evergreen-before.png&#34; width=&#34;400&#34; /&gt;&lt;img src=&#34;https://arie.rbind.io/img/evergreen-after.png&#34; width=&#34;400&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/evergreen-before.png&#34; width=&#34;400&#34; /&gt;&lt;img src=&#34;/img/evergreen-after.png&#34; width=&#34;400&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Both charts contain the same information, and even if you can’t express why, you just &lt;em&gt;know&lt;/em&gt; the one on the bottom is better. Continuing with the cooking analogy, the charts are like two Mexican restaurants that use the same ingredients, but at one, the guacamole is fresher, the rice is more flavorful, and the tortillas are made in house.&lt;/p&gt;
 &lt;p&gt;ggplot2 was designed so users can &lt;a href=&#34;https://r4ds.had.co.nz/data-visualisation.html&#34;&gt;build any plot that they can imagine&lt;/a&gt;, so as attractive as its defaults are, my goal with this series of posts is to venture beyond the minor design adjustments I typically make and learn to tweak charts from ordinary to outstanding. My first goal was to use ggplot2 to reproduce the chart that Dr. Evergreen created for her client, which based on her post, I think she did in Excel.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
@@ -62,7 +62,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
        title = &amp;quot;Geographic growth dominated by Midwest.&amp;quot;,
        subtitle = &amp;quot;5 year growth&amp;quot;,
        caption = &amp;quot;Source: Our Smart Source 2015&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-2-update-the-colors-and-remove-the-legend&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 2: Update the Colors and Remove the Legend&lt;/h2&gt;
@@ -70,7 +70,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(p &amp;lt;- p +
   scale_fill_manual(values = c(&amp;quot;#4D643D&amp;quot;, &amp;quot;#D7DBDD&amp;quot;)) +
   guides(fill = FALSE))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-3-white-background-and-minimal-gridlines&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 3: White Background and Minimal Gridlines&lt;/h2&gt;
@@ -79,7 +79,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
   theme_minimal()  +
   theme(panel.grid.minor.x = element_blank(),
         panel.grid.major.y = element_blank()))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;480&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-4-change-font-and-convert-axis-to&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 4: Change Font and Convert Axis to %&lt;/h2&gt;
@@ -92,7 +92,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
         axis.text.y = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;),
         axis.text.x = element_text(color = &amp;quot;gray30&amp;quot;, face = &amp;quot;bold&amp;quot;)) +
   scale_y_continuous(label = percent_format(), limits = c(0, .25))) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;step-5-add-an-icon&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Step 5: Add an Icon&lt;/h2&gt;
@@ -105,7 +105,7 @@ library(cowplot)&lt;/code&gt;&lt;/pre&gt;
              height = .15
            ) +
   draw_plot(p)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ggplotredo1/geographic-growth-midwest_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;576&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;

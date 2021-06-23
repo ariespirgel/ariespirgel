@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>modeling | Arie Spirgel</title>
-    <link>https://arie.rbind.io/tags/modeling/</link>
-      <atom:link href="https://arie.rbind.io/tags/modeling/index.xml" rel="self" type="application/rss+xml" />
+    <link>/tags/modeling/</link>
+      <atom:link href="/tags/modeling/index.xml" rel="self" type="application/rss+xml" />
     <description>modeling</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Mar 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>modeling</title>
-      <link>https://arie.rbind.io/tags/modeling/</link>
+      <link>/tags/modeling/</link>
     </image>
     
     <item>
       <title>Why Use R for Institutional Research? Part 1, Many Models</title>
-      <link>https://arie.rbind.io/post/ipeds-many-models/01-r-for-institutional-research/</link>
+      <link>/post/ipeds-many-models/01-r-for-institutional-research/</link>
       <pubDate>Tue, 10 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/ipeds-many-models/01-r-for-institutional-research/</guid>
+      <guid>/post/ipeds-many-models/01-r-for-institutional-research/</guid>
       <description>
 
 
@@ -114,7 +114,7 @@ head(ipeds_model, 5)&lt;/code&gt;&lt;/pre&gt;
        subtitle = &amp;quot;Limited to states with at least 50 schools&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;,
        x = NULL, y = &amp;quot;Estimate&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/ipeds-many-models/01-r-for-institutional-research_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/ipeds-many-models/01-r-for-institutional-research_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;

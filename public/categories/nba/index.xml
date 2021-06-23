@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nba | Arie Spirgel</title>
-    <link>https://arie.rbind.io/categories/nba/</link>
-      <atom:link href="https://arie.rbind.io/categories/nba/index.xml" rel="self" type="application/rss+xml" />
+    <link>/categories/nba/</link>
+      <atom:link href="/categories/nba/index.xml" rel="self" type="application/rss+xml" />
     <description>nba</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 27 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>nba</title>
-      <link>https://arie.rbind.io/categories/nba/</link>
+      <link>/categories/nba/</link>
     </image>
     
     <item>
       <title>Which NBA First Name Creates the Best Starting Five?</title>
-      <link>https://arie.rbind.io/post/nba-first-names/nba-first-names/</link>
+      <link>/post/nba-first-names/nba-first-names/</link>
       <pubDate>Wed, 27 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/nba-first-names/nba-first-names/</guid>
+      <guid>/post/nba-first-names/nba-first-names/</guid>
       <description>
-&lt;script src=&#34;https://arie.rbind.io/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://arie.rbind.io/rmarkdown-libs/pymjs/pym.v1.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://arie.rbind.io/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/pymjs/pym.v1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Michael. Larry. Moses. Mention these names to the most casual of NBA fans, and they know that you mean Jordan, Bird, and Malone, and not Doleac, Siegfried, and Brown. Even among other highly accomplished individuals, the all-time greats are so transcendent that they are recognized by their first names alone.&lt;/p&gt;
@@ -106,7 +106,7 @@ best_names &amp;lt;- best_season %&amp;gt;%
        title = &amp;quot;Which NBA First Name Creates the Best Starting Five?&amp;quot;,
        subtitle = &amp;quot;Teams must include two guards, two forwards, and one center.&amp;quot;,
        caption = &amp;quot;Data is from Basketball Reference, and spans 1951 to 2020 seasons.\nCreated by Arie Spirgel&amp;quot;) &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/nba-first-names/nba-first-names_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/nba-first-names/nba-first-names_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;And here is my complete list of starting fives:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dt &amp;lt;- best_names %&amp;gt;% 
   select(`First Name` = first, last, `Combined WS / 48` = total) %&amp;gt;% 
@@ -137,9 +137,9 @@ widgetframe::frameWidget(dt)&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>A Brief History of NBA Three-Point Attempts: 1998 to 2018 Seasons</title>
-      <link>https://arie.rbind.io/post/history-3s/history-of-basketball/</link>
+      <link>/post/history-3s/history-of-basketball/</link>
       <pubDate>Thu, 24 Jan 2019 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/history-3s/history-of-basketball/</guid>
+      <guid>/post/history-3s/history-of-basketball/</guid>
       <description>
 
 
@@ -152,24 +152,24 @@ widgetframe::frameWidget(dt)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;percentage-of-all-shot-attempts-that-were-threes&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Percentage of All Shot Attempts That Were Threes&lt;/h1&gt;
 &lt;p&gt;It’s easy to forget how recent the explosion in three-point attempts has been. The chart below, which displays the percentage of all shot attempts that were threes, shows a gradual increase from 1998 to 2007. But from 2008 until 2012, the numbers leveled off, and it seemed peak-three had been reached. Then 2014 to 2018 happened, and the increase during that time period alone (8%) was greater than it was from all of 1998 to 2012 (7%)&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Although it’s a bit of an aside, despite the increase in the number of attempts, the percentage of three-pointers that have been made has remained relatively steady, as displayed below.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;distribution-of-threes&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Distribution of Threes&lt;/h1&gt;
 &lt;p&gt;As I mentioned above, three-point shots are no longer limited to certain positions, a point that is reflected in the histogram below. It shows players’ average number of three-point attempts per game along the x-axis, and the number of players falling within that range for the season is represented along the y-axis. Over time, notice how the distribution gets flatter. In 1998, the group who shot between zero and 0.5 threes per game appeared with the most frequency. But by 2018 that bar dropped significantly and the other bars lifted up. And pay attention to right side of the chart beginning in 2016.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-4-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-4-1.gif&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;top-attempters-by-year&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Top Attempters by Year&lt;/h1&gt;
 &lt;p&gt;Who are these gunners that are changing how basketball is played? The chart below displays the three players who averaged the most threes per game for each season from 1998 to 2018. Even the casual fan will not be surprised by the more recent appearances on the chart: Splash-Brothers Curry and Thompson; and Gordon and Harden, whose GM is the aforementioned Daryl Morey.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/history-3s/history-of-basketball_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;960&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;curry-explains-it-all&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Curry Explains it All&lt;/h1&gt;
 &lt;p&gt;Daryl Morey’s influence on the game and the state of the evolution of the three-point shot is encapsulated by the shot charts below, which I downloaded using &lt;a href=&#34;https://github.com/toddwschneider/ballr&#34;&gt;Todd Schneider’s ballr package&lt;/a&gt;. The chart on the left is Stephen Curry’s shot chart from his 2009-2010 rookie season, and the shot chart on the right is from his 2017-2018 season. It’s almost as if during that time the in-between game disappeared, leaving only three point shots and shots at the basket. That, folks, is modern basketball.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/img/stephen-curry-2018-19-shot-chart-heat-map.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/stephen-curry-2018-19-shot-chart-heat-map.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Conclusion&lt;/h1&gt;

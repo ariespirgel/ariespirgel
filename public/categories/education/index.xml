@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>education | Arie Spirgel</title>
-    <link>https://arie.rbind.io/categories/education/</link>
-      <atom:link href="https://arie.rbind.io/categories/education/index.xml" rel="self" type="application/rss+xml" />
+    <link>/categories/education/</link>
+      <atom:link href="/categories/education/index.xml" rel="self" type="application/rss+xml" />
     <description>education</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 07 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://arie.rbind.io/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>education</title>
-      <link>https://arie.rbind.io/categories/education/</link>
+      <link>/categories/education/</link>
     </image>
     
     <item>
       <title>Tidying IPEDS Data in R</title>
-      <link>https://arie.rbind.io/post/online-education/distance-education/</link>
+      <link>/post/online-education/distance-education/</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/online-education/distance-education/</guid>
+      <guid>/post/online-education/distance-education/</guid>
       <description>
 
 
@@ -30,7 +30,7 @@ library(scales)
 theme_set(theme_light())
 
 distance &amp;lt;- read_csv(&amp;quot;raw-data/distance-fall-12-18.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/img/data-preview.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/data-preview.png&#34; /&gt;&lt;!-- --&gt;&lt;/p&gt;
 &lt;p&gt;The data set contains 6,800 rows and 43 columns, and ignoring the &lt;code&gt;Institution Name&lt;/code&gt; column, each of the remaining columns is some version of the following: &lt;code&gt;Students enrolled exclusively in distance education courses (EF2018A_DIST  Undergraduate total)&lt;/code&gt;. Under that specific column, for each of the 6,800 institutions that reported data, are headcounts for &lt;strong&gt;exclusively distance&lt;/strong&gt; &lt;strong&gt;undergraduate students&lt;/strong&gt; in the fall term of &lt;strong&gt;2018&lt;/strong&gt;. The problem, thus, is that this column (and all the other ones like it) actually contains three pieces of information:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;strong&gt;Level&lt;/strong&gt;, which can take on the values &lt;em&gt;undergraduate&lt;/em&gt; or &lt;em&gt;graduate&lt;/em&gt;.&lt;/li&gt;
@@ -154,7 +154,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Next, I change the grouping variables to repeat the same chart except here I partition the data by level.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance %&amp;gt;% 
   mutate(headcount = replace_na(headcount, 0)) %&amp;gt;% 
@@ -174,7 +174,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;And once more, limiting the results to a single institution: Florida State University.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;distance %&amp;gt;% 
   filter(institution_name == &amp;quot;Florida State University&amp;quot;) %&amp;gt;% 
@@ -195,7 +195,7 @@ distance&lt;/code&gt;&lt;/pre&gt;
        fill = NULL,
        subtitle = &amp;quot;Fall 2012 to Fall 2018&amp;quot;,
        caption = &amp;quot;Source: IPEDS Data Center&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/online-education/Distance-Education_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Conclusion&lt;/h2&gt;
@@ -213,9 +213,9 @@ distance&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>Fellow R Instructors: Beware of the Curse of Knowledge!</title>
-      <link>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</link>
+      <link>/post/curse-of-knowledge/curse-of-knowledge/</link>
       <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/curse-of-knowledge/curse-of-knowledge/</guid>
+      <guid>/post/curse-of-knowledge/curse-of-knowledge/</guid>
       <description>
 
 
@@ -250,9 +250,9 @@ distance&lt;/code&gt;&lt;/pre&gt;
     
     <item>
       <title>An Analysis of Gender Disparity Among Higher Education Chief Administrators</title>
-      <link>https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents/</link>
+      <link>/post/gender-college-presidents/gender-college-presidents/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents/</guid>
+      <guid>/post/gender-college-presidents/gender-college-presidents/</guid>
       <description>
 
 
@@ -377,7 +377,7 @@ female_prop_sex %&amp;gt;%
   labs(x = &amp;quot;Year&amp;quot;, y = &amp;quot;Percent Women&amp;quot;,
        title = &amp;quot;Percentage of Chief Administrators Who Are Women&amp;quot;,
        subtitle = &amp;quot;All IPEDS Institutions, Years 1990-2016&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;There are three things to notice about the chart:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;The increasing percentage of chief administrators who are women&lt;a href=&#34;#fn3&#34; class=&#34;footnoteRef&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt;.&lt;/li&gt;
@@ -405,7 +405,7 @@ female_by_sector %&amp;gt;%
   labs(x = NULL, y = &amp;quot;Percent Women&amp;quot;,
        title = &amp;quot;Percentage of Chief Aministrators Who Are Women,\nby Sector&amp;quot;,
        subtitle = &amp;quot;All IPEDS Institutions, Year 2016&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/gender-college-presidents/gender-college-presidents_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Although they are a minority in every sector, women make up a higher percentage of chief administrators at 2-year schools than at 4-year schools. One institution type is not better than another, but they serve different functions (e.g., teaching vs. research), meaning the disparities by sector further exaggerate the existing imbalance. For example, in 2016, 35% of academic chief administrators were women, yet the institutions they led accounted for only 29% of all students enrolled at institutions of higher education.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
@@ -426,9 +426,9 @@ female_by_sector %&amp;gt;%
     
     <item>
       <title>Popularity of Various Data Analytic Tools at AIR Forums</title>
-      <link>https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</link>
+      <link>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</link>
       <pubDate>Fri, 24 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</guid>
+      <guid>/post/air-forum-text-software-frequency/air-forum-text-software-frequency/</guid>
       <description>
 
 
@@ -499,7 +499,7 @@ ggplot() +
        title = &amp;quot;Number of Times Software is Mentioned in AIR Forum Program Book&amp;quot;,
        subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
   guides(color = FALSE)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;What stands out - and confirms what I’ve noticed at AIR Forums - is the rapid rise of Tableau. In 2014 I had never heard of it. In 2018, not knowing at least something about it seems unavoidable. Tableau is known for visual analytics, so it’s not surprising that its rise in populairty has coincided with an increasing interest in data visualization at AIR Forums.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# filter for keyword and count by word and year
 visualize &amp;lt;- all_years %&amp;gt;% 
@@ -522,7 +522,7 @@ ggplot(visualize, aes(x = year, y = prop)) +
        subtitle = &amp;quot;2013 to 2018 Forums&amp;quot;) +
   guides(color = FALSE) +
   scale_y_continuous(label = percent_format())&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://arie.rbind.io/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/air-forum-text-software-frequency/air-forum-text-software-frequency_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Returning to the first chart, perhaps it’s my background in psychology - a field which has historically been dominated by SPSS - but I was surprised how little SPSS is mentioned (although, I wouldn’t be surprised to see it decrease in the future). As for R, it seems to have a presence, but I’m curious to see what happens to its popularity in institutional research over the next few years. Judging by my experience at recent Forums and the development of R tools that decrease the barrier to entry, my prediction is that interest will only grow.&lt;/p&gt;
 &lt;p&gt;I’m not sure if this need be said, but I will: This approach to evaluating software popularity is fraught with limitations. My goal, however, was not to get a precise estimate. Rather, I was interested in one, getting a general sense of broad trends, and two, sharing how just a little of bit R code can do so much!&lt;/p&gt;
 </description>
