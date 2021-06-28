@@ -25,4 +25,4 @@ social:
 superuser: true
 ---
 
-I am interested in consulting with organizations seeking to gain insights from their data. Although data science has given us amazing innovations, my goal is to work with organizations to help them solve the more everday data analysis problems. Rather than the latest and greatest, I want to assist with the work that you find necessary but tedious: Cleaning data, tidying data, summarizing data, visualization data, and automating reports. If you are interested in chatting about working together, please get in touch and visit the [About](/about) section to learn more about my approach.
+I am interested in consulting with organizations seeking to gain insights from their data. Although data science has given us amazing innovations, my goal is to work with organizations to help them solve the more everday data analysis problems: Cleaning data, tidying data, summarizing data, visualizing data, and automating reports. If you are interested in chatting about working together, please visit the [click here](/about) and get in touch to learn more about my approach.
