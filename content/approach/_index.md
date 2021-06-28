@@ -11,7 +11,7 @@ caption = ""
 +++
 
 
-  It’s easy to be seduced the hottest trends in data science: AI, machine learning, bigger and bigger data. These tools have their place, but many organizations face a much more mundane problem: They have a bunch of data that they don’t know what to do with. For example:
+  It’s easy to be seduced by the hottest trends in data: AI, machine learning, bigger and bigger data. These tools have their place, but many organizations face a much more mundane problem: They have a bunch of data that they don’t know what to do with. For example:
   
 * A medical practice that has thousands of patient surveys that they want to analyze but aren’t sure where to start. 
 * A non-profit that wants to create a data visualization for a grant proposal, but all of their data is stuck in 10-years of Excel files.  
