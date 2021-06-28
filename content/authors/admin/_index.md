@@ -1,10 +1,10 @@
 ---
+title: About
 authors:
 - admin
 bio: 
   matter.
 email: spirgel@gmail.com
-name: Arie Spirgel
 #organizations:
 #- name: Nova Southeastern University
 #  url: ""
