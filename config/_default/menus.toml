@@ -3,11 +3,14 @@
 #     desired widget in your `content/home/` folder.
 #   The weight parameter defines the order that the links will appear in.
 [[main]]
+  name = "Small Data Services"
+  url = "/about"
+  weight = 20
+
+[[main]]
   name = "Blog"
   url = "/post"
   weight = 20
-
-
 #[[main]]
 #  name = "Talks / Workshops"
 #  url = "/list"
