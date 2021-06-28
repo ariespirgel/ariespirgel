@@ -6,7 +6,7 @@
 [[main]]
   name = "Small Data Services"
   url = "/about"
-  weight = 15
+  weight = 21
 
 [[main]]
   name = "Blog"
