@@ -3,19 +3,7 @@ authors:
 - admin
 bio: 
   matter.
-education:
-  courses:
-  - course: PhD in Cognitive Psychology
-    institution: University of North Carolina Greensboro
-  #  year: 2011
-  - course: BS Psychology
-    institution: Florida State University
-  #  year: 2004
 email: spirgel@gmail.com
-interests:
-- Providing R training
-- Learning sciences
-- Animal welfare
 name: Arie Spirgel
 #organizations:
 #- name: Nova Southeastern University
