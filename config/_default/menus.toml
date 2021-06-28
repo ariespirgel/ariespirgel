@@ -4,9 +4,9 @@
 #   The weight parameter defines the order that the links will appear in.
 
 [[main]]
-  name = "Data Services"
+  name = "Small Data Services"
   url = "/about"
-  weight = 25
+  weight = 15
 
 [[main]]
   name = "Blog"
