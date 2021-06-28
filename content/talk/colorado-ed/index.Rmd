@@ -1,0 +1,45 @@
+---
+title: "Welcome to the Tidyverse"
+draft: false
+authors: [arie]
+event: 'Training for education non-profits'
+event_url: 
+location: Remote 
+summary: "R basics, ggplot, and dplyr."
+
+# Talk start and end times.
+#   End time can optionally be hidden by prefixing the line with `#`.
+date: "2020-01-14T11:00:00Z"
+#date_end: "2019-09-30T16:30:00Z"
+all_day: false
+# publishdate: "2019-06-15"
+
+#links:
+#- icon: github
+#  icon_pack: fab
+#  name: materials
+#  url: https://github.com/rstudio-education/communicate-rmd-workshop
+
+categories:
+  - workshop
+tags:
+  - tidyverse
+# lastmod: '2019-06-16T02:20:01-07:00'
+featured: no
+image:
+  caption: ""
+  focal_point: 'center'
+  preview_only: no
+projects: []
+---
+
+Part 1 covers:
+
+ - Introduction to R.
+ - Visualization with `ggplot2`.
+ - Tranformation with `dplyr`.
+
+Part 2 covers:
+
+ - Modeling with `modelr` and `broom`.
+ - Reporting with `rmarkdown`.

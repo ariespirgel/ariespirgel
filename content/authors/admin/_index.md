@@ -3,7 +3,19 @@ authors:
 - admin
 bio: 
   matter.
+education:
+  courses:
+  - course: PhD in Cognitive Psychology
+    institution: University of North Carolina Greensboro
+  #  year: 2011
+  - course: BS Psychology
+    institution: Florida State University
+  #  year: 2004
 email: spirgel@gmail.com
+interests:
+- Providing R training
+- Learning sciences
+- Animal welfare
 name: Arie Spirgel
 #organizations:
 #- name: Nova Southeastern University
@@ -25,4 +37,4 @@ social:
 superuser: true
 ---
 
-I am interested in consulting with organizations seeking to gain insights from their data. Although data science has given us amazing innovations, my goal is to work with organizations to help them solve the more everday data analysis problems: Cleaning data, tidying data, summarizing data, visualizing data, and automating reports. If you are interested in chatting about working together, please visit the [click here](/about) and get in touch to learn more about my approach.
+My background is in cognitive psychology, and for my [dissertation research](https://link.springer.com/article/10.1007/s10648-014-9290-2), I examined how writing helps (or doesn't help) people learn new information. I have worked in  education since 2011, and I am [certified by RStudio](https://education.rstudio.com/trainers/) to teach the [tidyverse](https://www.tidyverse.org/). I am available to train groups or individuals to learn R and the tidyverse, and to consult with organizations to help them meet their data analytic needs.
