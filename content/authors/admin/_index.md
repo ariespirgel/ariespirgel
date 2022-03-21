@@ -19,7 +19,6 @@ social:
 superuser: yes
 ---
 <br />
-<br />
 
 I work with organizations to help them get the most out their data. Whether its cleaning messy data, creating compelling visualizations, automating the creation of reports, or something else, I can help improve the quality and efficiency of your work. 
 
