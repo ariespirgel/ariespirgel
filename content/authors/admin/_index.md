@@ -19,7 +19,6 @@ social:
 superuser: yes
 ---
 <br />
-
 I work with organizations to help them get the most out their data. Whether its cleaning messy data, creating compelling visualizations, automating the creation of reports, or something else, I can help improve the quality and efficiency of your work. 
 
   The hottest trends in data science (e.g., AI, machine learning) have their place, but for many organizations they are beyond what is needed for the problem they face: A bunch of data that they don’t know what to do with. For example:
