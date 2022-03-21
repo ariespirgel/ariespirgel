@@ -3,11 +3,11 @@
 # This section displays recent blog posts from `content/post/`.
 
 widget = "pages"  # See https://sourcethemes.com/academic/docs/page-builder/
-headless = true  # This file represents a page section.
+headless = false  # This file represents a page section.
 active = true  # Activate this widget? true/false
-weight = 60  # Order that this section will appear.
+weight = 10  # Order that this section will appear.
 
-title = "Recent Posts"
+title = "Blog"
 subtitle = ""
 
 [content]
@@ -15,10 +15,10 @@ subtitle = ""
   page_type = "post"
   
   # Choose how much pages you would like to display (0 = all pages)
-  count = 5
+  count = 0
   
   # Choose how many pages you would like to offset by
-  offset = 0
+  offset = 1
 
   # Page order. Descending (desc) or ascending (asc) date.
   order = "desc"
@@ -45,11 +45,11 @@ subtitle = ""
   #   Any HTML color name or Hex value is valid.
   
   # Background color.
-  # color = "navy"
+   color = "#41B6E6"
   
   # Background gradient.
   # gradient_start = "DeepSkyBlue"
-  # gradient_end = "SkyBlue"
+   gradient_end = "Pink"
   
   # Background image.
   # image = "background.jpg"  # Name of image in `static/img/`.
